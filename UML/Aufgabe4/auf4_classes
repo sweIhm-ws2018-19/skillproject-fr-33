@@ -1,14 +1,14 @@
 
 class Konto {
 	private String bezeichnung;
-	private NonEmptyList<Kunde> zeichnungsberechtigter;
+	private Set<Kunde> zeichnungsberechtigter;
 	
 	public GeldBetrag saldo() {}
 	public void einzahlen(Geldbetrag betrag) {}
 }
 
 abstract class Kunde {
-	private NonEmptyList<Konto> konto;
+	private Set<Konto> konto;
 }
 
 
