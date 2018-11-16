@@ -23,13 +23,15 @@ import main.java.colorpicker.handlers.SessionEndedRequestHandler;
 import main.java.colorpicker.handlers.WhatsMyColorIntentHandler;
 import main.java.colorpicker.handlers.CancelandStopIntentHandler;
 import main.java.colorpicker.handlers.MyColorIsIntentHandler;
+import main.java.colorpicker.handlers.StartQuizIntentHandler;
 
 public class ColorPickerStreamHandler extends SkillStreamHandler {
 
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
-                        new WhatsMyColorIntentHandler(),
+                        new StartQuizIntentHandler(),
+                		new WhatsMyColorIntentHandler(),
                         new MyColorIsIntentHandler(),
                         new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),

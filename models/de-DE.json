@@ -29,6 +29,18 @@
           ]
         },
         {
+          "name": "StartQuizIntent",
+          "slots": [
+            {
+              "name": "Answer"
+            }
+          ],
+          "samples": [
+            " Ja ",
+            " Nein "
+          ]
+        },
+        {
           "name": "WhatsMyColorIntent",
           "slots": [],
           "samples": [
