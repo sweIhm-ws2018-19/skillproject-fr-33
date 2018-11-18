@@ -24,10 +24,11 @@ import main.java.colorpicker.handlers.WhatsMyColorIntentHandler;
 import main.java.colorpicker.handlers.CancelandStopIntentHandler;
 import main.java.colorpicker.handlers.MyColorIsIntentHandler;
 import main.java.colorpicker.handlers.StartQuizIntentHandler;
+import main.java.colorpicker.handlers.DefinePlayersIntentHandler;
 
 public class ColorPickerStreamHandler extends SkillStreamHandler {
-	private static int num_players;
-	private static int current_player;
+	public static int num_players;
+	public static int current_player;
 
     private static Skill getSkill() {
         return Skills.standard()
@@ -39,6 +40,7 @@ public class ColorPickerStreamHandler extends SkillStreamHandler {
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
+                        new DefinePlayersIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")

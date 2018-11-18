@@ -29,6 +29,19 @@
           ]
         },
         {
+          "name": "DefinePlayersIntent",
+          "slots": [
+             {
+               "name": "Anzahl",
+               "type": "ANZAHL_DER_SPIELER"
+             }
+          ],
+          "samples": [
+            "Es spielen {Anzahl} Leute mit",
+            "{Anzahl}"
+          ]
+        },
+        {
           "name": "StartQuizIntent",
           "slots": [],
           "samples": [
@@ -100,6 +113,31 @@
               }
             }
           ]
+        },
+        {
+         "name": "ANZAHL_DER_SPIELER",
+         "values": [
+            {
+             "name": {
+               "value": "eins"
+             }
+            },
+             {
+             "name": {
+               "value": "zwei"
+                }
+             },
+             {
+             "name": {
+               "value": "drei"
+                }
+             },
+             {
+             "name": {
+               "value": "vier"
+             }
+            }
+           ]
         }
       ]
     }
