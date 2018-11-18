@@ -30,7 +30,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Willkommen zum Reisequiz.";//"Hallo. Ich lerne Deine Lieblingsfarbe. Bitte sage mir zum Beispiel: Meine Lieblingsfarbe ist blau.";
+        String speechText = "Hallo. Willkommen zum Reisequiz. Wieviele Spieler sollen mitspielen?";//"Hallo. Ich lerne Deine Lieblingsfarbe. Bitte sage mir zum Beispiel: Meine Lieblingsfarbe ist blau.";
         String repromptText = "Wieviele Spieler sollen mitspielen?";//"Bitte nenne Deine Lieblingsfarbe.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
