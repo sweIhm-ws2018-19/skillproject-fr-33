@@ -36,7 +36,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         {
         	speechText = "Okay. Lass uns loslegen! Du befindest Dich gerade in der Nähe des Starnberger Sees. Möchtest Du zu dieser Region ein Quiz spielen?";
         }
-        if(answerGPS.equals("Nein"))
+        else if(answerGPS.equals("Nein"))
         {
         	speechText = "Ok. Auf deiner Route liegen die Regionen Starnberger See, Garmisch und Tiroler Alpen. Über welche Region möchtest du spielen?";
         }

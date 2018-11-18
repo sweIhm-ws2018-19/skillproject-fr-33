@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "lieblingsfarbe",
+      "invocationName": "reisequiz",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
@@ -30,14 +30,11 @@
         },
         {
           "name": "StartQuizIntent",
-          "slots": [
-            {
-              "name": "Answer"
-            }
-          ],
+          "slots": [],
           "samples": [
             " Ja ",
-            " Nein "
+            " Nein ",
+            "starte Quizapp"
           ]
         },
         {
