@@ -26,6 +26,8 @@ import main.java.colorpicker.handlers.MyColorIsIntentHandler;
 import main.java.colorpicker.handlers.StartQuizIntentHandler;
 
 public class ColorPickerStreamHandler extends SkillStreamHandler {
+	private static int num_players;
+	private static int current_player;
 
     private static Skill getSkill() {
         return Skills.standard()
