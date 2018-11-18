@@ -16,6 +16,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="//nas.ads.mwn.de/hm-sinning/Benutzer/Download/opencsv-4.3.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
