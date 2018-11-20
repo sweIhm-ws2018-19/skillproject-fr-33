@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.colorpicker.handlers;
+package main.java.quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -22,14 +22,12 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import main.java.colorpicker.ColorPickerStreamHandler;
+import main.java.quiz.ColorPickerStreamHandler;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class DefinePlayersIntentHandler implements RequestHandler {

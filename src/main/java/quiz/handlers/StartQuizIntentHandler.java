@@ -1,21 +1,11 @@
-package main.java.colorpicker.handlers;
+package main.java.quiz.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
-
-import java.util.Collections;
-import java.util.Map;
 import java.util.Optional;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.Intent;
-import com.amazon.ask.model.IntentRequest;
-import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
-import com.amazon.ask.model.Slot;
-import com.amazon.ask.response.ResponseBuilder;
 
 public class StartQuizIntentHandler implements RequestHandler {
 	public static final String ANSWER_SLOT = "Answer";
