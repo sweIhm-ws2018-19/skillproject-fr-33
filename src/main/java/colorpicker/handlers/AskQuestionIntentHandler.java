@@ -89,7 +89,7 @@ public class AskQuestionIntentHandler implements RequestHandler {
     	String speechText = "test";
     	try {
     		
-    	 CSVReader reader = new CSVReader(new InputStreamReader(AskQuestionIntentHandler.class.getResourceAsStream("/Berlin.csv")), ',', '"', 1);
+    	 CSVReader reader = new CSVReader(new InputStreamReader(AskQuestionIntentHandler.class.getResourceAsStream("/Bsp.csv")), ',', '"', 1);
 	       
 	      //Read all rows at once
 	      List<String[]> allRows = reader.readAll();
