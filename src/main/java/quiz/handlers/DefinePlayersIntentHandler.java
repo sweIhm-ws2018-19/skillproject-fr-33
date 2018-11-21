@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.colorpicker.handlers;
+package main.java.quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -22,14 +22,12 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import main.java.colorpicker.ColorPickerStreamHandler;
+import main.java.quiz.ColorPickerStreamHandler;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class DefinePlayersIntentHandler implements RequestHandler {
@@ -76,7 +74,7 @@ public class DefinePlayersIntentHandler implements RequestHandler {
 
         } else {
             // Render an error since we don't know what the users favorite color is.
-            speechText = "Ungültige Eingabe. Es können zwischen 1 und 4 Menschen mitspielen. Bitte wähle erneut aus";
+            speechText = "UngÃ¼ltige Eingabe. Es kÃ¶nnen zwischen 1 und 4 Menschen mitspielen. Bitte wÃ¤hle erneut aus";
             repromptText =
                     "Ich weiss nicht welches Deine Lieblingsfarbe ist. Sag mir Deine Lieblingsfarbe. Sage zum Beispiel: ich mag blau.";
             isAskResponse = true;
