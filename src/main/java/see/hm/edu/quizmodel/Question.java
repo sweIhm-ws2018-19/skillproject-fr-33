@@ -1,4 +1,4 @@
-package main.java.quiz.model;
+package see.hm.edu.quizmodel;
 
 import java.net.URL;
 import java.util.Arrays;

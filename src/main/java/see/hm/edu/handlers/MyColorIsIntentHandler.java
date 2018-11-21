@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.quiz.handlers;
+package see.hm.edu.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -27,8 +27,8 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
-import static main.java.quiz.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.quiz.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
+import static see.hm.edu.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
+import static see.hm.edu.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
 
 public class MyColorIsIntentHandler implements RequestHandler {
     @Override

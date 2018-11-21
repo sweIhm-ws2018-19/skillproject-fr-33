@@ -11,21 +11,22 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.quiz;
+package see.hm.edu.colorpicker;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 
-import main.java.quiz.handlers.CancelandStopIntentHandler;
-import main.java.quiz.handlers.DefinePlayersIntentHandler;
-import main.java.quiz.handlers.FallbackIntentHandler;
-import main.java.quiz.handlers.HelpIntentHandler;
-import main.java.quiz.handlers.LaunchRequestHandler;
-import main.java.quiz.handlers.MyColorIsIntentHandler;
-import main.java.quiz.handlers.SessionEndedRequestHandler;
-import main.java.quiz.handlers.StartQuizIntentHandler;
-import main.java.quiz.handlers.WhatsMyColorIntentHandler;
+import see.hm.edu.handlers.AskQuestionIntentHandler;
+import see.hm.edu.handlers.CancelandStopIntentHandler;
+import see.hm.edu.handlers.DefinePlayersIntentHandler;
+import see.hm.edu.handlers.FallbackIntentHandler;
+import see.hm.edu.handlers.HelpIntentHandler;
+import see.hm.edu.handlers.LaunchRequestHandler;
+import see.hm.edu.handlers.MyColorIsIntentHandler;
+import see.hm.edu.handlers.SessionEndedRequestHandler;
+import see.hm.edu.handlers.StartQuizIntentHandler;
+import see.hm.edu.handlers.WhatsMyColorIntentHandler;
 
 public class ColorPickerStreamHandler extends SkillStreamHandler {
 	public static int num_players;
@@ -42,6 +43,7 @@ public class ColorPickerStreamHandler extends SkillStreamHandler {
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new DefinePlayersIntentHandler(),
+                        new AskQuestionIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")

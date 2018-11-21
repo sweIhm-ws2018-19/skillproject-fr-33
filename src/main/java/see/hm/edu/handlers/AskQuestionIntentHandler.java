@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.quiz.handlers;
+package see.hm.edu.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -21,23 +21,29 @@ import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
+import com.opencsv.CSVReader;
 
-import main.java.quiz.ColorPickerStreamHandler;
+import see.hm.edu.colorpicker.ColorPickerStreamHandler;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class DefinePlayersIntentHandler implements RequestHandler {
+public class AskQuestionIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("DefinePlayersIntent"));
+        return input.matches(intentName("AskQuestionIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+    	/*
         Request request = input.getRequestEnvelope().getRequest();
         IntentRequest intentRequest = (IntentRequest) request;
         Intent intent = intentRequest.getIntent();
@@ -74,22 +80,35 @@ public class DefinePlayersIntentHandler implements RequestHandler {
 
         } else {
             // Render an error since we don't know what the users favorite color is.
-            speechText = "Ungültige Eingabe. Es können zwischen 1 und 4 Menschen mitspielen. Bitte wähle erneut aus";
+            speechText = "Ungige Eingabe. Es knnen zwischen 1 und 4 Menschen mitspielen. Bitte whle erneut aus";
             repromptText =
                     "Ich weiss nicht welches Deine Lieblingsfarbe ist. Sag mir Deine Lieblingsfarbe. Sage zum Beispiel: ich mag blau.";
             isAskResponse = true;
         }
-
+	*/
+    	String speechText = "test";
+    	try {
+    		
+    	 CSVReader reader = new CSVReader(new InputStreamReader(AskQuestionIntentHandler.class.getResourceAsStream("/Bsp.csv")), ',', '"', 1);
+	       
+	      //Read all rows at once
+	      List<String[]> allRows = reader.readAll();
+	      
+	      String[] strings = allRows.get(0);
+	      speechText = strings[1];
+    	}
+    	catch(IOException e) {} 
+    	
         ResponseBuilder responseBuilder = input.getResponseBuilder();
 
         responseBuilder.withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)
                 .withShouldEndSession(false);
 
-        if (isAskResponse) {
+     /*   if (isAskResponse) {
             responseBuilder.withShouldEndSession(false)
                     .withReprompt(repromptText);
-        }
+        } */
 
         return responseBuilder.build();
     }

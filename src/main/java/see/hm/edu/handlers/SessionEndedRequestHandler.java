@@ -11,27 +11,26 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.quiz.handlers;
+package see.hm.edu.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
+import com.amazon.ask.model.SessionEndedRequest;
 
 import java.util.Optional;
 
-import static com.amazon.ask.request.Predicates.intentName;
+import static com.amazon.ask.request.Predicates.requestType;
 
-public class CancelandStopIntentHandler implements RequestHandler {
+public class SessionEndedRequestHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.StopIntent").or(intentName("AMAZON.CancelIntent")));
+        return input.matches(requestType(SessionEndedRequest.class));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
-                .withSimpleCard("ColorSession", "Auf Wiedersehen")
-                .build();
+        // any cleanup logic goes here
+        return input.getResponseBuilder().build();
     }
 }

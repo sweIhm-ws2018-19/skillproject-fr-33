@@ -1,4 +1,4 @@
-package main.java.quiz;
+package see.hm.edu.quiz;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 

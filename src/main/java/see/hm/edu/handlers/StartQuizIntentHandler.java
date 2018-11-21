@@ -1,4 +1,4 @@
-package main.java.quiz.handlers;
+package see.hm.edu.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 import java.util.Optional;

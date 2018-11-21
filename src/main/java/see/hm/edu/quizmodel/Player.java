@@ -1,4 +1,4 @@
-package main.java.quiz.model;
+package see.hm.edu.quizmodel;
 
 public class Player {
 	public int score;
