@@ -33,8 +33,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_KEY;
-import static main.java.colorpicker.handlers.WhatsMyColorIntentHandler.COLOR_SLOT;
 import static com.amazon.ask.request.Predicates.intentName;
 
 public class AskQuestionIntentHandler implements RequestHandler {
@@ -82,7 +80,7 @@ public class AskQuestionIntentHandler implements RequestHandler {
 
         } else {
             // Render an error since we don't know what the users favorite color is.
-            speechText = "Ungültige Eingabe. Es können zwischen 1 und 4 Menschen mitspielen. Bitte wähle erneut aus";
+            speechText = "Ungige Eingabe. Es knnen zwischen 1 und 4 Menschen mitspielen. Bitte whle erneut aus";
             repromptText =
                     "Ich weiss nicht welches Deine Lieblingsfarbe ist. Sag mir Deine Lieblingsfarbe. Sage zum Beispiel: ich mag blau.";
             isAskResponse = true;
