@@ -42,6 +42,12 @@
           ]
         },
         {
+          "name": "AskQuestionIntent",
+          "samples": [
+            "Stell mir eine Frage"
+          ]
+        },
+        {
           "name": "StartQuizIntent",
           "slots": [],
           "samples": [
