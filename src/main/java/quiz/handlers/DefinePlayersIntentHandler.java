@@ -22,7 +22,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import quiz.ColorPickerStreamHandler;
+import quiz.QuizStreamHandler;
 
 import java.util.Collections;
 import java.util.Map;
@@ -44,33 +44,18 @@ public class DefinePlayersIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intent.getSlots();
 
         // Get the color slot from the list of slots.
-        Slot favoriteColorSlot = slots.get("Anzahl");
+        Slot playerCountSlot = slots.get("Anzahl");
 
         String speechText, repromptText;
         boolean isAskResponse = false;
 
         // Check for favorite color and create output to user.
-        if (favoriteColorSlot != null) {
+        if (playerCountSlot != null) {
             // Store the user's favorite color in the Session and create response.
-            String favoriteColor = favoriteColorSlot.getValue();
+            playerCountSlot.getValue();
             input.getAttributesManager().setSessionAttributes(Collections.singletonMap("ANZAHL", favoriteColor)); //COLOR_KEY
 
             speechText = String.format("Es nehmen %s Spieler am Quiz teil.", favoriteColor);
-            repromptText = "Frage nach meiner Lieblingsfarbe.";
-            
-            if(favoriteColor.matches("eins")) {
-            	ColorPickerStreamHandler.num_players = 1;
-            }
-            else if(favoriteColor.matches("eins")) {
-            	ColorPickerStreamHandler.num_players = 2;
-            }
-            else if(favoriteColor.matches("eins")) {
-            	ColorPickerStreamHandler.num_players = 3;
-            }
-            else {
-            	ColorPickerStreamHandler.num_players = 4;
-            }
-            ColorPickerStreamHandler.current_player = 1;
 
         } else {
             // Render an error since we don't know what the users favorite color is.

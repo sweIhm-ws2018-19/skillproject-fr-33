@@ -20,36 +20,27 @@ import quiz.handlers.FallbackIntentHandler;
 import quiz.handlers.HelpIntentHandler;
 import quiz.handlers.LaunchRequestHandler;
 import quiz.handlers.SessionEndedRequestHandler;
-import quiz.handlers.WhatsMyColorIntentHandler;
-import quiz.handlers.AskQuestionIntentHandler;
 import quiz.handlers.CancelandStopIntentHandler;
-import quiz.handlers.MyColorIsIntentHandler;
 import quiz.handlers.StartQuizIntentHandler;
 import quiz.handlers.DefinePlayersIntentHandler;
 
-public class ColorPickerStreamHandler extends SkillStreamHandler {
-	public static int num_players;
-	public static int current_player;
-
+public class QuizStreamHandler extends SkillStreamHandler {
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
                         new StartQuizIntentHandler(),
-                		new WhatsMyColorIntentHandler(),
-                        new MyColorIsIntentHandler(),
                         new LaunchRequestHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new DefinePlayersIntentHandler(),
-                        new AskQuestionIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")
                 .build();
     }
 
-    public ColorPickerStreamHandler() {
+    public QuizStreamHandler() {
         super(getSkill());
     }
 
