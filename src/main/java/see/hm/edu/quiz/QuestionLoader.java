@@ -9,6 +9,7 @@ public class QuestionLoader {
 	public QuestionLoader() {
 		try {
 			CSVReader reader = new CSVReader(new FileReader("emps.csv"), ';');
+			
 		}
 		catch(FileNotFoundException e) {}
 	}
