@@ -28,6 +28,7 @@ import see.hm.edu.colorpicker.ColorPickerStreamHandler;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -94,8 +95,10 @@ public class AskQuestionIntentHandler implements RequestHandler {
 	      //Read all rows at once
 	      List<String[]> allRows = reader.readAll();
 	      
-	      String[] ss = allRows.get(0)[0].split(";");
-	      speechText = ss[2];
+	      String[] tt = allRows.get(1)[0].replaceAll("\"|^\\d","").split(";");
+	      String[] ss = Arrays.copyOfRange(tt,1,tt.length);
+
+	      speechText = ss[0] + "A ." + ss[1] + " ? B ." + ss[2] + " ?Oder C ." + ss[3];
     	}
     	catch(IOException e) {} 
     	
