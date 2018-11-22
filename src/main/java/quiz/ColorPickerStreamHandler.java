@@ -11,13 +11,21 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package see.hm.edu.quiz;
+package quiz;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-
-import see.hm.edu.handlers.*;
+import quiz.handlers.FallbackIntentHandler;
+import quiz.handlers.HelpIntentHandler;
+import quiz.handlers.LaunchRequestHandler;
+import quiz.handlers.SessionEndedRequestHandler;
+import quiz.handlers.WhatsMyColorIntentHandler;
+import quiz.handlers.AskQuestionIntentHandler;
+import quiz.handlers.CancelandStopIntentHandler;
+import quiz.handlers.MyColorIsIntentHandler;
+import quiz.handlers.StartQuizIntentHandler;
+import quiz.handlers.DefinePlayersIntentHandler;
 
 public class ColorPickerStreamHandler extends SkillStreamHandler {
 	public static int num_players;
@@ -34,6 +42,7 @@ public class ColorPickerStreamHandler extends SkillStreamHandler {
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new DefinePlayersIntentHandler(),
+                        new AskQuestionIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")

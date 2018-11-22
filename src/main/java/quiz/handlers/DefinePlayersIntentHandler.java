@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package see.hm.edu.handlers;
+package quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -22,7 +22,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import see.hm.edu.quiz.ColorPickerStreamHandler;
+import quiz.ColorPickerStreamHandler;
 
 import java.util.Collections;
 import java.util.Map;
