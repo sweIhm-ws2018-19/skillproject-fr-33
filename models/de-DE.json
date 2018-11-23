@@ -29,18 +29,19 @@
           ]
         },
         {
-          "name": "AskQuestionIntent",
-          "samples": [
-            "Stell mir eine Frage"
-          ]
-        },
-        {
           "name": "StartQuizIntent",
-          "slots": [],
+          "slots": [
+             {
+               "name": "Anzahl",
+               "type": "AMAZON.Number"
+             }
+          ],
           "samples": [
-            " Ja ",
-            " Nein ",
-            "starte Quizapp"
+            "Starte das Quiz",
+            "Starte das Quiz mit {Anzahl} Spielern",
+            "Starte eine Runde",
+            "Neue Runde",
+            "Starte eine Runde mit {Anzahl} Spielern"
           ]
         },
         {

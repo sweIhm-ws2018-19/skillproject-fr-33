@@ -46,16 +46,16 @@ public class DefinePlayersIntentHandler implements RequestHandler {
         // Get the color slot from the list of slots.
         Slot playerCountSlot = slots.get("Anzahl");
 
-        String speechText, repromptText;
+        String speechText = "", repromptText = "";
         boolean isAskResponse = false;
 
         // Check for favorite color and create output to user.
         if (playerCountSlot != null) {
             // Store the user's favorite color in the Session and create response.
             playerCountSlot.getValue();
-            input.getAttributesManager().setSessionAttributes(Collections.singletonMap("ANZAHL", favoriteColor)); //COLOR_KEY
+            // input.getAttributesManager().setSessionAttributes(Collections.singletonMap("ANZAHL", playerCount)); //COLOR_KEY
 
-            speechText = String.format("Es nehmen %s Spieler am Quiz teil.", favoriteColor);
+            // speechText = String.format("Es nehmen %s Spieler am Quiz teil.", playerCount);
 
         } else {
             // Render an error since we don't know what the users favorite color is.
