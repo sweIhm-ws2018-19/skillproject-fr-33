@@ -1,60 +1,59 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "reisequiz",
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "DefinePlayersIntent",
-          "slots": [
-             {
-               "name": "Anzahl",
-               "type": "AMAZON.Number"
-             }
-          ],
-          "samples": [
-            "Es spielen {Anzahl} Leute mit",
-            "{Anzahl}"
-          ]
-        },
-        {
-          "name": "StartQuizIntent",
-          "slots": [
-             {
-               "name": "Anzahl",
-               "type": "AMAZON.Number"
-             }
-          ],
-          "samples": [
-            "Starte das Quiz",
-            "Starte das Quiz mit {Anzahl} Spielern",
-            "Starte eine Runde",
-            "Neue Runde",
-            "Starte eine Runde mit {Anzahl} Spielern"
-          ]
-        },
-        {
-          "name": "AMAZON.PauseIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.ResumeIntent",
-          "samples": []
-        }
-      ],
-      "types": [
-      ]
-    }
-  }
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "reisequiz",
+			"intents": [
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "DefinePlayersIntent",
+					"slots": [
+						{
+							"name": "Anzahl",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": [
+						"Es spielen {Anzahl} Leute mit",
+						"{Anzahl}"
+					]
+				},
+				{
+					"name": "StartQuizIntent",
+					"slots": [
+						{
+							"name": "Anzahl",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": [
+						"Starte das Quiz",
+						"Starte das Quiz mit {Anzahl} Spielern",
+						"Starte eine Runde",
+						"Neue Runde",
+						"Starte eine Runde mit {Anzahl} Spielern"
+					]
+				},
+				{
+					"name": "AMAZON.PauseIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.ResumeIntent",
+					"samples": []
+				}
+			],
+			"types": []
+		}
+	}
 }

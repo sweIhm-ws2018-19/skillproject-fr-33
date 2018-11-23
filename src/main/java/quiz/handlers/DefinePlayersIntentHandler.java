@@ -69,6 +69,7 @@ public class DefinePlayersIntentHandler implements RequestHandler {
 
         responseBuilder.withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)
+                .withReprompt(speechText)
                 .withShouldEndSession(false);
 
         if (isAskResponse) {

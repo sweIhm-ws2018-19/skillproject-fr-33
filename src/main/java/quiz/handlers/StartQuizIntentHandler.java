@@ -33,16 +33,24 @@ public class StartQuizIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intent.getSlots();
         
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        QuizRound round = (QuizRound) sessionAttributes.get("round");
-        if (round == null) {
-        	try {
-				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
-	        	round = new QuizRound(region, null);
-	        	sessionAttributes.put("round", round);
-			} catch (MalformedURLException e) {
-				e.printStackTrace(); // where would this go ???
-			}
-        }
+        Region region = null;
+		try {
+			region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        QuizRound round = new QuizRound(region, null);
+//        QuizRound round = (QuizRound) sessionAttributes.get("round");
+//        if (round == null) {
+//        	try {
+//				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
+//	        	round = new QuizRound(region, null);
+//	        	sessionAttributes.put("round", round);
+//			} catch (MalformedURLException e) {
+//				e.printStackTrace(); // where would this go ???
+//			}
+//        }
         String speechText = "";
 
         // Get the color slot from the list of slots.
@@ -57,12 +65,12 @@ public class StartQuizIntentHandler implements RequestHandler {
         } else { // playerCountSlot == null
         	speechText += "Mit wie vielen Spielern möchtest du spielen? ";
         }
-        // String speechText = "Ich habe deine Antwort nicht verstanden. Könntest du sie bitte noch einmal wiederholen?";
         
         // if (round.isComplete()) speechText += round.askQuestion().text; 
         
         return input.getResponseBuilder()
                 .withSpeech(speechText)
+                .withReprompt(speechText)
                 .build();
     }
 }
