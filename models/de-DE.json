@@ -16,24 +16,11 @@
           "samples": []
         },
         {
-          "name": "MyColorIsIntent",
-          "slots": [
-            {
-              "name": "Color",
-              "type": "LIST_OF_COLORS"
-            }
-          ],
-          "samples": [
-            " Meine Lieblingsfarbe ist {Color}",
-            " Ich mag {Color}"
-          ]
-        },
-        {
           "name": "DefinePlayersIntent",
           "slots": [
              {
                "name": "Anzahl",
-               "type": "ANZAHL_DER_SPIELER"
+               "type": "AMAZON.NUMBER"
              }
           ],
           "samples": [
@@ -57,15 +44,6 @@
           ]
         },
         {
-          "name": "WhatsMyColorIntent",
-          "slots": [],
-          "samples": [
-            "was ist meine Lieblingsfarbe",
-            "welche Farbe mag ich am liebsten",
-            "sag mir meine Lieblingsfarbe"
-          ]
-        },
-        {
           "name": "AMAZON.PauseIntent",
           "samples": []
         },
@@ -75,76 +53,6 @@
         }
       ],
       "types": [
-        {
-          "name": "LIST_OF_COLORS",
-          "values": [
-            {
-              "name": {
-                "value": "grün"
-              }
-            },
-            {
-              "name": {
-                "value": "blau"
-              }
-            },
-            {
-              "name": {
-                "value": "lila"
-              }
-            },
-            {
-              "name": {
-                "value": "rot"
-              }
-            },
-            {
-              "name": {
-                "value": "orange"
-              }
-            },
-            {
-              "name": {
-                "value": "rosa"
-              }
-            },
-            {
-              "name": {
-                "value": "türkis"
-              }
-            },
-            {
-              "name": {
-                "value": "gelb"
-              }
-            }
-          ]
-        },
-        {
-         "name": "ANZAHL_DER_SPIELER",
-         "values": [
-            {
-             "name": {
-               "value": "eins"
-             }
-            },
-             {
-             "name": {
-               "value": "zwei"
-                }
-             },
-             {
-             "name": {
-               "value": "drei"
-                }
-             },
-             {
-             "name": {
-               "value": "vier"
-             }
-            }
-           ]
-        }
       ]
     }
   }

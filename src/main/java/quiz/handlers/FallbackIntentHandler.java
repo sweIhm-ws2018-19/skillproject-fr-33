@@ -1,4 +1,4 @@
-package see.hm.edu.handlers;
+package quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;

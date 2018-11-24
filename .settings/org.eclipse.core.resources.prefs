@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 eclipse.preferences.version=1
 encoding//src/main/resources=UTF-8
 encoding/<project>=UTF-8
 encoding/src=UTF-8
+=======
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8
+encoding/src=UTF-8
+>>>>>>> branch 'sprint1' of https://github.com/sweIhm-ws2018-19/skillproject-fr-33.git
