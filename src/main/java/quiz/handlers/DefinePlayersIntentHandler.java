@@ -46,7 +46,7 @@ public class DefinePlayersIntentHandler implements RequestHandler {
         // Get the color slot from the list of slots.
         Slot playerCountSlot = slots.get("Anzahl");
 
-        String speechText, repromptText = "";
+        String speechText = "", repromptText = "";
         boolean isAskResponse = false;
 
         // Check for favorite color and create output to user.
