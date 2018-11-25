@@ -2,6 +2,10 @@ package quiz.model;
 
 import com.opencsv.bean.CsvBindByName;
 
+/** This class saves every content from row of a csv file that is read by the CSV reader.
+ *  @author fabian sinning
+ * 
+ * */
 public class QuestionCSV {
 	
 	 	@CsvBindByName(column = "Frage")

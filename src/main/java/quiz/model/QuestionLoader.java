@@ -1,29 +1,34 @@
 package quiz.model;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import quiz.model.Question;
 
-import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+/** The QuestionLoader loads question that are needed in a quiz round.
+ *  @author fabian sinning
+ * */
 public class QuestionLoader {
 	private String region;
 	
+	/** Sets a new resource identifier for that QuestionLoader.
+	 *  @author fabian sinning
+	 *  @param region A resource identifier for the CSV reader
+	 *  @return Reference of that QuestionLoader
+	 * */
 	public QuestionLoader chooseRegion(String region) {
 		this.region = region;
 		return this;
 	}
-
+	
+	/** Loads an Array of Question.
+	 *  @author fabian sinning
+	 *  @return Question Array with all questions
+	 * */
 	public Question[] load() {
-		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder(new InputStreamReader(QuestionLoader.class.getResourceAsStream(region)))
+		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder<QuestionCSV>(new InputStreamReader(QuestionLoader.class.getResourceAsStream(region)))
 				.withSeparator(';')
 				.withType(QuestionCSV.class)
 				.withIgnoreLeadingWhiteSpace(true)
