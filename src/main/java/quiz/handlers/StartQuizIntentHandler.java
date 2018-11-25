@@ -53,7 +53,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         	round.players = new Player[playerCount];
         	for (int i=0; i<playerCount; i++)
         		round.players[i] = new Player(0);
-        	speechText += "Wir spielen mit "+playerCount+" Spielern. "; 
+        	speechText += "Wir spielen mit "+playerCount+" Spielern . "; 
         } else { // playerCountSlot == null
         	speechText += "Mit wie vielen Spielern möchtest du spielen? ";
         }
