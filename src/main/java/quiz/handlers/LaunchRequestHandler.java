@@ -29,16 +29,8 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Willkommen zum Reisequiz. Wieviele Spieler sollen mitspielen?";
-        String repromptText = "Wieviele Spieler sollen mitspielen?";
-        
-        Map<String, Object> sessionmap = new HashMap<>();
-        try {
-			sessionmap.put("round", new QuizRound(new Region(new URL("/Berlin.csv"), new QuestionLoader().load()), null));
-		} catch (MalformedURLException e) { e.printStackTrace();}
-        
-        input.getAttributesManager().setSessionAttributes(sessionmap);
-        
+        String speechText = "Hallo. Willkommen zum Reisequiz. Wieviele sollen mitspielen?";
+        String repromptText = "Wieviele sollen mitspielen?";
         return input.getResponseBuilder()
                 .withSpeech(speechText)
                 .withReprompt(repromptText)

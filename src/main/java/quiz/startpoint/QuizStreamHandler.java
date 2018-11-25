@@ -22,7 +22,6 @@ import quiz.handlers.LaunchRequestHandler;
 import quiz.handlers.SessionEndedRequestHandler;
 import quiz.handlers.CancelandStopIntentHandler;
 import quiz.handlers.StartQuizIntentHandler;
-import quiz.handlers.DefinePlayersIntentHandler;
 
 public class QuizStreamHandler extends SkillStreamHandler {
     private static Skill getSkill() {
@@ -33,7 +32,6 @@ public class QuizStreamHandler extends SkillStreamHandler {
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
-                        new DefinePlayersIntentHandler(),
                         new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")

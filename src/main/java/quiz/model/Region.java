@@ -1,12 +1,10 @@
 package quiz.model;
 
-import java.net.URL;
-
 public class Region {
-	URL id;
+	String id;
 	Question[] questions;
 	
-	public Region(URL id, Question[] qs) {
+	public Region(String id, Question[] qs) {
 		this.id = id;
 		this.questions = qs;
 	}

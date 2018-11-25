@@ -16,19 +16,6 @@
           "samples": []
         },
         {
-          "name": "DefinePlayersIntent",
-          "slots": [
-             {
-               "name": "Anzahl",
-               "type": "AMAZON.NUMBER"
-             }
-          ],
-          "samples": [
-            "Es spielen {Anzahl} Leute mit",
-            "{Anzahl}"
-          ]
-        },
-        {
           "name": "StartQuizIntent",
           "slots": [
              {

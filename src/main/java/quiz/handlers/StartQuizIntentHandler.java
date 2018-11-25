@@ -35,13 +35,9 @@ public class StartQuizIntentHandler implements RequestHandler {
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         QuizRound round = (QuizRound) sessionAttributes.get("round");
         if (round == null) {
-        	try {
-				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().chooseRegion("/Berlin.csv").load());
-	        	round = new QuizRound(region, null);
-	        	sessionAttributes.put("round", round);
-			} catch (MalformedURLException e) {
-				e.printStackTrace(); // where would this go ??? >> Ins Nirgendwo :-)
-			}
+        	Region region = new Region("/Berlin.csv", new QuestionLoader().chooseRegion("/Berlin.csv").load());
+			round = new QuizRound(region, null);
+			sessionAttributes.put("round", round);
         }
         String speechText = "";
 
