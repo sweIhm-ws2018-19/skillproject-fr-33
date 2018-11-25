@@ -33,7 +33,7 @@
           "slots": [
              {
                "name": "Anzahl",
-               "type": "AMAZON.Number"
+               "type": "AMAZON.NUMBER"
              }
           ],
           "samples": [
