@@ -3,30 +3,42 @@ package quiz.model;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+
+import quiz.model.Answer;
 
 public class Question {
-	public URL id;
+	public String id;
 	public String text;
-	public Answer[] answers;
+	public List<Answer> answers;
 	
-	public Question(URL id, String t, Answer[] as) {
+	public Question(String id, String t, Answer[] as) {
 		this.id = id;
 		this.text = t;
-		this.answers = as;
+		this.answers = Arrays.asList(as);
 	}
 	
 	public void shuffleAnswers() {
-		Collections.shuffle(Arrays.asList(this.answers));
+		Collections.shuffle(answers);
 	}
 	
 	public int countAnswers() {
-		return this.answers.length;
+		return this.answers.size();
 	}
 	
 	public int correctAnswerIndex() {
-		for (int i=0; i<this.answers.length; i++)
-			if (this.answers[i].isCorrect)
+		for (int i=0; i<this.answers.size(); i++)
+			if (this.answers.get(i).isCorrect)
 				return i;
 		throw new IllegalStateException("question has no correct answer");
+	}
+	
+	public Answer[] getAnswers() {
+		shuffleAnswers();
+		return (Answer[])answers.toArray();
+	}
+	
+	public String getQuestion() {
+		return text;
 	}
 }

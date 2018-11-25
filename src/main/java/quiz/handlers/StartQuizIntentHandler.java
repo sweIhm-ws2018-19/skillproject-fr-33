@@ -15,8 +15,8 @@ import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 
-import quiz.QuestionLoader;
 import quiz.model.Player;
+import quiz.model.QuestionLoader;
 import quiz.model.QuizRound;
 import quiz.model.Region;
 
@@ -36,7 +36,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         QuizRound round = (QuizRound) sessionAttributes.get("round");
         if (round == null) {
         	try {
-				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
+				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().chooseRegion("/Berlin.csv").load());
 	        	round = new QuizRound(region, null);
 	        	sessionAttributes.put("round", round);
 			} catch (MalformedURLException e) {

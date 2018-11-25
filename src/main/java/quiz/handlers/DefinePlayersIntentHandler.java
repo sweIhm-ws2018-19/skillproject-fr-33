@@ -22,7 +22,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.response.ResponseBuilder;
 
-import quiz.QuizStreamHandler;
+import quiz.startpoint.QuizStreamHandler;
 
 import java.util.Collections;
 import java.util.Map;

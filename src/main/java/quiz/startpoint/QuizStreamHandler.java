@@ -11,7 +11,7 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package quiz;
+package quiz.startpoint;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
