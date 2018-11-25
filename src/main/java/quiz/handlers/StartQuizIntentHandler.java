@@ -40,7 +40,7 @@ public class StartQuizIntentHandler implements RequestHandler {
 	        	round = new QuizRound(region, null);
 	        	sessionAttributes.put("round", round);
 			} catch (MalformedURLException e) {
-				e.printStackTrace(); // where would this go ???
+				e.printStackTrace(); // where would this go ??? >> Ins Nirgendwo :-)
 			}
         }
         String speechText = "";
