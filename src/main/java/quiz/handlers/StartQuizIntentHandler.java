@@ -33,40 +33,27 @@ public class StartQuizIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intent.getSlots();
         
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        QuizRound round = new QuizRound(null, null);
         Region region = null;
 		try {
-			region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
+			round = QuizRound.fromSessionAttributes(sessionAttributes);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e.printStackTrace(); // where would this go ???
 		}
-        QuizRound round = new QuizRound(region, null);
-//        QuizRound round = (QuizRound) sessionAttributes.get("round");
-//        if (round == null) {
-//        	try {
-//				Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
-//	        	round = new QuizRound(region, null);
-//	        	sessionAttributes.put("round", round);
-//			} catch (MalformedURLException e) {
-//				e.printStackTrace(); // where would this go ???
-//			}
-//        }
         String speechText = "";
 
         // Get the color slot from the list of slots.
         Slot playerCountSlot = slots.get("Anzahl");
-        if (playerCountSlot != null) {
+        if (playerCountSlot != null && playerCountSlot.getValue() != null) {
         	int playerCount = Integer.parseInt(playerCountSlot.getValue());
-        	// TODO: Range validation
-        	round.players = new Player[playerCount];
-        	for (int i=0; i<playerCount; i++)
-        		round.players[i] = new Player(0);
+        	round.createPlayers(playerCount);
         	speechText += "Wir spielen mit "+playerCount+" Spielern. "; 
         } else { // playerCountSlot == null
         	speechText += "Mit wie vielen Spielern möchtest du spielen? ";
         }
         
-        // if (round.isComplete()) speechText += round.askQuestion().text; 
+        if (round.isComplete()) speechText += round.askQuestion().text;
+        else speechText += (round.players == null ? "[no players]" : round.players.length) + " " + (round.region == null ? "[no region]" : round.region.id.toString());
         
         return input.getResponseBuilder()
                 .withSpeech(speechText)

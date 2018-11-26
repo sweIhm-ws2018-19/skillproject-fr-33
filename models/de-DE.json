@@ -45,6 +45,18 @@
 					]
 				},
 				{
+					"name": "SelectAnswerIntent",
+					"slots": [
+						{
+							"name": "Answer",
+							"type": "AMAZON.CARDINAL"
+						}
+					],
+					"samples": [
+						"{Answer}"
+					]
+				},
+				{
 					"name": "AMAZON.PauseIntent",
 					"samples": []
 				},

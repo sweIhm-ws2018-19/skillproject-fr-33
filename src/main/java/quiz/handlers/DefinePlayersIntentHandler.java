@@ -33,6 +33,7 @@ import static com.amazon.ask.request.Predicates.intentName;
 public class DefinePlayersIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
+    	// TODO: check whether we are in a state where player number can be entered
         return input.matches(intentName("DefinePlayersIntent"));
     }
 
