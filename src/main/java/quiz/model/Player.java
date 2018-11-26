@@ -1,9 +1,11 @@
 package quiz.model;
 
 public class Player {
+	public String name;
 	public int score;
 	
-	public Player(int s) {
+	public Player(String n, int s) {
+		this.name = n;
 		this.score = s;
 	}
 	

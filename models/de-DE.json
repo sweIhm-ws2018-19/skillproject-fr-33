@@ -36,7 +36,7 @@
 					"slots": [
 						{
 							"name": "Answer",
-							"type": "AMAZON.CARDINAL"
+							"type": "Selection"
 						}
 					],
 					"samples": [
@@ -52,7 +52,40 @@
 					"samples": []
 				}
 			],
-			"types": []
+			"types": [
+				{
+					"name": "Selection",
+					"values": [
+						{
+							"name": {
+								"value": "A",
+								"synonyms": [
+									"Erste",
+									"Erstes"
+								]
+							}
+						},
+						{
+							"name": {
+								"value": "B",
+								"synonyms": [
+									"Zweite",
+									"Zweites"
+								]
+							}
+						},
+						{
+							"name": {
+								"value": "C",
+								"synonyms": [
+									"Dritte",
+									"Drittes"
+								]
+							}
+						}
+					]
+				}
+			]
 		}
 	}
 }

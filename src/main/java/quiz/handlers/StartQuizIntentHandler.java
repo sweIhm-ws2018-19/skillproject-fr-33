@@ -34,24 +34,23 @@ public class StartQuizIntentHandler implements RequestHandler {
         
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
         QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
-        String speechText = "";
+        StringBuilder speechText = new StringBuilder();
 
         // Get the color slot from the list of slots.
         Slot playerCountSlot = slots.get("Anzahl");
         if (playerCountSlot != null && playerCountSlot.getValue() != null) {
         	int playerCount = Integer.parseInt(playerCountSlot.getValue());
         	round.createPlayers(playerCount);
-        	speechText += "Wir spielen mit "+playerCount+" Spielern. "; 
+        	speechText.append("Wir spielen mit "+playerCount+" Spielern. "); 
         } else { // playerCountSlot == null
-        	speechText += "Mit wie vielen Spielern möchtest du spielen? ";
+        	speechText.append("Mit wie vielen Spielern möchtest du spielen? ");
         }
         
-        if (round.isComplete()) speechText += round.askQuestion().text;
-        else speechText += (round.players == null ? "[no players]" : round.players.length) + " " + (round.region == null ? "[no region]" : round.region.id.toString());
+        if (round.isComplete()) round.askQuestion(speechText);
         
         return input.getResponseBuilder()
-                .withSpeech(speechText)
-                .withReprompt(speechText)
+                .withSpeech(speechText.toString())
+                .withReprompt(speechText.toString())
                 .build();
     }
 }

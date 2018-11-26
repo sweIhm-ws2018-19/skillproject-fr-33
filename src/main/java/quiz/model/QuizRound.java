@@ -35,12 +35,15 @@ public class QuizRound {
 		// TODO: Range validation
 		players = new Player[count];
 		for (int i=0; i<count; i++)
-			players[i] = new Player(0);
+			players[i] = new Player("Spieler "+i, 0);
 	}
-	public Question askQuestion() {
+	public Question askQuestion(StringBuilder speechText) {
 		Question q = this.region.questions[0]; // TODO: filter this.region.questions for not yet asked ones, and choose randomly
-		this.askedQuestions = Arrays.copyOf(this.askedQuestions, this.askedQuestions.length + 1);
-		this.askedQuestions[this.askedQuestions.length - 1] = q;
+		int asked = this.askedQuestions.length;
+		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
+		this.askedQuestions[asked] = q;
+		speechText.append(players[asked % players.length].name + ": ");
+		speechText.append(q.text);
 		return q;
 	}
 }

@@ -19,6 +19,7 @@ import com.amazon.ask.Skills;
 import quiz.handlers.FallbackIntentHandler;
 import quiz.handlers.HelpIntentHandler;
 import quiz.handlers.LaunchRequestHandler;
+import quiz.handlers.SelectAnswerIntentHandler;
 import quiz.handlers.SessionEndedRequestHandler;
 import quiz.handlers.CancelandStopIntentHandler;
 import quiz.handlers.StartQuizIntentHandler;
@@ -27,8 +28,9 @@ public class QuizStreamHandler extends SkillStreamHandler {
     private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
-                        new StartQuizIntentHandler(),
                         new LaunchRequestHandler(),
+                        new StartQuizIntentHandler(),
+                        new SelectAnswerIntentHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
