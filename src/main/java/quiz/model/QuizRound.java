@@ -13,9 +13,9 @@ public class QuizRound {
 	public Region region;
 	public Player[] players;
 	
-	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) throws MalformedURLException {
+	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
 //      return(QuizRound) sessionAttributes.get("round");
-		Region region = new Region(new URL("/Berlin.csv"), new QuestionLoader().load());
+		Region region = new Region("/Berlin.csv", new QuestionLoader().chooseRegion("/Berlin.csv").load());
 		QuizRound round = new QuizRound(region, null);
 		String players = (String) sessionAttributes.get("players");
 		if (players != null)

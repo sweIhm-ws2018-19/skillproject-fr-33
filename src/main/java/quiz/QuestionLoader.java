@@ -1,51 +1,78 @@
 package quiz;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
-
-import com.opencsv.CSVReader;
 
 import quiz.model.Answer;
 import quiz.model.Question;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+
+/** The QuestionLoader loads question that are needed in a quiz round.
+ *  @author fabian sinning
+ * */
 public class QuestionLoader {
+	/** This class saves every content from row of a csv file that is read by the CSV reader.
+	 *  @author fabian sinning
+	 */
+	public static class QuestionCSV {
+		 	@CsvBindByName(column = "Frage")
+		    private String frage;
 
+		    @CsvBindByName(column = "Richtige Antwort")
+		    private String antwort;
+
+		    @CsvBindByName(column = "Alternative 1")
+		    private String alta;
+
+		    @CsvBindByName(column = "Alternative 2")
+		    private String altb;
+		    
+		    @CsvBindByName(column = "Info richtige Antwort")
+		    private String info;
+		    
+		    public String getFrage() { return frage; }
+		    public String getAntwort() { return antwort; }
+		    public String getAlta() { return alta; }
+		    public String getAltb() { return altb; }
+		    public String getInfo() { return info; }
+	}
+	
+	private String region;
+	
+	/** Sets a new resource identifier for that QuestionLoader.
+	 *  @author fabian sinning
+	 *  @param region A resource identifier for the CSV reader
+	 *  @return Reference of that QuestionLoader
+	 * */
+	public QuestionLoader chooseRegion(String region) {
+		this.region = region;
+		return this;
+	}
+	
+	/** Loads an Array of Question.
+	 *  @author fabian sinning
+	 *  @return Question Array with all questions
+	 * */
 	public Question[] load() {
-		try {
-			return new Question[] {
-					new Question(new URL("question.example"), "Was ist der zweite Buchstabe des Alphabets?", new Answer[] {
-							new Answer("A", false),
-							new Answer("B", true),
-							new Answer("C", false)
-					})
-			};
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		/*
-		try {
-
-//			CSVReader reader = new CSVReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("/Berlin.csv")), ',', '"', 1);
-			CSVReader reader = new CSVReader(new InputStreamReader(QuestionLoader.class.getResourceAsStream("/Berlin.csv")), ',', '"', 1);
-
-			// Read all rows at once
-			List<String[]> allRows = reader.readAll();
-
-			String[] tt = allRows.get(1)[0].replaceAll("\"|^\\d", "").split(";");
-			String[] ss = Arrays.copyOfRange(tt, 1, tt.length);
-
-			// ss[0] + "A ." + ss[1] + " ? B ." + ss[2] + " ?Oder C ." + ss[3];
-			return ;
-		} catch (IOException e) {
-			return ;
-		}
-		*/
+		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder<QuestionCSV>(new InputStreamReader(QuestionLoader.class.getResourceAsStream(region)))
+				.withSeparator(';')
+				.withType(QuestionCSV.class)
+				.withIgnoreLeadingWhiteSpace(true)
+				.build();
+		List<QuestionCSV> questions = csvToBean.parse();
+		
+		
+		return new Question[] {
+				new Question(region, questions.get(1).getFrage(),
+						new Answer[] {
+								new Answer(questions.get(1).getAntwort(),true),
+								new Answer(questions.get(1).getAlta(),false),
+								new Answer(questions.get(1).getAltb(),false)
+								}
+				)
+		};
 	}
 }

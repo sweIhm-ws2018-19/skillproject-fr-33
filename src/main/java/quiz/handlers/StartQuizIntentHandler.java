@@ -33,13 +33,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         Map<String, Slot> slots = intent.getSlots();
         
         Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-        QuizRound round = new QuizRound(null, null);
-        Region region = null;
-		try {
-			round = QuizRound.fromSessionAttributes(sessionAttributes);
-		} catch (MalformedURLException e) {
-			e.printStackTrace(); // where would this go ???
-		}
+        QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
         String speechText = "";
 
         // Get the color slot from the list of slots.
