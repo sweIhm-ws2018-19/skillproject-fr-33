@@ -65,14 +65,12 @@ public class QuestionLoader {
 		List<QuestionCSV> questions = csvToBean.parse();
 		
 		
-		return new Question[] {
-				new Question(region, questions.get(1).getFrage(),
-						new Answer[] {
-								new Answer(questions.get(1).getAntwort(),true),
-								new Answer(questions.get(1).getAlta(),false),
-								new Answer(questions.get(1).getAltb(),false)
-								}
-				)
-		};
+		return questions.stream().map(q -> new Question(region, q.getFrage(),
+				new Answer[] {
+						new Answer(q.getAntwort(),true),
+						new Answer(q.getAlta(),false),
+						new Answer(q.getAltb(),false)
+				}
+		)).toArray(Question[]::new);
 	}
 }
