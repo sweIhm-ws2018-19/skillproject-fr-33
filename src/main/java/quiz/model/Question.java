@@ -32,13 +32,13 @@ public class Question {
 				return i;
 		throw new IllegalStateException("question has no correct answer");
 	}
-	
-	public Answer[] getAnswers() {
-		shuffleAnswers();
-		return (Answer[])answers.toArray();
-	}
-	
-	public String getQuestion() {
-		return text;
+
+	public void ask(StringBuilder speechText) {
+		// TODO: SSML
+		speechText.append(text + " ");
+		char i = 'A';
+		for (Answer a: answers) {
+			speechText.append(i++ + " - " + a.text + " ");
+		}
 	}
 }

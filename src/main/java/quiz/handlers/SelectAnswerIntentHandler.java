@@ -12,6 +12,9 @@ import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Request;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
+import com.amazon.ask.model.slu.entityresolution.StatusCode;
+
+import quiz.model.QuizRound;
 
 public class SelectAnswerIntentHandler implements RequestHandler {
     @Override
@@ -22,19 +25,35 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        Request request = input.getRequestEnvelope().getRequest();
-        IntentRequest intentRequest = (IntentRequest) request;
+        IntentRequest intentRequest = (IntentRequest) input.getRequestEnvelope().getRequest();
         Intent intent = intentRequest.getIntent();
         Map<String, Slot> slots = intent.getSlots();
+        
+        Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
+        QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
+        StringBuilder speechText = new StringBuilder();
 
-        // Get the color slot from the list of slots.
-        Slot playerCountSlot = slots.get("Anzahl");
+        Slot answerSlot = slots.get("Answer");
+        // Oh well:
+        if (answerSlot != null
+        	&& answerSlot.getResolutions() != null
+        	&& answerSlot.getResolutions().getResolutionsPerAuthority().size() > 0
+        	// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.Selection")
+        	&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
+        	&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0) {
+        	int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
+        	
+        	round.selectAnswer(answerIndex, speechText);
+        } else {
+        	speechText.append("Diese Antwort habe ich leider nicht verstanden. ");
+    	}
 
-        String speechText = "";
+    	round.intoSessionAttributes(sessionAttributes);
+        // speechText.append(answerSlot);
 
         return input.getResponseBuilder()
-                .withSpeech(speechText)
-                .withReprompt(speechText)
+                .withSpeech(speechText.toString())
+                .withReprompt(speechText.toString())
                 .build();
     }
 

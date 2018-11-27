@@ -57,6 +57,7 @@
 					"name": "Selection",
 					"values": [
 						{
+							"id": "0",
 							"name": {
 								"value": "A",
 								"synonyms": [
@@ -66,6 +67,7 @@
 							}
 						},
 						{
+							"id": "1",
 							"name": {
 								"value": "B",
 								"synonyms": [
@@ -75,6 +77,7 @@
 							}
 						},
 						{
+							"id": "2",
 							"name": {
 								"value": "C",
 								"synonyms": [

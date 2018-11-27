@@ -21,8 +21,9 @@ public class QuestionTest {
 		// while with 5 variables(120 permutations) the Probability of
 		// 2 equal permutations is much lower		BUT if they are both equal -> Test will fail
 		// Ups..
-		Answer[] answers1 = question.getAnswers();
-		Answer[] answers2 = question.getAnswers();			// should be not equal to answer1
+		Answer[] answers1 = (Answer[]) question.answers.toArray();
+		question.shuffleAnswers();
+		Answer[] answers2 = (Answer[]) question.answers.toArray();			// should be not equal to answer1
 		assertFalse(Arrays.equals(answers1, answers2));
 	}
 
