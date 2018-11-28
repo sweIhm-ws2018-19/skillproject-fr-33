@@ -36,7 +36,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
         StringBuilder speechText = new StringBuilder();
 
-        // Get the color slot from the list of slots.
+        // Get the player count slot from the list of slots.
         Slot playerCountSlot = slots.get("Anzahl");
         if (playerCountSlot != null
         	&& playerCountSlot.getValue() != null // WTF
@@ -45,7 +45,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         	int playerCount = Integer.parseInt(playerCountSlot.getValue());
         	round.createPlayers(playerCount);
         	speechText.append("Wir spielen mit "+playerCount+" Spielern. "); 
-        } else { // playerCountSlot == null
+        } else if (round.players == null) { // playerCountSlot == null
         	speechText.append("Mit wie vielen Spielern möchtest du spielen? ");
         }
         

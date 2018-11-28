@@ -18,12 +18,14 @@ public class QuestionTest {
 		});
 		
 		// With 3 variables(Options) there are only 6 permutations
-		// while with 5 variables(120 permutations) the Probability of
-		// 2 equal permutations is much lower		BUT if they are both equal -> Test will fail
-		// Ups..
+		// while with 5 variables(120 permutations) the probability of
+		// 2 equal permutations is much lower
 		Answer[] answers1 = (Answer[]) question.answers.toArray();
-		question.shuffleAnswers();
-		Answer[] answers2 = (Answer[]) question.answers.toArray();			// should be not equal to answer1
+		do {
+			question.shuffleAnswers();
+		} while (Arrays.equals(question.answers.toArray(), answers1)); // Ups...
+		
+		Answer[] answers2 = (Answer[]) question.answers.toArray();
 		assertFalse(Arrays.equals(answers1, answers2));
 	}
 

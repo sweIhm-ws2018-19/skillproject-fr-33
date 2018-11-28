@@ -40,7 +40,11 @@
 						}
 					],
 					"samples": [
-						"{Answer}"
+						"{Answer}",
+						"Der {Answer}",
+						"Die {Answer}",
+						"Das {Answer}",
+						"Antwort {Answer}"
 					]
 				},
 				{

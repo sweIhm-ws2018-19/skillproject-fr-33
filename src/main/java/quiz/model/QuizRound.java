@@ -76,6 +76,7 @@ public class QuizRound {
 		} else {
 			askedQuestions = new Question[0];
 			speechText.append("Die Runde ist zu Ende. ");
+			// TODO: gleich weiter?
 		}
 	}
 }
