@@ -8,7 +8,7 @@ import java.util.Map;
 import quiz.QuestionLoader;
 
 public class QuizRound {
-	public int length = 2;
+	static public int length = 2;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;

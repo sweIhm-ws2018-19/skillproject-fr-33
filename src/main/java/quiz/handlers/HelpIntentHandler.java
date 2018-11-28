@@ -17,6 +17,8 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import quiz.model.QuizRound;
+
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
@@ -30,8 +32,13 @@ public class HelpIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
     	// FIXME
-        String speechText = "Du kannst mir Deine Lieblingsfarbe sagen. Sage zum Beispiel, meine Lieblingsfarbe ist rot.";
-        String repromptText = "Bitte sage mir Deine Lieblingsfarbe.";
+        String speechText = "In diesem Quiz werden dir Fragen zu bestimmten Regionen und Städten gestellt. \n"
+        		+ " Du kannst deine Route berechnen lassen oder eine bestimmte Region wählen.\n"
+        		+ " Jede Quizrunde werden dir "+QuizRound.length+" Fragen gestellt. "
+        		+ "Für jede korrekte Antwort erhältst du Punkte. "
+        		+ "Wähle die Anzahl der Spieler wenn du das Quiz startest.\n "
+        		+ "Du kannst alleine oder in einer Gruppe von bis zu fünf Spielern spielen.";
+        String repromptText = " Du kannst jetzt die Spieleranzahl, bzw. Antwort eingeben.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)
