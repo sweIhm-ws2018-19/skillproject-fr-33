@@ -11,27 +11,39 @@
      the specific language governing permissions and limitations under the License.
 */
 
-package main.java.colorpicker.handlers;
+package quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import quiz.model.QuizRound;
+
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
-public class CancelandStopIntentHandler implements RequestHandler {
+public class HelpIntentHandler implements RequestHandler {
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.StopIntent").or(intentName("AMAZON.CancelIntent")));
+        return input.matches(intentName("AMAZON.HelpIntent"));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
+    	// FIXME
+        String speechText = "In diesem Quiz werden dir Fragen zu bestimmten Regionen und Städten gestellt. \n"
+        		+ " Du kannst deine Route berechnen lassen oder eine bestimmte Region wählen.\n"
+        		+ " Jede Quizrunde werden dir "+QuizRound.length+" Fragen gestellt. "
+        		+ "Für jede korrekte Antwort erhältst du Punkte. "
+        		+ "Wähle die Anzahl der Spieler wenn du das Quiz startest.\n "
+        		+ "Du kannst alleine oder in einer Gruppe von bis zu fünf Spielern spielen.";
+        String repromptText = " Du kannst jetzt die Spieleranzahl, bzw. Antwort eingeben.";
         return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
-                .withSimpleCard("ColorSession", "Auf Wiedersehen")
+                .withSimpleCard("ColorSession", speechText)
+                .withSpeech(speechText)
+                .withReprompt(repromptText)
+                .withShouldEndSession(false)
                 .build();
     }
 }

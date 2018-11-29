@@ -1,4 +1,4 @@
-package main.java.colorpicker.handlers;
+package quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -15,7 +15,7 @@ public class FallbackIntentHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(intentName("AMAZON.FallbackIntent"));
+        return input.matches(intentName("AMAZON.FallbackIntent")); // return true; ???
     }
 
     @Override
