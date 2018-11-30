@@ -2,14 +2,17 @@ package quiz.model;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Random;
 
 import quiz.QuestionLoader;
 
 public class QuizRound {
-	static public int length = 2;
+	static final public int length = 2;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
+	private int lastPraiseIdx = 0;
+	
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
 //      return(QuizRound) sessionAttributes.get("round");
@@ -30,6 +33,10 @@ public class QuizRound {
 				round.region.questions = Arrays.copyOfRange(round.region.questions, len, round.region.questions.length);
 			}
 		}
+		Integer lastPraiseIdx = (Integer) sessionAttributes.get("praiseIdx");
+		if (lastPraiseIdx != null)
+			round.lastPraiseIdx = lastPraiseIdx;
+		
 //    	sessionAttributes.put("round", round);
 		return round;
 	}
@@ -41,6 +48,7 @@ public class QuizRound {
 			sessionAttributes.put("region", region.id);
 			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
 		}
+		sessionAttributes.put("praiseIdx", lastPraiseIdx);
 	}
 	
 	public QuizRound(Region r, Player[] ps) {
@@ -79,6 +87,13 @@ public class QuizRound {
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
+		String[] praises = new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze", "Toll"};
+		lastPraiseIdx += 1 + new Random().nextInt(praises.length-1);
+		if (lastPraiseIdx >= praises.length) {
+			lastPraiseIdx -= praises.length;
+		}
+		String praise = praises[lastPraiseIdx];
+		
 		int lastAsked = askedQuestions.length - 1;
 		if (lastAsked < 0) {
 			speechText.append("Ich habe noch gar nichts gefragt. ");
@@ -87,7 +102,7 @@ public class QuizRound {
 		Player currentPlayer = players[lastAsked % players.length];
 		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
 		currentPlayer.answer(answer);
-		speechText.append(answer.isCorrect ? "Richtig! " : "Falsch! ");
+		speechText.append(answer.isCorrect ? praise+"! " : "Falsch! ");
 		if (askedQuestions.length < players.length * length) {
 			askQuestion(speechText);
 		} else {
