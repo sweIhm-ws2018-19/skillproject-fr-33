@@ -2,24 +2,18 @@ package quiz;
 
 import static org.junit.Assert.*;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.naming.InitialContext;
-import javax.xml.crypto.Data;
-
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import quiz.model.Answer;
 import quiz.model.Question;
+import quiz.model.Region;
 
 @RunWith(Parameterized.class)
 public class QuestionLoaderTest {
@@ -28,7 +22,9 @@ public class QuestionLoaderTest {
 	
 	@Before
 	public void init() {
-		arr = new QuestionLoader().chooseRegion("/Tests.csv").load();
+		Region region = new Region("Tests", null);
+		new QuestionLoader(region).load();
+		arr = region.questions;
 	}
 
 	@Parameters

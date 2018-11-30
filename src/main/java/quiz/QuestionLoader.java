@@ -5,6 +5,7 @@ import java.util.List;
 
 import quiz.model.Answer;
 import quiz.model.Question;
+import quiz.model.Region;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
@@ -18,6 +19,9 @@ public class QuestionLoader {
 	 *  @author fabian sinning
 	 */
 	public static class QuestionCSV {
+			@CsvBindByName(column = "")
+			public int index;
+			
 		 	@CsvBindByName(column = "Frage")
 		    private String frage;
 
@@ -40,24 +44,24 @@ public class QuestionLoader {
 		    public String getInfo() { return info; }
 	}
 	
-	private String region;
+	private Region region;
 	
 	/** Sets a new resource identifier for that QuestionLoader.
 	 *  @author fabian sinning
 	 *  @param region A resource identifier for the CSV reader
 	 *  @return Reference of that QuestionLoader
 	 * */
-	public QuestionLoader chooseRegion(String region) {
-		this.region = region;
-		return this;
+	public QuestionLoader(Region r) {
+		this.region = r;
 	}
 	
 	/** Loads an Array of Question.
 	 *  @author fabian sinning
 	 *  @return Question Array with all questions
 	 * */
-	public Question[] load() {
-		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder<QuestionCSV>(new InputStreamReader(QuestionLoader.class.getResourceAsStream(region)))
+	public void load() {
+		InputStreamReader input = new InputStreamReader(QuestionLoader.class.getResourceAsStream("/"+region.id+".csv"));
+		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder<QuestionCSV>(input)
 				.withSeparator(';')
 				.withType(QuestionCSV.class)
 				.withIgnoreLeadingWhiteSpace(true)
@@ -65,7 +69,7 @@ public class QuestionLoader {
 		List<QuestionCSV> questions = csvToBean.parse();
 		
 		
-		return questions.stream().map(q -> new Question(region, q.getFrage(),
+		region.questions = questions.stream().map(q -> new Question(region.id+"/"+q.index, q.getFrage(),
 				new Answer[] {
 						new Answer(q.getAntwort(),true),
 						new Answer(q.getAlta(),false),

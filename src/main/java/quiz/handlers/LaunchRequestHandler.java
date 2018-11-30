@@ -5,14 +5,6 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
-import quiz.QuestionLoader;
-import quiz.model.QuizRound;
-import quiz.model.Region;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.requestType;
@@ -29,7 +21,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Willkommen zum Reisequiz 0.0.4. Wieviele Spieler sollen mitspielen?";
+        String speechText = "Hallo. Willkommen zum Reisequiz 0.0.5. Wieviele Spieler sollen mitspielen?";
         String repromptText = "Wieviele Spieler sollen mitspielen?";
         return input.getResponseBuilder()
                 .withSpeech(speechText)

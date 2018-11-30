@@ -1,7 +1,5 @@
 package quiz.model;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -15,23 +13,34 @@ public class QuizRound {
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
 //      return(QuizRound) sessionAttributes.get("round");
-		Region region = new Region("/Berlin.csv", new QuestionLoader().chooseRegion("/Berlin.csv").load());
-		QuizRound round = new QuizRound(region, null);
+		QuizRound round = new QuizRound(null, null);
 		Integer players = (Integer) sessionAttributes.get("players");
 		if (players != null)
 			round.createPlayers(players);
-		Integer askedQuestionsSize = (Integer) sessionAttributes.get("askedQuestionsSize");
-		if (askedQuestionsSize != null) {
-			int len = askedQuestionsSize;
-			round.askedQuestions = Arrays.copyOfRange(region.questions, 0, len);
-			region.questions = Arrays.copyOfRange(region.questions, len, region.questions.length);
+		
+		String region = (String) sessionAttributes.get("region");
+		if (region != null) {
+			round.region = new Region(region, null);
+			new QuestionLoader(round.region).load();
+			
+			Integer askedQuestionsSize = (Integer) sessionAttributes.get("askedQuestionsSize");
+			if (askedQuestionsSize != null) {
+				int len = askedQuestionsSize;
+				round.askedQuestions = Arrays.copyOfRange(round.region.questions, 0, len);
+				round.region.questions = Arrays.copyOfRange(round.region.questions, len, round.region.questions.length);
+			}
 		}
 //    	sessionAttributes.put("round", round);
 		return round;
 	}
 	public void intoSessionAttributes(Map<String, Object> sessionAttributes) {
-		if (players != null) sessionAttributes.put("players", players.length);
-		sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
+		if (players != null) {
+			sessionAttributes.put("players", players.length);
+		}
+		if (region != null) {
+			sessionAttributes.put("region", region.id);
+			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
+		}
 	}
 	
 	public QuizRound(Region r, Player[] ps) {
@@ -47,6 +56,14 @@ public class QuizRound {
 		players = new Player[count];
 		for (int i=0; i<count; i++)
 			players[i] = new Player("Spieler "+(i+1), 0);
+	}
+	public void selectRegion(String region, StringBuilder speechText) {
+		if (region.equals("Berlin") || region.equals("Ostsee") || region.equals("Dresden")) {
+			this.region = new Region(region, null);
+			new QuestionLoader(this.region).load();
+		} else {
+			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
+		}
 	}
 	public void askQuestion(StringBuilder speechText) {
 		if (region.questions.length == 0) {
