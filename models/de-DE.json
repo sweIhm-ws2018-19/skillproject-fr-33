@@ -21,14 +21,28 @@
 						{
 							"name": "Anzahl",
 							"type": "AMAZON.NUMBER"
+						},
+						{
+							"name": "Region",
+							"type": "KnownRegion"
 						}
 					],
 					"samples": [
 						"Starte das Quiz",
-						"Starte das Quiz mit {Anzahl} Spielern",
 						"Starte eine Runde",
+						"Starte das Quiz mit {Anzahl} Spielern",
+						"Starte das Quiz zur Region {Region}",
+						"Starte das Quiz mit {Anzahl} Spielern zur Region {Region}",
 						"Neue Runde",
-						"Starte eine Runde mit {Anzahl} Spielern"
+						"Neue Runde zur Region {Region}",
+						"Neue Runde mit {Anzahl} Spielern",
+						"Starte eine Runde mit {Anzahl} Spielern",
+						"Starte eine Runde zur Region {Region}",
+						"Starte eine Runde mit {Anzahl} Spielern zur Region {Region}",
+						"{Anzahl} Spieler",
+						"{Anzahl}",
+						"Region {Region}",
+						"{Region}"
 					]
 				},
 				{
@@ -88,6 +102,29 @@
 									"Dritte",
 									"Drittes"
 								]
+							}
+						}
+					]
+				},
+				{
+					"name": "KnownRegion",
+					"values": [
+						{
+							"id": "Berlin",
+							"name": {
+								"value": "Berlin"
+							}
+						},
+						{
+							"id": "Dresden",
+							"name": {
+								"value": "Dresden"
+							}
+						},
+						{
+							"id": "Ostsee",
+							"name": {
+								"value": "Ostsee"
 							}
 						}
 					]

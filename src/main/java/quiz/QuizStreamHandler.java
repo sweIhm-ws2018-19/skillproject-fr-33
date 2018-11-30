@@ -25,7 +25,8 @@ import quiz.handlers.CancelandStopIntentHandler;
 import quiz.handlers.StartQuizIntentHandler;
 
 public class QuizStreamHandler extends SkillStreamHandler {
-    private static Skill getSkill() {
+    @SuppressWarnings("unchecked")
+	private static Skill getSkill() {
         return Skills.standard()
                 .addRequestHandlers(
                         new LaunchRequestHandler(),
