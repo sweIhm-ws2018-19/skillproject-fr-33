@@ -62,6 +62,18 @@
 					]
 				},
 				{
+					"name": "RepeatIntent",
+					"slots": [],
+					"samples": [
+						"wiederhole",
+						"nochmal",
+						"noch einmal",
+						"wiederholen",
+						"bitte wiederhole die Frage",
+						"kannst du die Frage wiederholen"
+					]
+				},
+				{
 					"name": "AMAZON.PauseIntent",
 					"samples": []
 				},
