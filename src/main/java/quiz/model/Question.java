@@ -10,11 +10,13 @@ public class Question {
 	public String id;
 	public String text;
 	public List<Answer> answers;
+	public String info;
 	
-	public Question(String id, String t, Answer[] as) {
+	public Question(String id, String t, Answer[] as, String info) {
 		this.id = id;
 		this.text = t;
 		this.answers = Arrays.asList(as);
+		this.info = info;
 	}
 	
 	public void shuffleAnswers() {
@@ -40,4 +42,6 @@ public class Question {
 			speechText.append(i++ + " - " + a.text + " ");
 		}
 	}
+	
+	public String getInfo() { return info; }
 }

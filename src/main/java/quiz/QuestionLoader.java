@@ -74,7 +74,7 @@ public class QuestionLoader {
 						new Answer(q.getAntwort(),true),
 						new Answer(q.getAlta(),false),
 						new Answer(q.getAltb(),false)
-				}
+				}, q.getInfo()
 		)).toArray(Question[]::new);
 	}
 }
