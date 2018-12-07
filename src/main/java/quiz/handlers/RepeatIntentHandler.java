@@ -17,7 +17,7 @@ public class RepeatIntentHandler implements RequestHandler {
 	@Override
 	public boolean canHandle(HandlerInput input) {
 		// TODO: check whether we are in a state where a question can be answered
-		return input.matches(intentName("RepeatIntent"));
+		return input.matches(intentName("AMAZON.RepeatIntent"));
 	}
 
 	@Override

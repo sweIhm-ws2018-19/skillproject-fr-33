@@ -1,10 +1,15 @@
 package quiz.model;
 
+import static com.amazon.ask.request.Predicates.intentName;
+
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 
+import com.amazon.ask.dispatcher.request.handler.HandlerInput;
+
 import quiz.QuestionLoader;
+import quiz.handlers.CancelandStopIntentHandler;
 
 public class QuizRound {
 	static final public int length = 2;
@@ -12,6 +17,7 @@ public class QuizRound {
 	public Region region;
 	public Player[] players;
 	private int lastPraiseIdx = 0;
+	private int lastFalseIdx = 0;
 	
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
@@ -35,6 +41,9 @@ public class QuizRound {
 		Integer lastPraiseIdx = (Integer) sessionAttributes.get("praiseIdx");
 		if (lastPraiseIdx != null)
 			round.lastPraiseIdx = lastPraiseIdx;
+		Integer lastFalseIdx = (Integer) sessionAttributes.get("falseIdx");
+		if (lastFalseIdx != null)
+			round.lastFalseIdx = lastFalseIdx;
 		
 //    	sessionAttributes.put("round", round);
 		return round;
@@ -48,6 +57,7 @@ public class QuizRound {
 			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
 		}
 		sessionAttributes.put("praiseIdx", lastPraiseIdx);
+		sessionAttributes.put("falseIdx", lastFalseIdx);
 	}
 	
 	public QuizRound(Region r, Player[] ps) {
@@ -90,12 +100,19 @@ public class QuizRound {
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
-		String[] praises = new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze", "Toll"};
+		String[] praises = new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"};
 		lastPraiseIdx += 1 + new Random().nextInt(praises.length-1);
 		if (lastPraiseIdx >= praises.length) {
 			lastPraiseIdx -= praises.length;
 		}
 		String praise = praises[lastPraiseIdx];
+		
+		String[] incorrectPhrases = new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "};
+		lastFalseIdx += 1 + new Random().nextInt(incorrectPhrases.length-1);
+		if (lastFalseIdx >= incorrectPhrases.length) {
+			lastFalseIdx -= incorrectPhrases.length;
+		}
+		String incorrect = incorrectPhrases[lastFalseIdx];
 		
 		int lastAsked = askedQuestions.length - 1;
 		if (lastAsked < 0) {
@@ -105,18 +122,15 @@ public class QuizRound {
 		Player currentPlayer = players[lastAsked % players.length];
 		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
 		currentPlayer.answer(answer);
-		//if (answer.equals(PleaseRepeat)) {
-		//	askQuestion(speechText);
-		//}
-		speechText.append(answer.isCorrect ? praise+"! " : "Falsch! ");
+		speechText.append(answer.isCorrect ? praise+"! ": incorrect);
 		if (askedQuestions.length < players.length * length) {
 			askNewQuestion(speechText);
 		} else {
 			askedQuestions = new Question[0];
-			speechText.append("Die Runde ist zu Ende. ");
+			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde.");
 			for (int i=0; i<players.length; i++)
-				speechText.append(currentPlayer.name + ", du hast " + currentPlayer.getScore() + " Punkte erreicht. ");
-			// TODO: gleich weiter?
+				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " Punkte erreicht. ");
+			speechText.append("Hast du Lust, noch weiter zu spielen?");
 		}
 	}
 }
