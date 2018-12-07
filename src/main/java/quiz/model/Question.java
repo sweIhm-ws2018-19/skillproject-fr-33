@@ -16,7 +16,7 @@ public class Question {
 		this.id = id;
 		this.text = t;
 		this.answers = Arrays.asList(as);
-		this.info = info;
+		this.info = info; //
 	}
 	
 	public void shuffleAnswers() {
