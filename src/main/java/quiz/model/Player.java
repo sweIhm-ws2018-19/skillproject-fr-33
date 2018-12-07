@@ -14,4 +14,7 @@ public class Player {
 			score += 1;
 		return a.isCorrect;
 	}
+	public int getScore() {
+		return score;
+	}
 }

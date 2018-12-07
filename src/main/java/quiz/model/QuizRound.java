@@ -19,8 +19,7 @@ public class QuizRound {
 		QuizRound round = new QuizRound(null, null);
 		Integer players = (Integer) sessionAttributes.get("players");
 		if (players != null)
-			round.createPlayers(players);
-		
+			round.createPlayers(players, new StringBuilder());
 		String region = (String) sessionAttributes.get("region");
 		if (region != null) {
 			round.region = new Region(region, null);
@@ -59,11 +58,15 @@ public class QuizRound {
 		return region != null && players != null && players.length > 0;
 	}
 	
-	public void createPlayers(int count) {
-		// TODO: Range validation
-		players = new Player[count];
-		for (int i=0; i<count; i++)
-			players[i] = new Player("Spieler "+(i+1), 0);
+	public void createPlayers(int count, StringBuilder speechText) {
+		if(count >= 6 || count <= 0) {
+			speechText.append("Es können höchstens fünf Spieler teilnehmen. Bitte gib jetzt die Spieleranzahl ein. ");
+		} else {
+			players = new Player[count];
+			for (int i=0; i<count; i++)
+				players[i] = new Player("Spieler "+(i+1), 0);
+	    	speechText.append("Wir spielen mit "+count+" Spielern. ");
+		}
 	}
 	public void selectRegion(String region, StringBuilder speechText) {
 		if (region.equals("Berlin") || region.equals("Ostsee") || region.equals("Dresden")) {
@@ -73,7 +76,7 @@ public class QuizRound {
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
 		}
 	}
-	public void askQuestion(StringBuilder speechText) {
+	public void askNewQuestion(StringBuilder speechText) {
 		if (region.questions.length == 0) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
 			return;
@@ -82,8 +85,8 @@ public class QuizRound {
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
-		speechText.append(players[asked % players.length].name + ": ");
 		// q.shuffleAnswers(); // TODO: doesn't get persisted yet
+		speechText.append(players[asked % players.length].name + ": ");
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
@@ -102,12 +105,17 @@ public class QuizRound {
 		Player currentPlayer = players[lastAsked % players.length];
 		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
 		currentPlayer.answer(answer);
+		//if (answer.equals(PleaseRepeat)) {
+		//	askQuestion(speechText);
+		//}
 		speechText.append(answer.isCorrect ? praise+"! " : "Falsch! ");
 		if (askedQuestions.length < players.length * length) {
-			askQuestion(speechText);
+			askNewQuestion(speechText);
 		} else {
 			askedQuestions = new Question[0];
 			speechText.append("Die Runde ist zu Ende. ");
+			for (int i=0; i<players.length; i++)
+				speechText.append(currentPlayer.name + ", du hast " + currentPlayer.getScore() + " Punkte erreicht. ");
 			// TODO: gleich weiter?
 		}
 	}
