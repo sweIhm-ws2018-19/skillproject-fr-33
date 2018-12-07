@@ -125,7 +125,13 @@ public class QuizRound {
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
-		speechText.append(players[asked % players.length].name + ": ");
+		if(players.length == 1) {
+			speechText.append(players[asked % players.length].name);
+		}
+		else {
+			speechText.append(players[asked % players.length].name + ": ");
+		}
+		//	speechText.append(players[asked % players.length].name + ": ");
 		// q.shuffleAnswers(); // TODO: doesn't get persisted yet
 		q.ask(speechText);
 	}
