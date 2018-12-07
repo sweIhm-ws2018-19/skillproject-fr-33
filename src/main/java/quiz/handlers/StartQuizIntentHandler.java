@@ -39,8 +39,7 @@ public class StartQuizIntentHandler implements RequestHandler {
         ) {
         	try {
         		int playerCount = Integer.parseInt(playerCountSlot.getValue());
-            	round.createPlayers(playerCount);
-            	speechText.append("Wir spielen mit "+playerCount+" Spielern. ");
+            	round.createPlayers(playerCount, speechText);
         	} catch(NumberFormatException e) {
         		speechText.append("Das ist leider keine gültige Spielerzahl. ");
         	}
