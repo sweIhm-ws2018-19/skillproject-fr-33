@@ -30,7 +30,7 @@ public class CancelandStopIntentHandler implements RequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input) {
         return input.getResponseBuilder()
-                .withSpeech("Auf Wiedersehen")
+                .withSpeech("Auf Wiedersehen, bis zum nächsten mal.")
                 .build();
     }
 }

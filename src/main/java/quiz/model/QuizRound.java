@@ -4,57 +4,48 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 
+import java.io.IOException;
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import quiz.QuestionLoader;
 
-public class QuizRound {
-	static final public int length = 2;
+public class QuizRound implements Serializable {
+	static public int length = 2;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
-	private int lastPraiseIdx = 0;
+	public int lastPraiseIdx = 0;
 	
+	static ObjectMapper mapper = new ObjectMapper();
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
-//      return(QuizRound) sessionAttributes.get("round");
-		QuizRound round = new QuizRound(null, null);
-		Integer players = (Integer) sessionAttributes.get("players");
-		if (players != null)
-			round.createPlayers(players);
-		
-		String region = (String) sessionAttributes.get("region");
-		if (region != null) {
-			round.region = new Region(region, null);
-			new QuestionLoader(round.region).load();
-			
-			Integer askedQuestionsSize = (Integer) sessionAttributes.get("askedQuestionsSize");
-			if (askedQuestionsSize != null) {
-				int len = askedQuestionsSize;
-				round.askedQuestions = Arrays.copyOfRange(round.region.questions, 0, len);
-				round.region.questions = Arrays.copyOfRange(round.region.questions, len, round.region.questions.length);
+		String round = (String) sessionAttributes.get("round");
+		if (round != null)
+			try {
+				return mapper.readValue(round, QuizRound.class);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}
-		Integer lastPraiseIdx = (Integer) sessionAttributes.get("praiseIdx");
-		if (lastPraiseIdx != null)
-			round.lastPraiseIdx = lastPraiseIdx;
-		
-//    	sessionAttributes.put("round", round);
-		return round;
+		return new QuizRound(null, null);
 	}
 	public void intoSessionAttributes(Map<String, Object> sessionAttributes) {
-		if (players != null) {
-			sessionAttributes.put("players", players.length);
+		try {
+			sessionAttributes.put("round", mapper.writeValueAsString(this));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 		}
-		if (region != null) {
-			sessionAttributes.put("region", region.id);
-			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
-		}
-		sessionAttributes.put("praiseIdx", lastPraiseIdx);
 	}
 	
+	public QuizRound() {}
 	public QuizRound(Region r, Player[] ps) {
 		this.region = r;
 		this.players = ps;
 	}
+	@JsonIgnore
 	public boolean isComplete() {
 		return region != null && players != null && players.length > 0;
 	}
@@ -83,7 +74,7 @@ public class QuizRound {
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
 		speechText.append(players[asked % players.length].name + ": ");
-		// q.shuffleAnswers(); // TODO: doesn't get persisted yet
+		q.shuffleAnswers();
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {

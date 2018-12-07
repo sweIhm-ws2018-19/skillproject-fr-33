@@ -38,11 +38,10 @@ public class HelpIntentHandler implements RequestHandler {
         		+ "Für jede korrekte Antwort erhältst du Punkte. "
         		+ "Wähle die Anzahl der Spieler wenn du das Quiz startest.\n "
         		+ "Du kannst alleine oder in einer Gruppe von bis zu fünf Spielern spielen.";
-        String repromptText = " Du kannst jetzt die Spieleranzahl, bzw. Antwort eingeben.";
         return input.getResponseBuilder()
                 .withSimpleCard("ColorSession", speechText)
                 .withSpeech(speechText)
-                .withReprompt(repromptText)
+                .withReprompt(speechText)
                 .withShouldEndSession(false)
                 .build();
     }
