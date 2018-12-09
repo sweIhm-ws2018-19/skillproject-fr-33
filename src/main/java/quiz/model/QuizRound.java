@@ -157,25 +157,25 @@ public class QuizRound {
 			
 			// Spielerstand ausgeben
 			switch (players.length) {
-			case 1: speechText.append("Du hast " + players[0].score + " Punkte erreicht. ");
+			case 1: speechText.append("Du hast " + players[0].score + " von 5 Punkte erreicht. ");
 					break;
-			case 2: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
-									 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. ");
+			case 2: speechText.append(players[0].name + ". Du hast " + players[0].score + " von 5 Punkte erreicht. " 
+									 + players[1].name + ". Du hast " + players[1].score + " von 5 Punkte erreicht. ");
 					break;
-			case 3: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
-					 				 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
-					 				 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. ");
+			case 3: speechText.append(players[0].name + ". Du hast " + players[0].score + " von 5 Punkte erreicht. " 
+					 				 + players[1].name + ". Du hast " + players[1].score + " von 5 Punkte erreicht. "
+					 				 + players[2].name + ". Du hast " + players[2].score + " von 5 Punkte erreicht. ");
 					break;
-			case 4: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
-									 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
-									 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. "
-									 + players[3].name + ". Du hast " + players[3].score + " Punkte erreicht. ");
+			case 4: speechText.append(players[0].name + ". Du hast " + players[0].score + " von 5 Punkte erreicht. " 
+									 + players[1].name + ". Du hast " + players[1].score + " von 5 Punkte erreicht. "
+									 + players[2].name + ". Du hast " + players[2].score + " von 5 Punkte erreicht. "
+									 + players[3].name + ". Du hast " + players[3].score + " von 5 Punkte erreicht. ");
 					break;
-			case 5: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
-					 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
-					 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. "
-					 + players[3].name + ". Du hast " + players[3].score + " Punkte erreicht. "
-					 + players[4].name + ". Du hast " + players[4].score + " Punkte erreicht. ");
+			case 5: speechText.append(players[0].name + ". Du hast " + players[0].score + " von 5 Punkte erreicht. " 
+					 + players[1].name + ". Du hast " + players[1].score + " von 5 Punkte erreicht. "
+					 + players[2].name + ". Du hast " + players[2].score + " von 5 Punkte erreicht. "
+					 + players[3].name + ". Du hast " + players[3].score + " von 5 Punkte erreicht. "
+					 + players[4].name + ". Du hast " + players[4].score + " von 5 Punkte erreicht. ");
 					 break;
 			default: break;
 			}
