@@ -157,12 +157,26 @@ public class QuizRound {
 			
 			// Spielerstand ausgeben
 			switch (players.length) {
-			case 1: speechText.append("Du hast " + players[0].score + "Punkte erreicht. ");
+			case 1: speechText.append("Du hast " + players[0].score + " Punkte erreicht. ");
 					break;
-			case 2: break;
-			case 3: break;
-			case 4: break;
-			case 5: break;
+			case 2: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
+									 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. ");
+					break;
+			case 3: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
+					 				 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
+					 				 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. ");
+					break;
+			case 4: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
+									 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
+									 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. "
+									 + players[3].name + ". Du hast " + players[3].score + " Punkte erreicht. ");
+					break;
+			case 5: speechText.append(players[0].name + ". Du hast " + players[0].score + " Punkte erreicht. " 
+					 + players[1].name + ". Du hast " + players[1].score + " Punkte erreicht. "
+					 + players[2].name + ". Du hast " + players[2].score + " Punkte erreicht. "
+					 + players[3].name + ". Du hast " + players[3].score + " Punkte erreicht. "
+					 + players[4].name + ". Du hast " + players[4].score + " Punkte erreicht. ");
+					 break;
 			default: break;
 			}
 			// TODO: gleich weiter?
