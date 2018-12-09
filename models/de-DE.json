@@ -1,7 +1,7 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "reisequiz",
+			"invocationName": "meinquiz",
 			"intents": [
 				{
 					"name": "AMAZON.CancelIntent",
@@ -15,6 +15,20 @@
 					"name": "AMAZON.StopIntent",
 					"samples": []
 				},
+				{
+     "name": "QuizEndIntent",
+     "slots": [
+      {
+       "name" : "EndContinue",
+       "type" : "EndContinuekeyword"
+       }
+     ],
+     "samples": [
+     "{EndContinue}",
+     "Spiel {EndContinue}",
+     "{EndContinue} spielen"
+     ]
+    },
 				{
 					"name": "StartQuizIntent",
 					"slots": [
@@ -140,6 +154,28 @@
 							}
 						}
 					]
+				},
+				{
+				 "name": "EndContinuekeyword",
+				 "values":[
+				  
+				   {
+				    "name" : {
+				       "value": "weiter"
+				    }
+				   },
+				   {
+        "name" : {
+           "value": "ende"
+        }
+       },
+       {
+        "name" : {
+           "value": "beenden"
+        }
+       }
+				  
+				 ]
 				}
 			]
 		}
