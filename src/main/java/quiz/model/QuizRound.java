@@ -148,7 +148,7 @@ public class QuizRound {
 		Player currentPlayer = players[lastAsked % players.length];
 		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
 		currentPlayer.answer(answer);
-		speechText.append(answer.isCorrect ? praise+"! "+ askedQuestions[lastAsked].getInfo() : "Falsch! ");
+		speechText.append(answer.isCorrect ? praise+"! "+ askedQuestions[lastAsked].getInfo() + " " : "Falsch! ");
 		if (askedQuestions.length < players.length * length) {
 			askQuestion(speechText);
 		} else {
