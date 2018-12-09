@@ -23,6 +23,7 @@ public class LaunchRequestHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         String speechText = "Hallo. Willkommen zum Reisequiz 0.0.5. Wieviele Spieler sollen mitspielen?";
         String repromptText = "Wieviele Spieler sollen mitspielen?";
+ 
         return input.getResponseBuilder()
                 .withSpeech(speechText)
                 .withReprompt(repromptText)

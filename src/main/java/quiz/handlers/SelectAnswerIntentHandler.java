@@ -2,8 +2,11 @@ package quiz.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import javax.swing.event.ListSelectionEvent;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
@@ -11,6 +14,7 @@ import com.amazon.ask.model.Intent;
 import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
+import com.amazon.ask.model.slu.entityresolution.Resolution;
 import com.amazon.ask.model.slu.entityresolution.StatusCode;
 
 import quiz.model.QuizRound;
@@ -41,6 +45,8 @@ public class SelectAnswerIntentHandler implements RequestHandler {
         	&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
         	&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0) {
         	int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
+        
+        //	answerSlot.getResolutions().getResolutionsPerAuthority().stream().filter(res -> res.getValues().contains(answerSlot.getValue()))
         	
         	round.selectAnswer(answerIndex, speechText);
         } else {

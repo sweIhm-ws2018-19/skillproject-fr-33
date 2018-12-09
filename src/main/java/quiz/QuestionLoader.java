@@ -57,7 +57,6 @@ public class QuestionLoader {
 	
 	/** Loads an Array of Question.
 	 *  @author fabian sinning
-	 *  @return Question Array with all questions
 	 * */
 	public void load() {
 		InputStreamReader input = new InputStreamReader(QuestionLoader.class.getResourceAsStream("/"+region.id+".csv"));

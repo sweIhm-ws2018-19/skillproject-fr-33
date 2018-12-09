@@ -65,7 +65,7 @@ public class QuizRound {
 		players = new Player[count];
 			if(count == 1) {
 				players[0] = new Player("",0);
-				speechText.append("Alles klar. Dann spielen nur wir beide! Los geht´s mit deinen ersten fünf Fragen.");
+				speechText.append("Alles klar. Dann spielen nur wir beide! Los geht´s mit deinen ersten fünf Fragen. ");
 			}
 			else if(count == 2) { 
 				players[0] = new Player("Heidi",0);
@@ -102,11 +102,8 @@ public class QuizRound {
 				speechText.append("Alles klar. Spieler 1, du bist Harry Potter."
 						+ " Spieler 2, du bist Hermine, Spieler 3, du bist Ron,"
 						+ " Spieler 4, Du bist Hedwig und Spieler 5,"
-						+ " du bist der sprechende Hut. Los geht´s mit der ersten Runde.  Frage 1 ist für Harry:");
+						+ " du bist der sprechende Hut. Los geht´s mit der ersten Runde. Frage 1 ist für Harry:");
 			}
-		//	players[i] = new Player("Spieler "+(i+1), 0);
-		//}
-    	//speechText.append("Wir spielen mit "+count+" Spielern. ");
 	}
 	public void selectRegion(String region, StringBuilder speechText) {
 		if (region.equals("Berlin") || region.equals("Ostsee") || region.equals("Dresden")) {
