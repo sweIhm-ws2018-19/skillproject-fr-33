@@ -65,11 +65,11 @@ public class QuizRound implements Serializable {
 		}
 	}
 	public void askQuestion(StringBuilder speechText) {
-		if (region.questions.length == 0) {
+		Question q = this.region.nextQuestion();
+		if (q == null) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
 			return;
 		}
-		Question q = this.region.questions[0]; // TODO: filter this.region.questions for not yet asked ones, and choose randomly
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
