@@ -33,8 +33,9 @@ public class QuizRound implements Serializable {
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
-	public Norepeat praises = new Norepeat(new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"});
-	public Norepeat declines = new Norepeat(new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "});
+	public Norepeat praises = new Norepeat(new String[] { "Super", "Wahnsinn", "Spitze", "Toll", "Fantastisch", "Großartig", "Stark", "Sehr gut", "Das ist richtig", "Genauso ist es", "Volltreffer", "Stimmt genau", "Korrekt", "Haargenau", "Vollkommen richtig" });
+	public Norepeat declines = new Norepeat(new String[] { "Das war leider die falsche Antwort", "Leider falsch", "Das war leider nicht korrekt", "Leider kein Treffer", "Leider keinen Punkt für dich", "Das war nix", "Schade" });
+	public Norepeat corrections = new Norepeat(new String[] { "Die richtige Lösung ist ", "Die richtige Lösung wäre gewesen ", "Die Lösung lautet ", "Richtig wäre gewesen" });
 	
 	static ObjectMapper mapper = new ObjectMapper();
 	
@@ -67,14 +68,54 @@ public class QuizRound implements Serializable {
 	}
 	
 	public void createPlayers(int count, StringBuilder speechText) {
-		if(count >= 6 || count <= 0) {
-			speechText.append("Es können höchstens fünf Spieler teilnehmen. Bitte gib jetzt die Spieleranzahl ein. ");
-		} else {
-			players = new Player[count];
-			for (int i=0; i<count; i++)
-				players[i] = new Player("Spieler "+(i+1), 0);
-			speechText.append("Wir spielen mit "+count+" Spielern. ");
+		if(count <= 0) {
+			speechText.append("Netter Versuch. ");
+			return;
 		}
+		if (count >= 6) {
+			speechText.append("Es können höchstens fünf Spieler teilnehmen. ");
+			return;
+		}
+		// valid number, we now create the players array:
+		players = new Player[count];
+		if (count == 1) {
+			players[0] = new Player("", 0);
+			speechText.append("Alles klar. Dann spielen nur wir beide! ");
+			// Los geht's mit deinen ersten fünf Fragen.
+			return;
+		}
+		if (count == 2) { 
+			players[0] = new Player("Heidi", 0);
+			players[1] = new Player("Peter", 0);
+			speechText.append("Spitze. Zu zweit macht's immer mehr Spaß."
+					+ " Ich nenn euch jetzt einfach mal "+players[0].name+" und "+players[1].name+". ");
+			// Ich stelle euch jeweils abwechselnd 5 Fragen.
+			// Ladies first! Auf geht's, Heidi!
+			return;
+		} else if (count == 3) {
+			players[0] = new Player("Justus Jonas", 0);
+			players[1] = new Player("Peter Shaw", 0);
+			players[2] = new Player("Bob Andrews", 0);
+			speechText.append("Yeih. Ihr seid die drei Fragezeichen. ");
+			// Auf geht´s mit der ersten Runde. Justus Jonas beginnt.
+		} else if (count == 4) {
+			players[0] = new Player("Mickey", 0);
+			players[1] = new Player("Minney", 0);
+			players[2] = new Player("Donald", 0);
+			players[3] = new Player("Daisy", 0);
+			speechText.append("Cool! Vier gewinnt! ");
+			// Los geht´s mit den ersten fünf Fragen für Mickey.");
+		} else {
+			players[0] = new Player("Harry Potter", 0);
+			players[1] = new Player("Hermine", 0);
+			players[2] = new Player("Ron", 0);
+			players[3] = new Player("Hedwig", 0);
+			players[4] = new Player("Sprechender Hut", 0);
+			speechText.append("Alles klar. ");
+			// Los geht´s mit der ersten Runde. Frage 1 ist für Harry:");
+		}
+		for (int i=0; i<players.length; i++)
+			speechText.append("Spieler "+(i+1)+", du bist "+players[i].name+". ");
 	}
 	public void selectRegion(String region, StringBuilder speechText) {
 		if (region.equals("Berlin") || region.equals("Ostsee") || region.equals("Dresden")) {
@@ -93,7 +134,10 @@ public class QuizRound implements Serializable {
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
-		speechText.append(players[asked % players.length].name + ": ");
+		String playerName = players[asked % players.length].name;
+		if (!playerName.isEmpty()) {
+			speechText.append(playerName + ": ");
+		}
 		q.shuffleAnswers();
 		q.ask(speechText);
 	}
@@ -103,10 +147,13 @@ public class QuizRound implements Serializable {
 			speechText.append("Ich habe noch gar nichts gefragt. ");
 			return;
 		}
+		Question lastQuestion = askedQuestions[lastAsked];
 		Player currentPlayer = players[lastAsked % players.length];
-		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
+		Answer answer = lastQuestion.answers.get(answerIndex);
 		currentPlayer.answer(answer);
-		speechText.append(answer.isCorrect ? praises.next() +"! ": declines.next());
+		speechText.append(answer.isCorrect
+			? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
+			: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
 		if (askedQuestions.length < players.length * length) {
 			askNewQuestion(speechText);
 		} else {

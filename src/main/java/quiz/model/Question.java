@@ -11,12 +11,14 @@ public class Question implements Serializable {
 	public String id;
 	public String text;
 	public List<Answer> answers;
+	public String info;
 	
 	public Question() {}
-	public Question(String id, String t, Answer[] as) {
+	public Question(String id, String t, Answer[] as, String info) {
 		this.id = id;
 		this.text = t;
 		this.answers = Arrays.asList(as);
+		this.info = info;
 	}
 	
 	public void shuffleAnswers() {
@@ -34,6 +36,10 @@ public class Question implements Serializable {
 		throw new IllegalStateException("question has no correct answer");
 	}
 
+
+	public String correctAnswer() {
+		return this.answers.get(correctAnswerIndex()).text;
+	}
 	public void ask(StringBuilder speechText) {
 		// TODO: SSML
 		speechText.append(text + " ");
@@ -42,4 +48,6 @@ public class Question implements Serializable {
 			speechText.append(i++ + " - " + a.text + ". ");
 		}
 	}
+	
+	public String getInfo() { return info; } // info
 }

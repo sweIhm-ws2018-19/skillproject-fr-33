@@ -41,6 +41,7 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
 			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
 		) {
+			// answerSlot.getResolutions().getResolutionsPerAuthority().stream().filter(res -> res.getValues().contains(answerSlot.getValue())) ???
 			int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
 			round.selectAnswer(answerIndex, speechText);
 		} else {
@@ -48,7 +49,6 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 		}
 
 		round.intoSessionAttributes(sessionAttributes);
-		// speechText.append(answerSlot);
 
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();
 	}

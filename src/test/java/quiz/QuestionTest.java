@@ -15,7 +15,7 @@ public class QuestionTest {
 	public void test() {
 		Question question = new Question("url", "frage", new Answer[] {
 				new Answer("a", true),new Answer("b", false),new Answer("c", false),new Answer("d", false),new Answer("e", false)
-		});
+		},"");
 		
 		// With 3 variables(Options) there are only 6 permutations
 		// while with 5 variables(120 permutations) the probability of
