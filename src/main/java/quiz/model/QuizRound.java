@@ -1,24 +1,32 @@
 package quiz.model;
 
-import static com.amazon.ask.request.Predicates.intentName;
-
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 
-import com.amazon.ask.dispatcher.request.handler.HandlerInput;
-
 import quiz.QuestionLoader;
-import quiz.handlers.CancelandStopIntentHandler;
 
 public class QuizRound {
+	class Norepeat {
+		private String[] utterances;
+		public int lastIdx = 0;
+		Norepeat(String[] u) {
+			utterances = u;
+		}
+		String next() {
+			lastIdx += 1 + new Random().nextInt(utterances.length-1);
+			if (lastIdx >= utterances.length) {
+				lastIdx -= utterances.length;
+			}
+			return utterances[lastIdx];
+		}
+	}
 	static final public int length = 2;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
-	private int lastPraiseIdx = 0;
-	private int lastFalseIdx = 0;
-	
+	private Norepeat praises = new Norepeat(new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"});
+	private Norepeat declines = new Norepeat(new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "});
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
 //      return(QuizRound) sessionAttributes.get("round");
@@ -40,10 +48,10 @@ public class QuizRound {
 		}
 		Integer lastPraiseIdx = (Integer) sessionAttributes.get("praiseIdx");
 		if (lastPraiseIdx != null)
-			round.lastPraiseIdx = lastPraiseIdx;
+			round.praises.lastIdx = lastPraiseIdx;
 		Integer lastFalseIdx = (Integer) sessionAttributes.get("falseIdx");
 		if (lastFalseIdx != null)
-			round.lastFalseIdx = lastFalseIdx;
+			round.declines.lastIdx = lastFalseIdx;
 		
 //    	sessionAttributes.put("round", round);
 		return round;
@@ -56,8 +64,8 @@ public class QuizRound {
 			sessionAttributes.put("region", region.id);
 			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
 		}
-		sessionAttributes.put("praiseIdx", lastPraiseIdx);
-		sessionAttributes.put("falseIdx", lastFalseIdx);
+		sessionAttributes.put("praiseIdx", praises.lastIdx);
+		sessionAttributes.put("falseIdx", declines.lastIdx);
 	}
 	
 	public QuizRound(Region r, Player[] ps) {
@@ -100,20 +108,6 @@ public class QuizRound {
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
-		String[] praises = new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"};
-		lastPraiseIdx += 1 + new Random().nextInt(praises.length-1);
-		if (lastPraiseIdx >= praises.length) {
-			lastPraiseIdx -= praises.length;
-		}
-		String praise = praises[lastPraiseIdx];
-		
-		String[] incorrectPhrases = new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "};
-		lastFalseIdx += 1 + new Random().nextInt(incorrectPhrases.length-1);
-		if (lastFalseIdx >= incorrectPhrases.length) {
-			lastFalseIdx -= incorrectPhrases.length;
-		}
-		String incorrect = incorrectPhrases[lastFalseIdx];
-		
 		int lastAsked = askedQuestions.length - 1;
 		if (lastAsked < 0) {
 			speechText.append("Ich habe noch gar nichts gefragt. ");
@@ -122,12 +116,12 @@ public class QuizRound {
 		Player currentPlayer = players[lastAsked % players.length];
 		Answer answer = askedQuestions[lastAsked].answers.get(answerIndex);
 		currentPlayer.answer(answer);
-		speechText.append(answer.isCorrect ? praise+"! ": incorrect);
+		speechText.append(answer.isCorrect ? praises.next() +"! ": declines.next());
 		if (askedQuestions.length < players.length * length) {
 			askNewQuestion(speechText);
 		} else {
 			askedQuestions = new Question[0];
-			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde.");
+			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde. ");
 			for (int i=0; i<players.length; i++)
 				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " Punkte erreicht. ");
 			speechText.append("Hast du Lust, noch weiter zu spielen?");

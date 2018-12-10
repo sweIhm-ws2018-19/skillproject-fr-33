@@ -87,10 +87,6 @@
 				{
 					"name": "AMAZON.ResumeIntent",
 					"samples": []
-				},
-				{
-					"name": "AMAZON.NavigateHomeIntent",
-					"samples": []
 				}
 			],
 			"types": [

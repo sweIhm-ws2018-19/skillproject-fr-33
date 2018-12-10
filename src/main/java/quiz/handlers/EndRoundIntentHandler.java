@@ -17,7 +17,7 @@ import quiz.model.QuizRound;
 public class EndRoundIntentHandler implements RequestHandler {
 	@Override
 	public boolean canHandle(HandlerInput input) {
-		// TODO: check whether we are in a state where a question can be answered
+		// TODO: check whether we are in a state where we asked about round continuation
 		return input.matches(intentName("AMAZON.YesIntent").or(intentName("AMAZON.NoIntent")));
 	}
 
