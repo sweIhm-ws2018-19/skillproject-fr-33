@@ -1,17 +1,19 @@
 package quiz.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import quiz.model.Answer;
 
-public class Question {
+public class Question implements Serializable {
 	public String id;
 	public String text;
 	public List<Answer> answers;
 	public String info;
 	
+	public Question() {}
 	public Question(String id, String t, Answer[] as, String info) {
 		this.id = id;
 		this.text = t;
@@ -34,12 +36,16 @@ public class Question {
 		throw new IllegalStateException("question has no correct answer");
 	}
 
+
+	public String correctAnswer() {
+		return this.answers.get(correctAnswerIndex()).text;
+	}
 	public void ask(StringBuilder speechText) {
 		// TODO: SSML
 		speechText.append(text + " ");
 		char i = 'A';
 		for (Answer a: answers) {
-			speechText.append(i++ + " - " + a.text + " ");
+			speechText.append(i++ + " - " + a.text + ". ");
 		}
 	}
 	

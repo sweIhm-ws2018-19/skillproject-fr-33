@@ -19,10 +19,11 @@ import com.amazon.ask.Skills;
 import quiz.handlers.FallbackIntentHandler;
 import quiz.handlers.HelpIntentHandler;
 import quiz.handlers.LaunchRequestHandler;
-import quiz.handlers.QuizEndIntentHandler;
+import quiz.handlers.RepeatIntentHandler;
 import quiz.handlers.SelectAnswerIntentHandler;
 import quiz.handlers.SessionEndedRequestHandler;
 import quiz.handlers.CancelandStopIntentHandler;
+import quiz.handlers.EndRoundIntentHandler;
 import quiz.handlers.StartQuizIntentHandler;
 
 public class QuizStreamHandler extends SkillStreamHandler {
@@ -33,11 +34,12 @@ public class QuizStreamHandler extends SkillStreamHandler {
                         new LaunchRequestHandler(),
                         new StartQuizIntentHandler(),
                         new SelectAnswerIntentHandler(),
+                        new RepeatIntentHandler(),
+                        new EndRoundIntentHandler(),
                         new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
-                        new FallbackIntentHandler(),
-                        new QuizEndIntentHandler())
+                        new FallbackIntentHandler())
                 // Add your skill id below
                 //.withSkillId("")
                 .build();

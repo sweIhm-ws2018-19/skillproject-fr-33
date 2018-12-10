@@ -1,10 +1,18 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "meinquiz",
+			"invocationName": "reisequiz",
 			"intents": [
 				{
 					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.YesIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NoIntent",
 					"samples": []
 				},
 				{
@@ -15,20 +23,6 @@
 					"name": "AMAZON.StopIntent",
 					"samples": []
 				},
-				{
-     "name": "QuizEndIntent",
-     "slots": [
-      {
-       "name" : "EndContinue",
-       "type" : "EndContinuekeyword"
-       }
-     ],
-     "samples": [
-     "{EndContinue}",
-     "Spiel {EndContinue}",
-     "{EndContinue} spielen"
-     ]
-    },
 				{
 					"name": "StartQuizIntent",
 					"slots": [
@@ -76,8 +70,7 @@
 					]
 				},
 				{
-					"name": "RepeatIntent",
-					"slots": [],
+					"name": "AMAZON.RepeatIntent",
 					"samples": [
 						"wiederhole",
 						"nochmal",
@@ -103,7 +96,7 @@
 						{
 							"id": "0",
 							"name": {
-								"value": "A",
+								"value": "a. ",
 								"synonyms": [
 									"Erste",
 									"Erstes"
@@ -113,7 +106,7 @@
 						{
 							"id": "1",
 							"name": {
-								"value": "B",
+								"value": "b. ",
 								"synonyms": [
 									"Zweite",
 									"Zweites"
@@ -123,7 +116,7 @@
 						{
 							"id": "2",
 							"name": {
-								"value": "C",
+								"value": "c. ",
 								"synonyms": [
 									"Dritte",
 									"Drittes"
@@ -154,28 +147,6 @@
 							}
 						}
 					]
-				},
-				{
-				 "name": "EndContinuekeyword",
-				 "values":[
-				  
-				   {
-				    "name" : {
-				       "value": "weiter"
-				    }
-				   },
-				   {
-        "name" : {
-           "value": "ende"
-        }
-       },
-       {
-        "name" : {
-           "value": "beenden"
-        }
-       }
-				  
-				 ]
 				}
 			]
 		}
