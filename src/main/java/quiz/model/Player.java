@@ -1,9 +1,12 @@
 package quiz.model;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
 	public String name;
 	public int score;
 	
+	public Player() {}
 	public Player(String n, int s) {
 		this.name = n;
 		this.score = s;

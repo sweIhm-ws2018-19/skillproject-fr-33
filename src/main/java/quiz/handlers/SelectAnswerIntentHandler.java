@@ -34,15 +34,14 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 
 		Slot answerSlot = slots.get("Answer");
 		// Oh well:
-		if (answerSlot != null && answerSlot.getResolutions() != null
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().size() > 0
-				// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.Selection")
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus()
-						.getCode() == StatusCode.ER_SUCCESS_MATCH
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0) {
-			int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0)
-					.getValues().get(0).getValue().getId());
-
+		if (answerSlot != null
+			&& answerSlot.getResolutions() != null
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().size() > 0
+			// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.Selection")
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
+		) {
+			int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
 			round.selectAnswer(answerIndex, speechText);
 		} else {
 			speechText.append("Diese Antwort habe ich leider nicht verstanden. ");

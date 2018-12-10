@@ -1,15 +1,23 @@
 package quiz.model;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import quiz.QuestionLoader;
 
-public class QuizRound {
-	class Norepeat {
-		private String[] utterances;
+public class QuizRound implements Serializable {
+	static public class Norepeat {
+		public String[] utterances;
 		public int lastIdx = 0;
+		Norepeat() {}
 		Norepeat(String[] u) {
 			utterances = u;
 		}
@@ -25,53 +33,35 @@ public class QuizRound {
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
-	private Norepeat praises = new Norepeat(new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"});
-	private Norepeat declines = new Norepeat(new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "});
+	public Norepeat praises = new Norepeat(new String[] {"Sehr gut", "Großartig", "Ausgezeichnet", "Richtig", "Wahnsinn", "Super", "Spitze! Das war richtig", "Toll"});
+	public Norepeat declines = new Norepeat(new String[] {"Das war leider die falsche Antwort. ", "Leider falsch. ", "Das war leider nicht korrekt. "});
+	
+	static ObjectMapper mapper = new ObjectMapper();
 	
 	public static QuizRound fromSessionAttributes(Map<String, Object> sessionAttributes) {
-//      return(QuizRound) sessionAttributes.get("round");
-		QuizRound round = new QuizRound(null, null);
-		Integer players = (Integer) sessionAttributes.get("players");
-		if (players != null)
-			round.createPlayers(players, new StringBuilder());
-		String region = (String) sessionAttributes.get("region");
-		if (region != null) {
-			round.region = new Region(region, null);
-			new QuestionLoader(round.region).load();
-			
-			Integer askedQuestionsSize = (Integer) sessionAttributes.get("askedQuestionsSize");
-			if (askedQuestionsSize != null) {
-				int len = askedQuestionsSize;
-				round.askedQuestions = Arrays.copyOfRange(round.region.questions, 0, len);
-				round.region.questions = Arrays.copyOfRange(round.region.questions, len, round.region.questions.length);
+		String round = (String) sessionAttributes.get("round");
+		if (round != null)
+			try {
+				return mapper.readValue(round, QuizRound.class);
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		}
-		Integer lastPraiseIdx = (Integer) sessionAttributes.get("praiseIdx");
-		if (lastPraiseIdx != null)
-			round.praises.lastIdx = lastPraiseIdx;
-		Integer lastFalseIdx = (Integer) sessionAttributes.get("falseIdx");
-		if (lastFalseIdx != null)
-			round.declines.lastIdx = lastFalseIdx;
-		
-//    	sessionAttributes.put("round", round);
-		return round;
+		return new QuizRound(null, null);
 	}
 	public void intoSessionAttributes(Map<String, Object> sessionAttributes) {
-		if (players != null) {
-			sessionAttributes.put("players", players.length);
+		try {
+			sessionAttributes.put("round", mapper.writeValueAsString(this));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
 		}
-		if (region != null) {
-			sessionAttributes.put("region", region.id);
-			sessionAttributes.put("askedQuestionsSize", askedQuestions.length);
-		}
-		sessionAttributes.put("praiseIdx", praises.lastIdx);
-		sessionAttributes.put("falseIdx", declines.lastIdx);
 	}
 	
+	public QuizRound() {}
 	public QuizRound(Region r, Player[] ps) {
 		this.region = r;
 		this.players = ps;
 	}
+	@JsonIgnore
 	public boolean isComplete() {
 		return region != null && players != null && players.length > 0;
 	}
@@ -83,7 +73,7 @@ public class QuizRound {
 			players = new Player[count];
 			for (int i=0; i<count; i++)
 				players[i] = new Player("Spieler "+(i+1), 0);
-	    	speechText.append("Wir spielen mit "+count+" Spielern. ");
+			speechText.append("Wir spielen mit "+count+" Spielern. ");
 		}
 	}
 	public void selectRegion(String region, StringBuilder speechText) {
@@ -95,16 +85,16 @@ public class QuizRound {
 		}
 	}
 	public void askNewQuestion(StringBuilder speechText) {
-		if (region.questions.length == 0) {
+		Question q = this.region.nextQuestion();
+		if (q == null) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
 			return;
 		}
-		Question q = this.region.questions[0]; // TODO: filter this.region.questions for not yet asked ones, and choose randomly
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
-		// q.shuffleAnswers(); // TODO: doesn't get persisted yet
 		speechText.append(players[asked % players.length].name + ": ");
+		q.shuffleAnswers();
 		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
