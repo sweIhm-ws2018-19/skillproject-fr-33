@@ -8,6 +8,14 @@
 					"samples": []
 				},
 				{
+					"name": "AMAZON.YesIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NoIntent",
+					"samples": []
+				},
+				{
 					"name": "AMAZON.HelpIntent",
 					"samples": []
 				},
@@ -62,8 +70,7 @@
 					]
 				},
 				{
-					"name": "RepeatIntent",
-					"slots": [],
+					"name": "AMAZON.RepeatIntent",
 					"samples": [
 						"wiederhole",
 						"nochmal",
@@ -89,7 +96,7 @@
 						{
 							"id": "0",
 							"name": {
-								"value": "A",
+								"value": "a. ",
 								"synonyms": [
 									"Erste",
 									"Erstes"
@@ -99,7 +106,7 @@
 						{
 							"id": "1",
 							"name": {
-								"value": "B",
+								"value": "b. ",
 								"synonyms": [
 									"Zweite",
 									"Zweites"
@@ -109,7 +116,7 @@
 						{
 							"id": "2",
 							"name": {
-								"value": "C",
+								"value": "c. ",
 								"synonyms": [
 									"Dritte",
 									"Drittes"

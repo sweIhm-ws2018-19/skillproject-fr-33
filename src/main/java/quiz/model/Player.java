@@ -17,4 +17,7 @@ public class Player implements Serializable {
 			score += 1;
 		return a.isCorrect;
 	}
+	public int getScore() {
+		return score;
+	}
 }
