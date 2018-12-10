@@ -5,6 +5,8 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
 
+import quiz.model.QuizRound;
+
 import java.util.Optional;
 
 import static com.amazon.ask.request.Predicates.requestType;
@@ -21,7 +23,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo zum Reisequiz 0.1.0! Schön, dass du da bist! Wieviele Spieler sollen mitspielen?";
+        String speechText = "Hallo zum Reisequiz "+ QuizRound.version + "! Schön, dass du da bist! Wieviele Spieler sollen mitspielen?";
         String repromptText = "Wieviele Spieler sollen mitspielen?";
         return input.getResponseBuilder()
                 .withSpeech(speechText)

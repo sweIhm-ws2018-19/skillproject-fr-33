@@ -14,7 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import quiz.QuestionLoader;
 
 public class QuizRound implements Serializable {
-	static public int length = 2;
+	public static final String version = QuizRound.class.getPackage().getImplementationVersion();
+	public static final int length = 2;
+	
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
