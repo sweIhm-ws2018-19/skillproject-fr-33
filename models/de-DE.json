@@ -94,6 +94,27 @@
 					"name": "Selection",
 					"values": [
 						{
+							"id": "-2",
+							"name": {
+								"value": "42. ",
+								"synonyms": [
+									"Zwei und Vierzig",
+									"zweiundvierzig"
+								]
+							}
+						},
+						{
+							"id": "-1",
+							"name": {
+								"value": "Keine Ahnung",
+								"synonyms": [
+									"weiß ich nicht",
+									"ist mir unbekannt",
+									"kenne ich nicht"
+								]
+							}
+						},
+						{
 							"id": "0",
 							"name": {
 								"value": "a. ",
