@@ -149,11 +149,21 @@ public class QuizRound implements Serializable {
 		}
 		Question lastQuestion = askedQuestions[lastAsked];
 		Player currentPlayer = players[lastAsked % players.length];
-		Answer answer = lastQuestion.answers.get(answerIndex);
-		currentPlayer.answer(answer);
-		speechText.append(answer.isCorrect
-			? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
-			: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+		if (answerIndex < 0) {
+			if (answerIndex == -1) {
+				speechText.append(declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+			} else {
+				// You unlocked the hidden feature!
+				speechText.append("Ich kenne zwar die ultimative Frage nicht, aber das ist sicher die richtige Antwort. ");
+				currentPlayer.score += 1;
+			}
+		} else {
+			Answer answer = lastQuestion.answers.get(answerIndex);
+			currentPlayer.answer(answer);
+			speechText.append(answer.isCorrect
+				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
+				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+		}
 		if (askedQuestions.length < players.length * length) {
 			askNewQuestion(speechText);
 		} else {
