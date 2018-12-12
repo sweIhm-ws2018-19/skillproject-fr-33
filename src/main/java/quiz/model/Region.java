@@ -19,7 +19,7 @@ public class Region implements Serializable {
 		int i = new Random().nextInt(questions.length);
 		questions = new Question[questions.length - 1];
 		System.arraycopy(old, 0, questions, 0, i);
-		System.arraycopy(old, i+1, questions, i, questions.length-i-1);
+		System.arraycopy(old, i+1, questions, i, questions.length-i);
 		return old[i];
 	}
 }
