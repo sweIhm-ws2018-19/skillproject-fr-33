@@ -44,7 +44,7 @@ public class StartQuizIntentHandler implements RequestHandler {
 				speechText.append("Das ist leider keine gültige Spielerzahl. ");
 			}
 		} else if (round.players == null) { // playerCountSlot == null
-			speechText.append("Mit wie vielen Spielern möchtest du spielen? ");
+			speechText.append("Wieviele Spieler wollen mitspielen? ");
 		}
 
 		Slot regionSlot = slots.get("Region");

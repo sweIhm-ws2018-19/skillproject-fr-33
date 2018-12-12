@@ -32,6 +32,7 @@ public class RepeatIntentHandler implements RequestHandler {
 		if (round.askedQuestions.length == 0) {
 			speechText.append("Ich habe nichts das ich im Moment wiederholen kann.");
 		} else {
+			speechText.append("Klar, ich stell dir die Frage noch einmal. ");
 			round.askedQuestions[round.askedQuestions.length - 1].ask(speechText);
 		}
 		// round.intoSessionAttributes(sessionAttributes);
