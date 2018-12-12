@@ -6,6 +6,10 @@ import org.junit.Test;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 
+import io.klerch.alexa.test.client.AlexaClient;
+import io.klerch.alexa.test.client.endpoint.AlexaEndpoint;
+import io.klerch.alexa.test.client.endpoint.AlexaLambdaEndpoint;
+import io.klerch.alexa.test.client.endpoint.AlexaSimulationApiEndpoint;
 import quiz.handlers.StartQuizIntentHandler;
 
 public class StartQuizIntentHandlerTest {
@@ -18,6 +22,12 @@ public class StartQuizIntentHandlerTest {
 	//	StartQuizIntentHandler handler = new StartQuizIntentHandler();
 	//	handler.handle(HandlerInput.builder().build());
 	//	fail("Not yet implemented");
+		
+		
+		final AlexaEndpoint lambdaEndpoint = AlexaSimulationApiEndpoint.create("MCfunktion").build();
+		final AlexaClient client = AlexaClient.create(lambdaEndpoint).build();
+		
+		client.startSession().say("alexa, starte meinquiz").done();
 	}
 
 }
