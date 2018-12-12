@@ -51,6 +51,12 @@
      <artifactId>jackson-databind</artifactId>
      <version>2.9.5</version>
    </dependency>
+   <dependency>
+    <groupId>io.klerch</groupId>
+    <artifactId>alexa-skills-kit-tester-java</artifactId>
+    <version>1.1.0</version>
+    <scope>test</scope>
+  </dependency>
   </dependencies>
 
   <build>
