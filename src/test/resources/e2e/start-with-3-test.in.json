@@ -1,0 +1,58 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.f6a4b02d-dc5c-4f9e-bc9a-b41de52bc182",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"round": "{\"askedQuestions\":[],\"region\":null,\"players\":[{\"name\":\"Justus Jonas\",\"score\":0},{\"name\":\"Peter Shaw\",\"score\":0},{\"name\":\"Bob Andrews\",\"score\":0}],\"praises\":{\"utterances\":[\"Super\",\"Wahnsinn\",\"Spitze\",\"Toll\",\"Fantastisch\",\"Großartig\",\"Stark\",\"Sehr gut\",\"Das ist richtig\",\"Genauso ist es\",\"Volltreffer\",\"Stimmt genau\",\"Korrekt\",\"Haargenau\",\"Vollkommen richtig\"],\"lastIdx\":0},\"declines\":{\"utterances\":[\"Das war leider die falsche Antwort\",\"Leider falsch\",\"Das war leider nicht korrekt\",\"Leider kein Treffer\",\"Leider keinen Punkt für dich\",\"Das war nix\",\"Schade\"],\"lastIdx\":0},\"corrections\":{\"utterances\":[\"Die richtige Lösung ist \",\"Die richtige Lösung wäre gewesen \",\"Die Lösung lautet \",\"Richtig wäre gewesen\"],\"lastIdx\":0}}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.498c09ff-955b-43a6-8c44-449ac5024299",
+		"timestamp": "2018-12-12T16:07:11Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "StartQuizIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"Region": {
+					"name": "Region",
+					"value": "test",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.KnownRegion",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "Tests",
+											"id": "Tests"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"Anzahl": {
+					"name": "Anzahl",
+					"value": "3",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		}
+	}
+}

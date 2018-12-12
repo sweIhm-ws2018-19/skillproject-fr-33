@@ -50,6 +50,10 @@ public class QuestionLoader {
 	}
 	
 
+	public boolean regionAvailable() {
+		if (!region.id.matches("^\\w+$")) return false; // prevent directory traversal attacks
+		return getClass().getResource("/"+region.id+".csv") != null;
+	}
 	public void load() {
 		InputStreamReader input = new InputStreamReader(QuestionLoader.class.getResourceAsStream("/"+region.id+".csv"));
 		CsvToBean<QuestionCSV> csvToBean = new CsvToBeanBuilder<QuestionCSV>(input)

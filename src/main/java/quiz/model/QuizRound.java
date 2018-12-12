@@ -118,10 +118,12 @@ public class QuizRound implements Serializable {
 			speechText.append("Spieler "+(i+1)+", du bist "+players[i].name+". ");
 	}
 	public void selectRegion(String region, StringBuilder speechText) {
-		if (region.equals("Berlin") || region.equals("Ostsee") || region.equals("Dresden")) {
-			this.region = new Region(region, null);
-			new QuestionLoader(this.region).load();
+		this.region = new Region(region, null);
+		QuestionLoader loader = new QuestionLoader(this.region);
+		if (loader.regionAvailable()) {
+			loader.load();
 		} else {
+			this.region = null;
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
 		}
 	}
