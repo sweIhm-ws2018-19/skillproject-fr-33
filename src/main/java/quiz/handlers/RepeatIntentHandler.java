@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.Intent;
-import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
 
 import quiz.model.QuizRound;
@@ -22,9 +20,6 @@ public class RepeatIntentHandler implements RequestHandler {
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
-		IntentRequest intentRequest = (IntentRequest) input.getRequestEnvelope().getRequest();
-		Intent intent = intentRequest.getIntent();
-
 		StringBuilder speechText = new StringBuilder();
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
 		QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
@@ -35,7 +30,6 @@ public class RepeatIntentHandler implements RequestHandler {
 			speechText.append("Klar, ich stell dir die Frage noch einmal. ");
 			round.askedQuestions[round.askedQuestions.length - 1].ask(speechText);
 		}
-		// round.intoSessionAttributes(sessionAttributes);
 
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();
 	}

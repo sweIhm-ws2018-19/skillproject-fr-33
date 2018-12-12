@@ -33,7 +33,7 @@ public class HelpIntentHandler implements RequestHandler {
     public Optional<Response> handle(HandlerInput input) {
         String speechText = "In diesem Quiz werden dir Fragen zu bestimmten Regionen und Städten gestellt. \n"
         		+ " Du kannst deine Route berechnen lassen oder eine bestimmte Region wählen.\n"
-        		+ " Jede Quizrunde werden dir "+QuizRound.length+" Fragen gestellt. "
+        		+ " Jede Quizrunde werden dir "+QuizRound.LENGTH+" Fragen gestellt. "
         		+ "Für jede korrekte Antwort erhältst du einen Punkt. "
         		+ "Wähle die Anzahl der Spieler wenn du das Quiz startest.\n "
         		+ "Du kannst alleine oder in einer Gruppe von bis zu fünf Spielern spielen.";

@@ -50,10 +50,10 @@ public class StartQuizIntentHandler implements RequestHandler {
 		Slot regionSlot = slots.get("Region");
 		if (regionSlot != null
 			&& regionSlot.getResolutions() != null
-			&& regionSlot.getResolutions().getResolutionsPerAuthority().size() > 0
+			&&!regionSlot.getResolutions().getResolutionsPerAuthority().isEmpty()
 			// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.KnownRegion")
 			&& regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
-			&& regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
+			&&!regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().isEmpty()
 		) {
 			String region = regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId();
 			round.selectRegion(region, speechText);

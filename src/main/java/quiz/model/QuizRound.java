@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import quiz.QuestionLoader;
 
 public class QuizRound implements Serializable {
-	static public class Norepeat {
+	public static class Norepeat implements Serializable {
 		public String[] utterances;
 		public int lastIdx = 0;
 		Norepeat() {}
@@ -29,7 +29,7 @@ public class QuizRound implements Serializable {
 			return utterances[lastIdx];
 		}
 	}
-	static final public int length = 2;
+	public static final int LENGTH = 2;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
@@ -104,7 +104,7 @@ public class QuizRound implements Serializable {
 			players[2] = new Player("Donald", 0);
 			players[3] = new Player("Daisy", 0);
 			speechText.append("Cool! Vier gewinnt! ");
-			// Los geht´s mit den ersten fünf Fragen für Mickey.");
+			// Los geht´s mit den ersten fünf Fragen für Mickey.
 		} else {
 			players[0] = new Player("Harry Potter", 0);
 			players[1] = new Player("Hermine", 0);
@@ -112,7 +112,7 @@ public class QuizRound implements Serializable {
 			players[3] = new Player("Hedwig", 0);
 			players[4] = new Player("Sprechender Hut", 0);
 			speechText.append("Alles klar. ");
-			// Los geht´s mit der ersten Runde. Frage 1 ist für Harry:");
+			// Los geht´s mit der ersten Runde. Frage 1 ist für Harry:
 		}
 		for (int i=0; i<players.length; i++)
 			speechText.append("Spieler "+(i+1)+", du bist "+players[i].name+". ");
@@ -164,7 +164,7 @@ public class QuizRound implements Serializable {
 				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
 				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
 		}
-		if (askedQuestions.length < players.length * length) {
+		if (askedQuestions.length < players.length * LENGTH) {
 			askNewQuestion(speechText);
 		} else {
 			askedQuestions = new Question[0];
