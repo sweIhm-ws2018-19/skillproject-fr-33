@@ -160,6 +160,7 @@ public class QuizRound implements Serializable {
 		} else {
 			Answer answer = lastQuestion.answers.get(answerIndex);
 			currentPlayer.answer(answer);
+			speechText.append("<audio src='soundbank://soundlibrary/ui/gameshow/"+(answer.isCorrect? "amzn_ui_sfx_gameshow_positive_response_01'/>" : "amzn_ui_sfx_gameshow_negative_response_02'/>"));
 			speechText.append(answer.isCorrect
 				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
 				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
