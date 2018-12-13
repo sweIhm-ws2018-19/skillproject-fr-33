@@ -21,7 +21,9 @@
 				},
 				{
 					"name": "AMAZON.StopIntent",
-					"samples": []
+					"samples": [
+						"Mir reichts"
+					]
 				},
 				{
 					"name": "StartQuizIntent",

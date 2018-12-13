@@ -29,7 +29,8 @@ public class QuizRound implements Serializable {
 			return utterances[lastIdx];
 		}
 	}
-	public static final int LENGTH = 2;
+	public static final String[] questionOrdinals = { "erste", "zweite", "dritte", "vierte", "fünfte" };
+	public static final int LENGTH = questionOrdinals.length;
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
@@ -66,7 +67,7 @@ public class QuizRound implements Serializable {
 	public boolean isComplete() {
 		return region != null && players != null && players.length > 0;
 	}
-	
+
 	public void createPlayers(int count, StringBuilder speechText) {
 		if(count <= 0) {
 			speechText.append("Netter Versuch. ");
@@ -81,7 +82,6 @@ public class QuizRound implements Serializable {
 		if (count == 1) {
 			players[0] = new Player("", 0);
 			speechText.append("Alles klar. Dann spielen nur wir beide! ");
-			// Los geht's mit deinen ersten fünf Fragen.
 			return;
 		}
 		if (count == 2) { 
@@ -89,22 +89,18 @@ public class QuizRound implements Serializable {
 			players[1] = new Player("Peter", 0);
 			speechText.append("Spitze. Zu zweit macht's immer mehr Spaß."
 					+ " Ich nenn euch jetzt einfach mal "+players[0].name+" und "+players[1].name+". ");
-			// Ich stelle euch jeweils abwechselnd 5 Fragen.
-			// Ladies first! Auf geht's, Heidi!
 			return;
 		} else if (count == 3) {
 			players[0] = new Player("Justus Jonas", 0);
 			players[1] = new Player("Peter Shaw", 0);
 			players[2] = new Player("Bob Andrews", 0);
 			speechText.append("Yeih. Ihr seid die drei Fragezeichen. ");
-			// Auf geht´s mit der ersten Runde. Justus Jonas beginnt.
 		} else if (count == 4) {
 			players[0] = new Player("Mickey", 0);
 			players[1] = new Player("Minney", 0);
 			players[2] = new Player("Donald", 0);
 			players[3] = new Player("Daisy", 0);
 			speechText.append("Cool! Vier gewinnt! ");
-			// Los geht´s mit den ersten fünf Fragen für Mickey.
 		} else {
 			players[0] = new Player("Harry Potter", 0);
 			players[1] = new Player("Hermine", 0);
@@ -112,7 +108,6 @@ public class QuizRound implements Serializable {
 			players[3] = new Player("Hedwig", 0);
 			players[4] = new Player("Sprechender Hut", 0);
 			speechText.append("Alles klar. ");
-			// Los geht´s mit der ersten Runde. Frage 1 ist für Harry:
 		}
 		for (int i=0; i<players.length; i++)
 			speechText.append("Spieler "+(i+1)+", du bist "+players[i].name+". ");
@@ -135,8 +130,25 @@ public class QuizRound implements Serializable {
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
 		this.askedQuestions[asked] = q;
 		String playerName = players[asked % players.length].name;
-		if (!playerName.isEmpty()) {
-			speechText.append(playerName + ": ");
+		if (asked == 0) { // TODO: only in first round of *game*
+			if (players.length == 1) {
+				speechText.append("Los geht's mit deinen ersten "+LENGTH+" Fragen. ");
+			} else if (players.length == 2) {
+				speechText.append("Ich stelle euch jeweils abwechselnd "+LENGTH+" Fragen. "
+					+ "Ladies first! Auf geht's, "+playerName+"! ");
+			} else if (players.length == 3) {
+				speechText.append("Auf geht's mit der ersten Runde. "+playerName+" beginnt. ");
+			} else if (players.length == 4) {
+				speechText.append("Los geht's mit den ersten "+LENGTH+" Fragen für "+playerName+". "); // ???
+			} else if (players.length == 5) {
+				speechText.append("Los geht's mit der ersten Runde. Frage 1 ist für "+playerName+": ");
+			}
+		} else {
+			speechText.append("Deine "+questionOrdinals[asked / players.length] + " Frage");
+			if (!playerName.isEmpty()) {
+				speechText.append(", " + playerName);
+			}
+			speechText.append(": ");
 		}
 		q.shuffleAnswers();
 		q.ask(speechText);
@@ -171,7 +183,7 @@ public class QuizRound implements Serializable {
 			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde. ");
 			for (int i=0; i<players.length; i++)
 				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " Punkte erreicht. ");
-			speechText.append("Willst du weiterspielen oder das Quiz beenden?");
+			speechText.append("Willst du weiterspielen?"); // TODO: oder das Quiz beenden
 		}
 	}
 }
