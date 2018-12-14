@@ -8,12 +8,22 @@
 					"samples": []
 				},
 				{
+					"name": "AMAZON.YesIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NoIntent",
+					"samples": []
+				},
+				{
 					"name": "AMAZON.HelpIntent",
 					"samples": []
 				},
 				{
 					"name": "AMAZON.StopIntent",
-					"samples": []
+					"samples": [
+						"Mir reichts"
+					]
 				},
 				{
 					"name": "StartQuizIntent",
@@ -62,6 +72,17 @@
 					]
 				},
 				{
+					"name": "AMAZON.RepeatIntent",
+					"samples": [
+						"wiederhole",
+						"nochmal",
+						"noch einmal",
+						"wiederholen",
+						"bitte wiederhole die Frage",
+						"kannst du die Frage wiederholen"
+					]
+				},
+				{
 					"name": "AMAZON.PauseIntent",
 					"samples": []
 				},
@@ -75,9 +96,30 @@
 					"name": "Selection",
 					"values": [
 						{
+							"id": "-2",
+							"name": {
+								"value": "42. ",
+								"synonyms": [
+									"Zwei und Vierzig",
+									"zweiundvierzig"
+								]
+							}
+						},
+						{
+							"id": "-1",
+							"name": {
+								"value": "Keine Ahnung",
+								"synonyms": [
+									"weiß ich nicht",
+									"ist mir unbekannt",
+									"kenne ich nicht"
+								]
+							}
+						},
+						{
 							"id": "0",
 							"name": {
-								"value": "A",
+								"value": "a. ",
 								"synonyms": [
 									"Erste",
 									"Erstes"
@@ -87,7 +129,7 @@
 						{
 							"id": "1",
 							"name": {
-								"value": "B",
+								"value": "b. ",
 								"synonyms": [
 									"Zweite",
 									"Zweites"
@@ -97,7 +139,7 @@
 						{
 							"id": "2",
 							"name": {
-								"value": "C",
+								"value": "c. ",
 								"synonyms": [
 									"Dritte",
 									"Drittes"
