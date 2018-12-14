@@ -18,10 +18,10 @@ public class QuizRound implements Serializable {
 		public String[] utterances;
 		public int lastIdx = 0;
 		Norepeat() {}
-		Norepeat(String[] u) {
+		public Norepeat(String[] u) {
 			utterances = u;
 		}
-		String next() {
+		public String next() {
 			lastIdx += 1 + new Random().nextInt(utterances.length-1);
 			if (lastIdx >= utterances.length) {
 				lastIdx -= utterances.length;
@@ -172,6 +172,7 @@ public class QuizRound implements Serializable {
 		} else {
 			Answer answer = lastQuestion.answers.get(answerIndex);
 			currentPlayer.answer(answer);
+			speechText.append("<audio src='soundbank://soundlibrary/ui/gameshow/"+(answer.isCorrect? "amzn_ui_sfx_gameshow_positive_response_01'/>" : "amzn_ui_sfx_gameshow_negative_response_02'/>"));
 			speechText.append(answer.isCorrect
 				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
 				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");

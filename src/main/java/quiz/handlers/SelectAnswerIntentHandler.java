@@ -45,7 +45,7 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 			int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
 			round.selectAnswer(answerIndex, speechText);
 		} else {
-			speechText.append("Diese Antwort habe ich leider nicht verstanden. ");
+			speechText.append("Sorry. Kannst du das noch mal anders formulieren? ");
 		}
 
 		round.intoSessionAttributes(sessionAttributes);
