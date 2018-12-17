@@ -1,7 +1,7 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "reisequiz",
+			"invocationName": "OnToury",
 			"intents": [
 				{
 					"name": "AMAZON.CancelIntent",

@@ -6,7 +6,7 @@ import quiz.model.QuizRound;
 
 public class Game implements Serializable{
 	private static Player[] players;
-	
+	//StringBuilder? 
 	private int[] quizrounds;
 	private String[] levels;
 	private int playerCount;
