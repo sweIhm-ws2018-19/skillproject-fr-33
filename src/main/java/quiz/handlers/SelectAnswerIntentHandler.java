@@ -14,7 +14,6 @@ import com.amazon.ask.model.Slot;
 import com.amazon.ask.model.slu.entityresolution.StatusCode;
 
 import quiz.model.QuizGame;
-import quiz.model.QuizRound;
 
 public class SelectAnswerIntentHandler implements RequestHandler {
 	@Override
@@ -33,24 +32,20 @@ public class SelectAnswerIntentHandler implements RequestHandler {
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
 		QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
 		
-		if (game.round == null) {
-			speechText.append("Wir spielen doch noch gar nicht. ");
+		Slot answerSlot = slots.get("Answer");
+		// Oh well:
+		if (answerSlot != null
+			&& answerSlot.getResolutions() != null
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().size() > 0
+			// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.Selection")
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
+			&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
+		) {
+			// answerSlot.getResolutions().getResolutionsPerAuthority().stream().filter(res -> res.getValues().contains(answerSlot.getValue())) ???
+			int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
+			game.selectAnswer(answerIndex, speechText);
 		} else {
-			Slot answerSlot = slots.get("Answer");
-			// Oh well:
-			if (answerSlot != null
-				&& answerSlot.getResolutions() != null
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().size() > 0
-				// answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>.Selection")
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
-				&& answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
-			) {
-				// answerSlot.getResolutions().getResolutionsPerAuthority().stream().filter(res -> res.getValues().contains(answerSlot.getValue())) ???
-				int answerIndex = Integer.parseInt(answerSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId());
-				game.round.selectAnswer(answerIndex, speechText);
-			} else {
-				speechText.append("Sorry. Kannst du das noch mal anders formulieren? ");
-			}
+			speechText.append("Sorry. Kannst du das noch mal anders formulieren? ");
 		}
 
 		game.intoSessionAttributes(sessionAttributes);

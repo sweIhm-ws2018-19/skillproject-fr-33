@@ -10,7 +10,6 @@ import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
 import quiz.model.QuizGame;
-import quiz.model.QuizRound;
 
 public class RepeatIntentHandler implements RequestHandler {
 	@Override

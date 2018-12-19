@@ -13,10 +13,7 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.model.slu.entityresolution.StatusCode;
 
-import quiz.QuestionLoader;
 import quiz.model.QuizGame;
-import quiz.model.QuizRound;
-import quiz.model.Region;
 
 public class StartQuizIntentHandler implements RequestHandler {
 	@Override
@@ -63,13 +60,8 @@ public class StartQuizIntentHandler implements RequestHandler {
 			speechText.append("Über welche Region möchtest du spielen? ");
 		}
 
-		if (game.isComplete()) {
-			Region region = new Region(game.regionId, null);
-			QuestionLoader loader = new QuestionLoader(region);
-			loader.load(); // regionAvailable() had been checked before
-			game.round = new QuizRound(region, game.createPlayers(speechText));
-			game.round.askNewQuestion(speechText); // TODO: only if completed with the current utterance
-		}
+		game.checkComplete(speechText);
+		
 		game.intoSessionAttributes(sessionAttributes);
 
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();

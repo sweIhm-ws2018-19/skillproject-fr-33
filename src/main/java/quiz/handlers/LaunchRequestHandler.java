@@ -21,7 +21,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Hallo. Willkommen zum Reisequiz 0.1.2. Über welche Region möchtest du spielen?";
+        String speechText = "Hallo. Willkommen zu OnToury 0.1.3. Über welche Region möchtest du spielen?";
         String repromptText = "Nenne mir deine Wunschregion.";
         return input.getResponseBuilder()
                 .withSpeech(speechText)

@@ -35,6 +35,7 @@ public class QuizRound implements Serializable {
 		this.region = r;
 		this.players = ps;
 	}
+
 	public void askNewQuestion(StringBuilder speechText) {
 		Question q = this.region.nextQuestion();
 		if (q == null) {

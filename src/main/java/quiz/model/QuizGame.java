@@ -40,9 +40,14 @@ public class QuizGame implements Serializable {
 	
 	public QuizGame() {}
 
-	@JsonIgnore
-	public boolean isComplete() {
-		return regionId != null && playerCount != 0;
+	public void checkComplete(StringBuilder speechText) {
+		if (regionId != null && playerCount != 0) {
+			Region region = new Region(regionId, null);
+			QuestionLoader loader = new QuestionLoader(region);
+			loader.load(); // regionAvailable() had been checked before
+			round = new QuizRound(region, createPlayers(speechText));
+			round.askNewQuestion(speechText); // TODO: only if completed with the current utterance
+		}
 	}
 
 	public void selectPlayerCount(int count, StringBuilder speechText) {
@@ -99,6 +104,15 @@ public class QuizGame implements Serializable {
 		} else {
 			this.regionId = null;
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
+		}
+	}
+	public void selectAnswer(int answerIndex, StringBuilder speechText) {
+		if (round == null) {
+			speechText.append("Wir spielen doch noch gar nicht. ");
+		} else {
+			round.selectAnswer(answerIndex, speechText);
+			if (round.askedQuestions.length == 0) // das war die letzte Frage
+				roundCount += 1;
 		}
 	}
 }
