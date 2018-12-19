@@ -10,6 +10,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import quiz.model.QuizGame;
 import quiz.model.QuizRound;
 
 public class EndRoundIntentHandler implements RequestHandler {
@@ -17,18 +18,19 @@ public class EndRoundIntentHandler implements RequestHandler {
 	public boolean canHandle(HandlerInput input) {
 		if (input.matches(intentName("AMAZON.YesIntent").or(intentName("AMAZON.NoIntent")))) {
 			Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-			QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
+			QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
 			
-			return round.isComplete() && round.askedQuestions.length == 0;
+			return game.round != null && game.round.askedQuestions.length == 0;
 		}
-		return false; 
+		return false;
 	}
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
 		StringBuilder speechText = new StringBuilder();
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-		QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
+		QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
+		QuizRound round = game.round; // asserted to exist in canHandle
 
 		if (input.matches(intentName("AMAZON.NoIntent"))) {
 			speechText.append(" Ok. Dann sag ich " + (round.players.length == 1 ? "dir noch dein" : "euch noch euer") + " Level. ");
@@ -69,7 +71,7 @@ public class EndRoundIntentHandler implements RequestHandler {
 			speechText.append(yeah[num]);
 			// TODO: Möchtest du weitere Fragen zu [REGION] spielen oder dir eine neue Region aussuchen?
 			round.askNewQuestion(speechText);
-			round.intoSessionAttributes(sessionAttributes);
+			game.intoSessionAttributes(sessionAttributes);
 			return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();
 		}
 	}

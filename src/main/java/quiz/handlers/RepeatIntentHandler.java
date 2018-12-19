@@ -9,6 +9,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
 
+import quiz.model.QuizGame;
 import quiz.model.QuizRound;
 
 public class RepeatIntentHandler implements RequestHandler {
@@ -22,13 +23,13 @@ public class RepeatIntentHandler implements RequestHandler {
 	public Optional<Response> handle(HandlerInput input) {
 		StringBuilder speechText = new StringBuilder();
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-		QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
+		QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
 
-		if (round.askedQuestions.length == 0) {
+		if (game.round != null && game.round.askedQuestions.length == 0) {
 			speechText.append("Ich habe nichts das ich im Moment wiederholen kann.");
 		} else {
 			speechText.append("Klar, ich stell dir die Frage noch einmal. ");
-			round.askedQuestions[round.askedQuestions.length - 1].ask(speechText);
+			game.round.askedQuestions[game.round.askedQuestions.length - 1].ask(speechText);
 		}
 
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();

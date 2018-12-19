@@ -13,7 +13,10 @@ import com.amazon.ask.model.Response;
 import com.amazon.ask.model.Slot;
 import com.amazon.ask.model.slu.entityresolution.StatusCode;
 
+import quiz.QuestionLoader;
+import quiz.model.QuizGame;
 import quiz.model.QuizRound;
+import quiz.model.Region;
 
 public class StartQuizIntentHandler implements RequestHandler {
 	@Override
@@ -29,8 +32,7 @@ public class StartQuizIntentHandler implements RequestHandler {
 
 		StringBuilder speechText = new StringBuilder();
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
-		QuizRound round = QuizRound.fromSessionAttributes(sessionAttributes);
-
+		QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
 		// Get the player count slot from the list of slots.
 		Slot playerCountSlot = slots.get("Anzahl");
 		if (playerCountSlot != null
@@ -39,11 +41,11 @@ public class StartQuizIntentHandler implements RequestHandler {
 		) {
 			try {
 				int playerCount = Integer.parseInt(playerCountSlot.getValue());
-				round.createPlayers(playerCount, speechText);
+				game.selectPlayerCount(playerCount, speechText);
 			} catch (NumberFormatException e) {
 				speechText.append("Das ist leider keine gültige Spielerzahl. ");
 			}
-		} else if (round.players == null) { // playerCountSlot == null
+		} else if (game.playerCount == 0) { // playerCountSlot == null
 			speechText.append("Wieviele Spieler wollen mitspielen? ");
 		}
 
@@ -56,14 +58,19 @@ public class StartQuizIntentHandler implements RequestHandler {
 			&&!regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().isEmpty()
 		) {
 			String region = regionSlot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId();
-			round.selectRegion(region, speechText);
-		} else if (round.players != null && round.region == null) {
+			game.selectRegion(region, speechText);
+		} else if (game.playerCount != 0 && game.regionId == null) {
 			speechText.append("Über welche Region möchtest du spielen? ");
 		}
 
-		if (round.isComplete())
-			round.askNewQuestion(speechText); // TODO: only if completed with the current utterance
-		round.intoSessionAttributes(sessionAttributes);
+		if (game.isComplete()) {
+			Region region = new Region(game.regionId, null);
+			QuestionLoader loader = new QuestionLoader(region);
+			loader.load(); // regionAvailable() had been checked before
+			game.round = new QuizRound(region, game.createPlayers(speechText));
+			game.round.askNewQuestion(speechText); // TODO: only if completed with the current utterance
+		}
+		game.intoSessionAttributes(sessionAttributes);
 
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();
 	}
