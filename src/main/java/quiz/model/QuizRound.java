@@ -93,14 +93,5 @@ public class QuizRound implements Serializable {
 				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
 				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
 		}
-		if (askedQuestions.length < players.length * LENGTH) {
-			askNewQuestion(speechText);
-		} else {
-			askedQuestions = new Question[0];
-			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde. ");
-			for (int i=0; i<players.length; i++)
-				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " Punkte erreicht. ");
-			speechText.append("Willst du weiterspielen?"); // TODO: oder das Quiz beenden
-		}
 	}
 }
