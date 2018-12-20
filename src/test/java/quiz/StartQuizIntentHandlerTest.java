@@ -23,12 +23,6 @@ public class StartQuizIntentHandlerTest {
 	//	handler.handle(HandlerInput.builder().build());
 	//	fail("Not yet implemented");
 		
-		
-		final AlexaEndpoint lambdaEndpoint = AlexaLambdaEndpoint.create("amzn1.ask.skill.774d3264-2fb4-40e0-bd19-a7da6f847862")
-				.build();
-		final AlexaClient client = AlexaClient.create(lambdaEndpoint).build();
-		
-		client.startSession().say("help").done();
 	}
 
 }

@@ -170,7 +170,7 @@ public class QuizRound implements Serializable {
 			askedQuestions = new Question[0];
 			speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde. ");
 			for (int i=0; i<players.length; i++)
-				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " Punkte erreicht. ");
+				speechText.append(players[i].name + ", du hast " + players[i].getScore() + " erreicht. ");
 			speechText.append("Hast du Lust, noch weiter zu spielen?");
 		}
 	}

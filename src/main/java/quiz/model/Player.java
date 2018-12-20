@@ -2,6 +2,8 @@ package quiz.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Player implements Serializable {
 	public String name;
 	public int score;
@@ -17,7 +19,8 @@ public class Player implements Serializable {
 			score += 1;
 		return a.isCorrect;
 	}
-	public int getScore() {
-		return score;
+	@JsonIgnore
+	public String getScore() {
+		return (score == 1)? "einen Punkt " : score +" Punkte" ;
 	}
 }
