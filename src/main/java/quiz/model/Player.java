@@ -28,7 +28,7 @@ public class Player implements Serializable {
 		roundScore = 0;
 		return r;
 	}
-	public int getScore() {
+	public int getTotalScore() {
 		return score;
 	}
 }

@@ -127,7 +127,7 @@ public class QuizGame implements Serializable {
 	public void end(StringBuilder speechText) {
 		speechText.append(" Ok. Dann sag ich " + (round.players.length == 1 ? "dir noch dein" : "euch noch euer") + " Level. ");
 		for (Player player: round.players) {
-			int averagePoints = (int) Math.round(player.getScore() / (double) roundCount);
+			int averagePoints = (int) Math.round(player.getTotalScore() / (double) roundCount);
 			if (averagePoints == 0) {
 				speechText.append("Schade "+ player.name +", du hast leider keine Frage richtig beantwortet. "
 						+ "Versuch es doch gleich noch einmal. "
