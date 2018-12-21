@@ -1,58 +1,81 @@
 {
 	"interactionModel": {
 		"languageModel": {
-			"invocationName": "OnToury",
+			"invocationName": "ontoury",
 			"intents": [
 				{
-					"name": "AMAZON.CancelIntent",
-					"samples": []
-				},
-				{
 					"name": "AMAZON.YesIntent",
-					"samples": []
+					"samples": [
+						"ok",
+						"gut",
+						"in Ordnung"
+					]
 				},
 				{
 					"name": "AMAZON.NoIntent",
-					"samples": []
+					"samples": [
+						"ne",
+						"nö"
+					]
 				},
 				{
 					"name": "AMAZON.HelpIntent",
 					"samples": []
 				},
 				{
-					"name": "AMAZON.StopIntent",
-					"samples": [
-						"Mir reichts"
-					]
-				},
-				{
-					"name": "StartQuizIntent",
+					"name": "StartRoundIntent",
 					"slots": [
 						{
 							"name": "Anzahl",
-							"type": "AMAZON.NUMBER"
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"{Anzahl}",
+								"{Anzahl} Spieler",
+								"{Single}"
+							]
 						},
 						{
 							"name": "Region",
-							"type": "KnownRegion"
+							"type": "KnownRegion",
+							"samples": [
+								"{Region}",
+								"{pre} {Region}"
+							]
+						},
+						{
+							"name": "Single",
+							"type": "SinglePlayerCount"
+						},
+						{
+							"name": "pre",
+							"type": "RegionPrepositum"
 						}
 					],
 					"samples": [
 						"Starte das Quiz",
-						"Starte eine Runde",
 						"Starte das Quiz mit {Anzahl} Spielern",
-						"Starte das Quiz zur Region {Region}",
-						"Starte das Quiz mit {Anzahl} Spielern zur Region {Region}",
+						"Starte das Quiz für {Anzahl} Spieler",
+						"Starte das Quiz {pre} {Region}",
+						"Starte das Quiz mit {Anzahl} Spielern {pre} {Region}",
+						"Starte das Quiz für {Anzahl} Spieler {pre} {Region}",
+						"Starte das Quiz {pre} {Region} mit {Anzahl} Spielern",
+						"Starte das Quiz {pre} {Region} für {Anzahl} Spieler",
 						"Neue Runde",
-						"Neue Runde zur Region {Region}",
 						"Neue Runde mit {Anzahl} Spielern",
+						"Neue Runde mit {Anzahl} Spielern",
+						"Neue Runde {pre} {Region}",
+						"Neue Runde mit {Anzahl} Spielern {pre} {Region}",
+						"Neue Runde für {Anzahl} Spieler {pre} {Region}",
+						"Neue Runde {pre} {Region} mit {Anzahl} Spielern",
+						"Neue Runde {pre} {Region} für {Anzahl} Spieler",
+						"Starte eine Runde",
 						"Starte eine Runde mit {Anzahl} Spielern",
-						"Starte eine Runde zur Region {Region}",
-						"Starte eine Runde mit {Anzahl} Spielern zur Region {Region}",
-						"{Anzahl} Spieler",
-						"{Anzahl}",
-						"Region {Region}",
-						"{Region}"
+						"Starte eine Runde für {Anzahl} Spieler",
+						"Starte eine Runde {pre} {Region}",
+						"Starte eine Runde mit {Anzahl} Spielern {pre} {Region}",
+						"Starte eine Runde für {Anzahl} Spieler {pre} {Region}",
+						"Starte eine Runde {pre} {Region} mit {Anzahl} Spielern",
+						"Starte eine Runde {pre} {Region} für {Anzahl} Spieler"
 					]
 				},
 				{
@@ -83,11 +106,25 @@
 					]
 				},
 				{
-					"name": "AMAZON.PauseIntent",
-					"samples": []
+					"name": "AMAZON.StopIntent",
+					"samples": [
+						"Mir reichts",
+						"Beenden",
+						"Aufhören"
+					]
 				},
 				{
 					"name": "AMAZON.ResumeIntent",
+					"samples": [
+						"Weiter"
+					]
+				},
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.FallbackIntent",
 					"samples": []
 				}
 			],
@@ -149,6 +186,36 @@
 					]
 				},
 				{
+					"name": "SinglePlayerCount",
+					"values": [
+						{
+							"name": {
+								"value": "Ein Spieler"
+							}
+						},
+						{
+							"name": {
+								"value": "Einer"
+							}
+						},
+						{
+							"name": {
+								"value": "Allein"
+							}
+						},
+						{
+							"name": {
+								"value": "Ich alleine"
+							}
+						},
+						{
+							"name": {
+								"value": "Nur ich"
+							}
+						}
+					]
+				},
+				{
 					"name": "KnownRegion",
 					"values": [
 						{
@@ -170,8 +237,109 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "RegionPrepositum",
+					"values": [
+						{
+							"name": {
+								"value": "zur Region"
+							}
+						},
+						{
+							"name": {
+								"value": "über"
+							}
+						},
+						{
+							"name": {
+								"value": "zu"
+							}
+						}
+					]
 				}
 			]
-		}
+		},
+		"dialog": {
+			"intents": [
+				{
+					"name": "StartRoundIntent",
+					"confirmationRequired": false,
+					"prompts": {
+						
+					},
+					"slots": [
+						{
+							"name": "Anzahl",
+							"type": "AMAZON.NUMBER",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.playerCount"
+							},
+							"validations": [
+								{
+									"type": "isLessThanOrEqualTo",
+									"prompt": "Slot.Validation.playerCountTooHigh",
+									"value": "5"
+								},
+								{
+									"type": "isGreaterThan",
+									"prompt": "Slot.Validation.playerCountTooSmall",
+									"value": "0"
+								}
+							]
+						},
+						{
+							"name": "Region",
+							"type": "KnownRegion",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.region"
+							}
+						}
+					]
+				}
+			]
+		},
+		"prompts": [
+			{
+				"id": "Elicit.Slot.region",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Über welche Region möchtest du spielen?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.playerCount",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Wie viele Spieler wollen mitspielen?"
+					}
+				]
+			},
+			{
+				"id": "Slot.Validation.playerCountTooHigh",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Es können nur bis zu fünf Spieler mitspielen."
+					}
+				]
+			},
+			{
+				"id": "Slot.Validation.playerCountTooSmall",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Netter Versuch."
+					}
+				]
+			}
+		]
 	}
 }

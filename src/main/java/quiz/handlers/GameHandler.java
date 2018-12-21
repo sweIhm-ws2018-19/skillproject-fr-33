@@ -2,6 +2,7 @@ package quiz.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
+import com.amazon.ask.model.DialogState;
 import com.amazon.ask.model.Intent;
 import com.amazon.ask.model.IntentRequest;
 import com.amazon.ask.model.Response;
@@ -14,12 +15,14 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
-import static com.amazon.ask.request.Predicates.intentName;
+import static com.amazon.ask.request.Predicates.*;
 
 public class GameHandler implements RequestHandler {
 	@Override
 	public boolean canHandle(HandlerInput input) {
-		return true; // I can do anything!
+		// we should have handled all other requests already, but one never knows
+		return input.matches(requestType(IntentRequest.class)); // input.getRequest() instanceof IntentRequest
+		// return true; I can do anything!
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class GameHandler implements RequestHandler {
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
 		QuizGame game = QuizGame.fromSessionAttributes(sessionAttributes);
 		
-		if (input.matches(intentName("StartQuizIntent"))) {
+		if (input.matches(intentName("StartRoundIntent"))) {
 			// Get the player count slot from the list of slots.
 			Slot playerCountSlot = slots.get("Anzahl");
 			if (playerCountSlot != null
@@ -47,6 +50,7 @@ public class GameHandler implements RequestHandler {
 				}
 			} else if (game.playerCount == 0) { // playerCountSlot == null
 				speechText.append("Wieviele Spieler wollen mitspielen? ");
+				return input.getResponseBuilder().withSpeech(speechText.toString()).addElicitSlotDirective("Anzahl", null).build();
 			}
 
 			Slot regionSlot = slots.get("Region");
@@ -61,8 +65,15 @@ public class GameHandler implements RequestHandler {
 				game.selectRegion(region, speechText);
 			} else if (game.playerCount != 0 && game.regionId == null) {
 				speechText.append("Über welche Region möchtest du spielen? ");
+				return input.getResponseBuilder().withSpeech(speechText.toString()).addElicitSlotDirective("Region", null).build();
 			}
 
+			speechText.append(intentRequest.getDialogState());
+			// see https://stackoverflow.com/questions/53176017/alexa-dialog-model-step-and-dialogstate-is-never-in-completed
+			// doesn't work with custom validation though
+			// if (intentRequest.getDialogState() != DialogState.COMPLETED)
+			//	return input.getResponseBuilder().addDelegateDirective(null).build();
+			
 			game.checkComplete(speechText);
 		} else if (input.matches(intentName("SelectAnswerIntent"))) { // TODO: check whether we are in a state where a question can be answered
 			Slot answerSlot = slots.get("Answer");
@@ -101,9 +112,9 @@ public class GameHandler implements RequestHandler {
 		} else if (input.matches(intentName("AMAZON.StopIntent").or(intentName("AMAZON.CancelIntent")))) {
 			return input.getResponseBuilder().withSpeech("Schade, dass du nicht mehr mit mir spielen willst. Bis zum nächsten mal.").build();
 		} else if (input.matches(intentName("AMAZON.FallbackIntent"))) { // true ???
-			speechText.append("Tut mir leid, das weiss ich nicht. Sage einfach Hilfe.");
+			speechText.append("Fallback: "+intentRequest);
 		} else {
-			return null; // we couldn't handle it :-/
+			speechText.append("Tut mir leid, das weiss ich nicht. Sage einfach Hilfe.");
 		}
 		game.intoSessionAttributes(sessionAttributes);
 		return input.getResponseBuilder().withSpeech(speechText.toString()).withReprompt(speechText.toString()).build();
