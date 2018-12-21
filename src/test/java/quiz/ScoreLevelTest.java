@@ -15,11 +15,6 @@ import quiz.model.QuizRound;
 
 @RunWith(JUnitParamsRunner.class)
 public class ScoreLevelTest {
-	/**
-	 * test code:
-	 * int averagePoints = (int) Math.round(player.getScore() / (double) roundCount);
-	 */
-	
 	public Player player = new Player("",0,0);
 	
 	public Answer answer = new Answer("text",true);
@@ -69,7 +64,6 @@ public class ScoreLevelTest {
 		game.round = new QuizRound(null, new Player[] { new Player("<Spielername>",5,score) });
 		
 		game.end(speechText);
-		System.out.println(speechText);
 		String out = speechText.toString();
 		assertTrue(out.contains("<Spielername>"));
 		assertTrue(out.contains(expected));
