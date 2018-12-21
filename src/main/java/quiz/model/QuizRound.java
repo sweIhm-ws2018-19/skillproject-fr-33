@@ -36,7 +36,7 @@ public class QuizRound implements Serializable {
 		this.players = ps;
 	}
 
-	public void askNewQuestion(StringBuilder speechText) {
+	public void toNextQuestion(StringBuilder speechText) {
 		Question q = this.region.nextQuestion();
 		if (q == null) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
@@ -67,7 +67,6 @@ public class QuizRound implements Serializable {
 			speechText.append(": ");
 		}
 		q.shuffleAnswers();
-		q.ask(speechText);
 	}
 	public void selectAnswer(int answerIndex, StringBuilder speechText) {
 		int lastAsked = askedQuestions.length - 1;

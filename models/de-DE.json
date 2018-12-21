@@ -31,7 +31,9 @@
 							"samples": [
 								"{Anzahl}",
 								"{Anzahl} Spieler",
-								"{Single}"
+								"{Single}",
+								"{Single} {Anzahl}",
+								"{Anzahl} {Single}"
 							]
 						},
 						{
@@ -79,19 +81,54 @@
 					]
 				},
 				{
+					"name": "SelectPlayerCountIntent",
+					"slots": [
+						{
+							"name": "Single",
+							"type": "SinglePlayerCount"
+						},
+						{
+							"name": "Anzahl",
+							"type": "AMAZON.NUMBER"
+						}
+					],
+					"samples": [
+						"{Single}",
+						"{Anzahl}",
+						"{Anzahl} Spieler"
+					]
+				},
+				{
+					"name": "SelectRegionIntent",
+					"slots": [
+						{
+							"name": "Region",
+							"type": "KnownRegion"
+						},
+						{
+							"name": "pre",
+							"type": "RegionPrepositum"
+						}
+					],
+					"samples": [
+						"{Region}",
+						"{pre} {Region}"
+					]
+				},
+				{
 					"name": "SelectAnswerIntent",
 					"slots": [
 						{
-							"name": "Answer",
+							"name": "AnswerSelection",
 							"type": "Selection"
 						}
 					],
 					"samples": [
-						"{Answer}",
-						"Der {Answer}",
-						"Die {Answer}",
-						"Das {Answer}",
-						"Antwort {Answer}"
+						"{AnswerSelection}",
+						"Der {AnswerSelection}",
+						"Die {AnswerSelection}",
+						"Das {AnswerSelection}",
+						"Antwort {AnswerSelection}"
 					]
 				},
 				{
@@ -190,27 +227,13 @@
 					"values": [
 						{
 							"name": {
-								"value": "Ein Spieler"
-							}
-						},
-						{
-							"name": {
-								"value": "Einer"
-							}
-						},
-						{
-							"name": {
-								"value": "Allein"
-							}
-						},
-						{
-							"name": {
-								"value": "Ich alleine"
-							}
-						},
-						{
-							"name": {
-								"value": "Nur ich"
+								"value": "Einer",
+								"synonyms": [
+									"Ein Spieler",
+									"Allein",
+									"Ich alleine",
+									"Nur ich"
+								]
 							}
 						}
 					]
@@ -243,17 +266,11 @@
 					"values": [
 						{
 							"name": {
-								"value": "zur Region"
-							}
-						},
-						{
-							"name": {
-								"value": "über"
-							}
-						},
-						{
-							"name": {
-								"value": "zu"
+								"value": "über",
+								"synonyms": [
+									"zu",
+									"zur Region"
+								]
 							}
 						}
 					]
@@ -275,20 +292,8 @@
 							"confirmationRequired": false,
 							"elicitationRequired": true,
 							"prompts": {
-								"elicitation": "Elicit.Slot.playerCount"
-							},
-							"validations": [
-								{
-									"type": "isLessThanOrEqualTo",
-									"prompt": "Slot.Validation.playerCountTooHigh",
-									"value": "5"
-								},
-								{
-									"type": "isGreaterThan",
-									"prompt": "Slot.Validation.playerCountTooSmall",
-									"value": "0"
-								}
-							]
+								"elicitation": "Elicit.Slot.Dummy"
+							}
 						},
 						{
 							"name": "Region",
@@ -296,7 +301,16 @@
 							"confirmationRequired": false,
 							"elicitationRequired": true,
 							"prompts": {
-								"elicitation": "Elicit.Slot.region"
+								"elicitation": "Elicit.Slot.Dummy"
+							}
+						},
+						{
+							"name": "Single",
+							"type": "SinglePlayerCount",
+							"confirmationRequired": false,
+							"elicitationRequired": true,
+							"prompts": {
+								"elicitation": "Elicit.Slot.Dummy"
 							}
 						}
 					]
@@ -305,38 +319,11 @@
 		},
 		"prompts": [
 			{
-				"id": "Elicit.Slot.region",
+				"id": "Elicit.Slot.Dummy",
 				"variations": [
 					{
 						"type": "PlainText",
-						"value": "Über welche Region möchtest du spielen?"
-					}
-				]
-			},
-			{
-				"id": "Elicit.Slot.playerCount",
-				"variations": [
-					{
-						"type": "PlainText",
-						"value": "Wie viele Spieler wollen mitspielen?"
-					}
-				]
-			},
-			{
-				"id": "Slot.Validation.playerCountTooHigh",
-				"variations": [
-					{
-						"type": "PlainText",
-						"value": "Es können nur bis zu fünf Spieler mitspielen."
-					}
-				]
-			},
-			{
-				"id": "Slot.Validation.playerCountTooSmall",
-				"variations": [
-					{
-						"type": "PlainText",
-						"value": "Netter Versuch."
+						"value": "Huh?"
 					}
 				]
 			}
