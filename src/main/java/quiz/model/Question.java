@@ -40,13 +40,15 @@ public class Question implements Serializable {
 	public String correctAnswer() {
 		return this.answers.get(correctAnswerIndex()).text;
 	}
-	public void ask(StringBuilder speechText) {
+	public String ask() {
+		StringBuilder speech = new StringBuilder();
 		// TODO: SSML
-		speechText.append(text + " ");
+		speech.append(text + " ");
 		char i = 'A';
 		for (Answer a: answers) {
-			speechText.append(i++ + " - " + a.text + ". ");
+			speech.append(i++ + " - " + a.text + ". ");
 		}
+		return speech.toString();
 	}
 	
 	public String getInfo() { return info; } // info

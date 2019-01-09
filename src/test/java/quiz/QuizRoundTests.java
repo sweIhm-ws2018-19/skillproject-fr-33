@@ -29,7 +29,7 @@ public class QuizRoundTests {
 		quizround.region.nextQuestion();
 		
 		final StringBuilder speechText = new StringBuilder();
-		quizround.askNewQuestion(speechText);
+		quizround.toNextQuestion(speechText);
 		assertEquals("Tut mir leid, ich habe keine neuen Fragen mehr. ",speechText.toString());
 	}
 	@Parameters({
@@ -73,7 +73,7 @@ public class QuizRoundTests {
 		quizround.region.nextQuestion();
 		
 		final StringBuilder speechText = new StringBuilder();
-		quizround.askNewQuestion(speechText);
+		quizround.toNextQuestion(speechText);
 		assertTrue(speechText.toString().contains(expected));
 	}
 	

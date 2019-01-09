@@ -43,5 +43,6 @@ public class HelpIntentHandler implements RequestHandler {
                 .withReprompt(speechText)
                 .withShouldEndSession(false)
                 .build();
+        // TODO: should re-prompt according to the current state
     }
 }

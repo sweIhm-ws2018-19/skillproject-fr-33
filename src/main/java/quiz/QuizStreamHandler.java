@@ -16,37 +16,26 @@ package quiz;
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import quiz.handlers.FallbackIntentHandler;
-import quiz.handlers.HelpIntentHandler;
+
 import quiz.handlers.LaunchRequestHandler;
-import quiz.handlers.RepeatIntentHandler;
-import quiz.handlers.SelectAnswerIntentHandler;
+import quiz.handlers.HelpIntentHandler;
 import quiz.handlers.SessionEndedRequestHandler;
-import quiz.handlers.CancelandStopIntentHandler;
-import quiz.handlers.EndRoundIntentHandler;
-import quiz.handlers.StartQuizIntentHandler;
+import quiz.handlers.GameHandler;
 
 public class QuizStreamHandler extends SkillStreamHandler {
-    @SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked")
 	private static Skill getSkill() {
-        return Skills.standard()
-                .addRequestHandlers(
-                        new LaunchRequestHandler(),
-                        new StartQuizIntentHandler(),
-                        new SelectAnswerIntentHandler(),
-                        new RepeatIntentHandler(),
-                        new EndRoundIntentHandler(),
-                        new CancelandStopIntentHandler(),
-                        new SessionEndedRequestHandler(),
-                        new HelpIntentHandler(),
-                        new FallbackIntentHandler())
-                // Add your skill id below
-                //.withSkillId("")
-                .build();
-    }
+		return Skills.standard().addRequestHandlers(
+			new LaunchRequestHandler(),
+			new HelpIntentHandler(),
+			new SessionEndedRequestHandler(),
+			new GameHandler()
+		).build();
+		// .withSkillId("")
+	}
 
-    public QuizStreamHandler() {
-        super(getSkill());
-    }
+	public QuizStreamHandler() {
+		super(getSkill());
+	}
 
 }
