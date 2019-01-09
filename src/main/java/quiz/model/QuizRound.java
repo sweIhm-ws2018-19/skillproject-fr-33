@@ -26,6 +26,7 @@ public class QuizRound implements Serializable {
 	public Question[] askedQuestions = new Question[0];
 	public Region region;
 	public Player[] players;
+	public boolean isDemo = false;
 	public Norepeat praises = new Norepeat(new String[] { "Super", "Wahnsinn", "Spitze", "Toll", "Fantastisch", "Großartig", "Stark", "Sehr gut", "Das ist richtig", "Genauso ist es", "Volltreffer", "Stimmt genau", "Korrekt", "Haargenau", "Vollkommen richtig" });
 	public Norepeat declines = new Norepeat(new String[] { "Falsch", "Leider falsch", "Leider nicht richtig", "Leider kein Treffer", "Leider keinen Punkt für dich", "Das war nichts", "Schade" });
 	public Norepeat corrections = new Norepeat(new String[] { "Die richtige Lösung ist ", "Die richtige Lösung wäre gewesen ", "Die Lösung lautet ", "Richtig wäre gewesen" });
@@ -37,7 +38,7 @@ public class QuizRound implements Serializable {
 	}
 
 	public void toNextQuestion(StringBuilder speechText) {
-		Question q = this.region.nextQuestion();
+		Question q = this.region.nextQuestion(isDemo);
 		if (q == null) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
 			return;

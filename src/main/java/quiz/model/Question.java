@@ -42,11 +42,14 @@ public class Question implements Serializable {
 	}
 	public String ask() {
 		StringBuilder speech = new StringBuilder();
-		// TODO: SSML
 		speech.append(text + " ");
 		char i = 'A';
 		for (Answer a: answers) {
-			speech.append(i++ + " - " + a.text + ". ");
+			speech.append(i++ + ") " + a.text);
+			if (a.text.matches("\\d+$"))
+				speech.append("<break time=\"1s\"/> ");
+			else
+				speech.append(". ");
 		}
 		return speech.toString();
 	}

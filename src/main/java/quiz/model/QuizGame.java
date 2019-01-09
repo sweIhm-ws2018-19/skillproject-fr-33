@@ -18,10 +18,10 @@ public class QuizGame implements Serializable {
 	static ObjectMapper mapper = new ObjectMapper();
 	
 	public static QuizGame fromSessionAttributes(Map<String, Object> sessionAttributes) {
-		String round = (String) sessionAttributes.get("game");
-		if (round != null)
+		String gameJson = (String) sessionAttributes.get("game");
+		if (gameJson != null)
 			try {
-				return mapper.readValue(round, QuizGame.class);
+				return mapper.readValue(gameJson, QuizGame.class);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -47,9 +47,11 @@ public class QuizGame implements Serializable {
 	public GameState state;
 	
 	public QuizRound round;
+	public boolean isDemo;
 	
 	public QuizGame() {
 		state = GameState.INQUIRE_REGION;
+		isDemo = false;
 	}
 
 	public void checkComplete(StringBuilder speechText) {
@@ -65,6 +67,7 @@ public class QuizGame implements Serializable {
 		QuestionLoader loader = new QuestionLoader(region);
 		loader.load(); // regionAvailable() had been checked before
 		round = new QuizRound(region, createPlayers(speechText));
+		round.isDemo = isDemo;
 		round.toNextQuestion(speechText);
 		state = GameState.QUIZ_QUESTION;
 	}
@@ -130,7 +133,7 @@ public class QuizGame implements Serializable {
 			speechText.append("Wir spielen doch noch gar nicht. ");
 		} else {
 			round.selectAnswer(answerIndex, speechText);
-			if (round.askedQuestions.length < round.players.length * QuizRound.LENGTH) {
+			if (round.askedQuestions.length < round.players.length * (isDemo ? 1 : QuizRound.LENGTH)) {
 				round.toNextQuestion(speechText);
 				state = GameState.QUIZ_QUESTION;
 			} else {
@@ -149,6 +152,7 @@ public class QuizGame implements Serializable {
 		speechText.append(" Ok. Dann sag ich " + (round.players.length == 1 ? "dir noch dein" : "euch noch euer") + " Level. ");
 		for (Player player: round.players) {
 			int averagePoints = (int) Math.round(player.getTotalScore() / (double) roundCount);
+			if (isDemo) averagePoints = averagePoints * 3 + 2;
 			if (averagePoints == 0) {
 				speechText.append("Schade "+ player.name +", du hast leider keine Frage richtig beantwortet. "
 						+ "Versuch es doch gleich noch einmal. "
@@ -197,6 +201,8 @@ public class QuizGame implements Serializable {
 				break;
 			case INQUIRE_REGION:
 				question = "Über welche Region möchtest du spielen?"; // reprompt = "Nenne mir deine Wunschregion."
+				if (isDemo)
+					question = "Möchtest du das Quiz über Berlin spielen oder lieber eine andere Region auswählen?";
 				// only works when responding to StartRoundIntent
 				// return builder.withSpeech(speechText.toString()).addElicitSlotDirective("Region", null).build();
 				break;
@@ -205,7 +211,7 @@ public class QuizGame implements Serializable {
 				question = round.askedQuestions[round.askedQuestions.length - 1].ask();
 				break;
 			case PROMPT_CONTINUE_GAME:
-				question = "Willst du weiterspielen?"; // TODO: oder das Quiz beenden
+				question = (round.players.length == 1 ? "Willst du" : "Wollt ihr") + " weiterspielen oder das Quiz beenden?";
 				break;
 			default:
 				return builder.withSpeech(speechText.toString()).withShouldEndSession(false).build();

@@ -12,11 +12,11 @@ public class Region implements Serializable {
 		this.id = id;
 		this.questions = qs;
 	}
-	public Question nextQuestion() {
+	public Question nextQuestion(boolean isDemo) {
 		if (questions.length == 0)
 			return null;
 		Question[] old = questions;
-		int i = new Random().nextInt(questions.length);
+		int i = isDemo ? 0 : new Random().nextInt(questions.length);
 		questions = new Question[questions.length - 1];
 		System.arraycopy(old, 0, questions, 0, i);
 		System.arraycopy(old, i+1, questions, i, questions.length-i);

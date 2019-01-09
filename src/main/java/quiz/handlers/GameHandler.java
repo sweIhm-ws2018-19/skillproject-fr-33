@@ -38,8 +38,13 @@ public class GameHandler implements RequestHandler {
 		Map<String, Object> sessionAttributes = input.getAttributesManager().getSessionAttributes();
 		game = QuizGame.fromSessionAttributes(sessionAttributes);
 		
-		if (input.matches(intentName("AMAZON.StopIntent")) || (input.matches(intentName("AMAZON.CancelIntent")) && game.state != GameState.PROMPT_CONTINUE_GAME)) {
+		if ((input.matches(intentName("AMAZON.StopIntent")) || input.matches(intentName("AMAZON.CancelIntent"))) && game.state != GameState.PROMPT_CONTINUE_GAME) {
 			return input.getResponseBuilder().withSpeech("Schade, dass du nicht mehr mit mir spielen willst. Bis zum nächsten mal.").build();
+		} else if (input.matches(intentName("DemoIntent"))) {
+			game.isDemo = true;
+			game.state = GameState.INQUIRE_REGION;
+			speechText.append("Hallo! Schön, dass du da bist. Ich habe dich geortet. "
+				+ "Du befindest dich gerade in der Nähe von Berlin. ");
 		} else if (input.matches(intentName("StartRoundIntent"))) {
 			readPlayerCountSlot(slots.get("Anzahl"));
 			readRegionSlot(slots.get("Region"));
@@ -78,7 +83,7 @@ public class GameHandler implements RequestHandler {
 				speechText.append("Tut mir leid, das habe ich nicht verstanden. Sage einfach A, B oder C, um die Frage zu beantworten. ");
 			}
 		} else if (game.state == GameState.PROMPT_CONTINUE_GAME) {
-			if (input.matches(intentName("AMAZON.NoIntent").or(intentName("AMAZON.CancelIntent")))) {
+			if (input.matches(intentName("AMAZON.NoIntent").or(intentName("AMAZON.CancelIntent")).or(intentName("AMAZON.StopIntent")))) {
 				game.end(speechText);
 				game.intoSessionAttributes(sessionAttributes);
 				return input.getResponseBuilder().withSpeech(speechText.toString()).withShouldEndSession(true).build();

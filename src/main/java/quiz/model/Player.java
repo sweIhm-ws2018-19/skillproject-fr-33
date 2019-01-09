@@ -2,6 +2,8 @@ package quiz.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Player implements Serializable {
 	public String name;
 	public int roundScore;
@@ -28,6 +30,7 @@ public class Player implements Serializable {
 		roundScore = 0;
 		return r;
 	}
+	@JsonIgnore
 	public int getTotalScore() {
 		return score;
 	}

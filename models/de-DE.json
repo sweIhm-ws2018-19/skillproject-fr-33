@@ -153,7 +153,8 @@
 				{
 					"name": "AMAZON.ResumeIntent",
 					"samples": [
-						"Weiter"
+						"Weiter",
+						"Weiter spielen"
 					]
 				},
 				{
@@ -163,6 +164,15 @@
 				{
 					"name": "AMAZON.FallbackIntent",
 					"samples": []
+				},
+				{
+					"name": "DemoIntent",
+					"slots": [],
+					"samples": [
+						"mit Demo",
+						"als Demo",
+						"Demo"
+					]
 				}
 			],
 			"types": [

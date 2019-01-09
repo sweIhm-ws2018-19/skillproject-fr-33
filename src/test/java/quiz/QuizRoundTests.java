@@ -26,7 +26,7 @@ public class QuizRoundTests {
 	@Test
 	public void AskNewQuestionEmptyTest() {
 		quizround.region = r;
-		quizround.region.nextQuestion();
+		quizround.region.nextQuestion(false);
 		
 		final StringBuilder speechText = new StringBuilder();
 		quizround.toNextQuestion(speechText);
@@ -70,7 +70,7 @@ public class QuizRoundTests {
 		}
 		quizround.players = players2;
 		quizround.region = r2;
-		quizround.region.nextQuestion();
+		quizround.region.nextQuestion(false);
 		
 		final StringBuilder speechText = new StringBuilder();
 		quizround.toNextQuestion(speechText);

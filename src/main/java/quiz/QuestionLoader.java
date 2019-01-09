@@ -11,35 +11,33 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
-
-
 public class QuestionLoader {
-
 
 	public static class QuestionCSV {
 			@CsvBindByName(column = "")
 			public int index;
-			
-		 	@CsvBindByName(column = "Frage")
-		    private String frage;
 
-		    @CsvBindByName(column = "Richtige Antwort")
-		    private String antwort;
+			@CsvBindByName(column = "Frage")
+			private String frage;
 
-		    @CsvBindByName(column = "Alternative 1")
-		    private String alta;
+			@CsvBindByName(column = "Richtige Antwort")
+			private String antwort;
 
-		    @CsvBindByName(column = "Alternative 2")
-		    private String altb;
-		    
-		    @CsvBindByName(column = "Info richtige Antwort")
-		    private String info;
-		    
-		    public String getFrage() { return frage; }
-		    public String getAntwort() { return antwort; }
-		    public String getAlta() { return alta; }
-		    public String getAltb() { return altb; }
-		    public String getInfo() { return info; }
+			@CsvBindByName(column = "Alternative 1")
+			private String alta;
+
+			@CsvBindByName(column = "Alternative 2")
+			private String altb;
+
+			@CsvBindByName(column = "Info richtige Antwort")
+			private String info;
+
+			public String getFrage() { return frage; }
+			public String getAntwort() { return beautify(antwort); }
+			public String getAlta() { return beautify(alta); }
+			public String getAltb() { return beautify(altb); }
+			public String getInfo() { return info.replaceAll("\\.\\s*", ""); }
+			private String beautify(String text) { return text.replaceAll("\\s+$|\\s*\\.\\s*$|\\s*<break time=\"1s\"/>$", ""); }
 	}
 	
 	private Region region;
