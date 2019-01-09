@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Random;
 
 import com.amazon.ask.model.Response;
 import com.amazon.ask.response.ResponseBuilder;
@@ -11,7 +12,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import quiz.QuestionLoader;
-import quiz.model.QuizGame.GameState;
 
 public class QuizGame implements Serializable {
 
@@ -178,6 +178,14 @@ public class QuizGame implements Serializable {
 						+ " Du bist ein Einheimischer. ");
 			}
 		}
+	}
+	public void cont(StringBuilder speechText) {
+		String[] yeah = new String[] {"Großartig! ", "Spitze! ", "Toll! "};
+		int num = new Random().nextInt(yeah.length);
+		speechText.append(yeah[num]);
+		// TODO: Möchtest du weitere Fragen zu [REGION] spielen oder dir eine neue Region aussuchen?
+		round.toNextQuestion(speechText);
+		state = GameState.QUIZ_QUESTION;
 	}
 	public Optional<Response> respond(ResponseBuilder builder, StringBuilder speechText) {
 		String question = "";
