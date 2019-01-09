@@ -136,18 +136,17 @@ public class GameHandler implements RequestHandler {
 	}
 
 	private static String extractSlotId(Slot slot, String type) {
-		// Oh well, the SDK is horrible:
-		if (slot != null
-			&& slot.getResolutions() != null
-			&& slot.getResolutions().getResolutionsPerAuthority().size() > 0
-			// slot.getResolutions().getResolutionsPerAuthority().get(0).getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>."+type)
-			&& slot.getResolutions().getResolutionsPerAuthority().get(0).getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH
-			&& slot.getResolutions().getResolutionsPerAuthority().get(0).getValues().size() > 0
-		) {
-			// slot.getResolutions().getResolutionsPerAuthority().stream().filter(res -> res.getValues().contains(answerSlot.getValue())) ???
-			return slot.getResolutions().getResolutionsPerAuthority().get(0).getValues().get(0).getValue().getId();
-		} else {
-			return null;
-		}
+		// TODO: return Optional<String> and use ifPresentOrElse as soon as Java 9 is available...
+		return Optional.ofNullable(slot)
+		.flatMap(s -> Optional.ofNullable(s.getResolutions()))
+		.map(ress -> ress.getResolutionsPerAuthority())
+		.filter(aress -> !aress.isEmpty())
+		.map(aress -> aress.get(0))
+		// .filter(res -> res.getAuthority().equals("amzn1.er-authority.echo-sdk.<skill_id>."+type))
+		.filter(res -> res.getStatus().getCode() == StatusCode.ER_SUCCESS_MATCH)
+		.map(res -> res.getValues())
+		.filter(vals -> !vals.isEmpty())
+		.map(vals -> vals.get(0).getValue().getId())
+		.orElse(null);
 	}
 }
