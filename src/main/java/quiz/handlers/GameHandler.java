@@ -76,7 +76,16 @@ public class GameHandler implements RequestHandler {
 			}
 		} else if (game.state == GameState.QUIZ_QUESTION) {
 			if (input.matches(intentName("SelectAnswerIntent"))) {
-				readAnswerSlot(slots.get("AnswerSelection"));
+				String answerId = extractSlotId(slots.get("AnswerSelection"), "Selection");
+				String answerText = Optional.ofNullable(slots.get("AnswerText")).map(Slot::getValue).orElse(null);
+				if (answerId != null) {
+					int answerIndex = Integer.parseInt(answerId);
+					game.selectAnswer(answerIndex, answerText, speechText);
+				} else if (answerText != null) {
+					game.selectAnswer(-1, answerText, speechText);
+				} else {
+					speechText.append("Sorry. Kannst du das noch mal anders formulieren? ");
+				}
 			} else if (input.matches(intentName("AMAZON.RepeatIntent"))) {
 				speechText.append("Klar, ich stell dir die Frage noch einmal. ");
 			} else {
@@ -127,16 +136,6 @@ public class GameHandler implements RequestHandler {
 			} catch (NumberFormatException e) {
 				speechText.append("Das ist leider keine gültige Spielerzahl. ");
 			}
-		}
-	}
-
-	private void readAnswerSlot(Slot answerSlot) {
-		String answerId = extractSlotId(answerSlot, "Selection");
-		if (answerId != null) {
-			int answerIndex = Integer.parseInt(answerId);
-			game.selectAnswer(answerIndex, speechText);
-		} else {
-			speechText.append("Sorry. Kannst du das noch mal anders formulieren? ");
 		}
 	}
 

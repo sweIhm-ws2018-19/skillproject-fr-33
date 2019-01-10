@@ -128,11 +128,11 @@ public class QuizGame implements Serializable {
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
 		}
 	}
-	public void selectAnswer(int answerIndex, StringBuilder speechText) {
+	public void selectAnswer(int answerIndex, String answerText, StringBuilder speechText) {
 		if (round == null) {
 			speechText.append("Wir spielen doch noch gar nicht. ");
 		} else {
-			round.selectAnswer(answerIndex, speechText);
+			round.selectAnswer(answerIndex, answerText, speechText);
 			if (round.askedQuestions.length < round.players.length * (isDemo ? 1 : QuizRound.LENGTH)) {
 				round.toNextQuestion(speechText);
 				state = GameState.QUIZ_QUESTION;

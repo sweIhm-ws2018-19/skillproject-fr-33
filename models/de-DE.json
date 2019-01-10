@@ -121,6 +121,10 @@
 						{
 							"name": "AnswerSelection",
 							"type": "Selection"
+						},
+						{
+							"name": "AnswerText",
+							"type": "Text"
 						}
 					],
 					"samples": [
@@ -128,7 +132,10 @@
 						"Der {AnswerSelection}",
 						"Die {AnswerSelection}",
 						"Das {AnswerSelection}",
-						"Antwort {AnswerSelection}"
+						"Antwort {AnswerSelection}",
+						"Antwort {AnswerSelection} {AnswerText}",
+						"{AnswerText}",
+						"{AnswerSelection} {AnswerText}"
 					]
 				},
 				{
@@ -284,6 +291,2086 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "Text",
+					"values": [
+						{
+							"name": {
+								"value": "Schwangere Auster"
+							}
+						},
+						{
+							"name": {
+								"value": "Auster"
+							}
+						},
+						{
+							"name": {
+								"value": "Berghain"
+							}
+						},
+						{
+							"name": {
+								"value": "Kurfürstendamm"
+							}
+						},
+						{
+							"name": {
+								"value": "Sony Center"
+							}
+						},
+						{
+							"name": {
+								"value": "Flughafen"
+							}
+						},
+						{
+							"name": {
+								"value": "Quadriga"
+							}
+						},
+						{
+							"name": {
+								"value": "Kreuzberg"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlinale"
+							}
+						},
+						{
+							"name": {
+								"value": "Spree"
+							}
+						},
+						{
+							"name": {
+								"value": "Nahtloses Kondom"
+							}
+						},
+						{
+							"name": {
+								"value": "Kondom"
+							}
+						},
+						{
+							"name": {
+								"value": "Bär"
+							}
+						},
+						{
+							"name": {
+								"value": "Currywurst"
+							}
+						},
+						{
+							"name": {
+								"value": "John F. Kennedy"
+							}
+						},
+						{
+							"name": {
+								"value": "Kennedy"
+							}
+						},
+						{
+							"name": {
+								"value": "Frauen"
+							}
+						},
+						{
+							"name": {
+								"value": "Klaus Wowereit"
+							}
+						},
+						{
+							"name": {
+								"value": "Wowereit"
+							}
+						},
+						{
+							"name": {
+								"value": "Görlitzer Park"
+							}
+						},
+						{
+							"name": {
+								"value": "Prenzlauer Berg"
+							}
+						},
+						{
+							"name": {
+								"value": "Zonen"
+							}
+						},
+						{
+							"name": {
+								"value": "Siegessäule"
+							}
+						},
+						{
+							"name": {
+								"value": "Bulette"
+							}
+						},
+						{
+							"name": {
+								"value": "Südosten"
+							}
+						},
+						{
+							"name": {
+								"value": "Straßenbahn"
+							}
+						},
+						{
+							"name": {
+								"value": "Karl-Marx-Allee"
+							}
+						},
+						{
+							"name": {
+								"value": "Toilette"
+							}
+						},
+						{
+							"name": {
+								"value": "Kaiser-Wilhelm-Gedächtniskirche"
+							}
+						},
+						{
+							"name": {
+								"value": "Alliiertenmuseum"
+							}
+						},
+						{
+							"name": {
+								"value": "Städtenamen"
+							}
+						},
+						{
+							"name": {
+								"value": "Müggelsee"
+							}
+						},
+						{
+							"name": {
+								"value": "Sie markieren den ehemaligen Mauerverlauf"
+							}
+						},
+						{
+							"name": {
+								"value": "Mauerverlauf"
+							}
+						},
+						{
+							"name": {
+								"value": "Fernsehturm"
+							}
+						},
+						{
+							"name": {
+								"value": "An der Bernauer Straße bei der Gedenkstätte Berliner Mauer"
+							}
+						},
+						{
+							"name": {
+								"value": "Mit und ohne Darm"
+							}
+						},
+						{
+							"name": {
+								"value": "Café Achteck"
+							}
+						},
+						{
+							"name": {
+								"value": "Achteck"
+							}
+						},
+						{
+							"name": {
+								"value": "Waschmaschine"
+							}
+						},
+						{
+							"name": {
+								"value": "Sacco und Jacketti "
+							}
+						},
+						{
+							"name": {
+								"value": "Theodor Fontane"
+							}
+						},
+						{
+							"name": {
+								"value": "Fontane"
+							}
+						},
+						{
+							"name": {
+								"value": "Regine Hildebrandt"
+							}
+						},
+						{
+							"name": {
+								"value": "Hildebrandt"
+							}
+						},
+						{
+							"name": {
+								"value": "David Bowie"
+							}
+						},
+						{
+							"name": {
+								"value": "Bowie"
+							}
+						},
+						{
+							"name": {
+								"value": "aufgebrezeltes Mädchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Mädchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Klaus Wowereit"
+							}
+						},
+						{
+							"name": {
+								"value": "Wowereit"
+							}
+						},
+						{
+							"name": {
+								"value": "Elbe"
+							}
+						},
+						{
+							"name": {
+								"value": "Großer Garten"
+							}
+						},
+						{
+							"name": {
+								"value": "Hamburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Zitronenpresse"
+							}
+						},
+						{
+							"name": {
+								"value": "Januar"
+							}
+						},
+						{
+							"name": {
+								"value": "Löwe"
+							}
+						},
+						{
+							"name": {
+								"value": "Deutschland"
+							}
+						},
+						{
+							"name": {
+								"value": "Waldschlösschenbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Augustusbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Sachsen"
+							}
+						},
+						{
+							"name": {
+								"value": "Semperoper"
+							}
+						},
+						{
+							"name": {
+								"value": "Barock"
+							}
+						},
+						{
+							"name": {
+								"value": "Bezeichnung für einen Festungs-teil"
+							}
+						},
+						{
+							"name": {
+								"value": "Festungs-teil"
+							}
+						},
+						{
+							"name": {
+								"value": "Leonhardi-Museum"
+							}
+						},
+						{
+							"name": {
+								"value": "Moritzburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Schriftsteller"
+							}
+						},
+						{
+							"name": {
+								"value": "Augustusbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Neumarkt"
+							}
+						},
+						{
+							"name": {
+								"value": "Residenzschloss"
+							}
+						},
+						{
+							"name": {
+								"value": "Eierschecke"
+							}
+						},
+						{
+							"name": {
+								"value": "blaue Wunder"
+							}
+						},
+						{
+							"name": {
+								"value": "Gruna"
+							}
+						},
+						{
+							"name": {
+								"value": "Breslau"
+							}
+						},
+						{
+							"name": {
+								"value": "Grün"
+							}
+						},
+						{
+							"name": {
+								"value": "Odol"
+							}
+						},
+						{
+							"name": {
+								"value": "Wilder Mann"
+							}
+						},
+						{
+							"name": {
+								"value": "Leipzig"
+							}
+						},
+						{
+							"name": {
+								"value": "Schwebebahn"
+							}
+						},
+						{
+							"name": {
+								"value": "August der starke"
+							}
+						},
+						{
+							"name": {
+								"value": "Pferd"
+							}
+						},
+						{
+							"name": {
+								"value": "DD"
+							}
+						},
+						{
+							"name": {
+								"value": "der äußeren Neustadt"
+							}
+						},
+						{
+							"name": {
+								"value": "April"
+							}
+						},
+						{
+							"name": {
+								"value": "Essbare Figur aus Pflaumen"
+							}
+						},
+						{
+							"name": {
+								"value": "Pflaumen"
+							}
+						},
+						{
+							"name": {
+								"value": "Volkswagen"
+							}
+						},
+						{
+							"name": {
+								"value": "Königsstraße"
+							}
+						},
+						{
+							"name": {
+								"value": "Elberadweg"
+							}
+						},
+						{
+							"name": {
+								"value": "Eines"
+							}
+						},
+						{
+							"name": {
+								"value": "Albrechtsburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Kunstobjekt"
+							}
+						},
+						{
+							"name": {
+								"value": "Historik"
+							}
+						},
+						{
+							"name": {
+								"value": "Hauptbahnhof"
+							}
+						},
+						{
+							"name": {
+								"value": "Dschimmy Hendrix"
+							}
+						},
+						{
+							"name": {
+								"value": "Hendrix"
+							}
+						},
+						{
+							"name": {
+								"value": "Baltisches Meer"
+							}
+						},
+						{
+							"name": {
+								"value": "gering"
+							}
+						},
+						{
+							"name": {
+								"value": "Rügen"
+							}
+						},
+						{
+							"name": {
+								"value": "neun"
+							}
+						},
+						{
+							"name": {
+								"value": "Deutsche Alleenstraße"
+							}
+						},
+						{
+							"name": {
+								"value": "Weichsel"
+							}
+						},
+						{
+							"name": {
+								"value": "Knusst"
+							}
+						},
+						{
+							"name": {
+								"value": "Strandkorb"
+							}
+						},
+						{
+							"name": {
+								"value": "älteste noch erhaltene Bahnhof Deutschlands"
+							}
+						},
+						{
+							"name": {
+								"value": "Heringsdorf auf Usedom"
+							}
+						},
+						{
+							"name": {
+								"value": "Rhein"
+							}
+						},
+						{
+							"name": {
+								"value": "nur der nördliche Teil"
+							}
+						},
+						{
+							"name": {
+								"value": "Eisbär"
+							}
+						},
+						{
+							"name": {
+								"value": "Petermännchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Ja, den Katzenhai"
+							}
+						},
+						{
+							"name": {
+								"value": "Katzenhai"
+							}
+						},
+						{
+							"name": {
+								"value": "Wasser der Ostsee ist nicht salzig genug"
+							}
+						},
+						{
+							"name": {
+								"value": "Skalar"
+							}
+						},
+						{
+							"name": {
+								"value": "Möwen"
+							}
+						},
+						{
+							"name": {
+								"value": "Molli"
+							}
+						},
+						{
+							"name": {
+								"value": "Stein mit Loch"
+							}
+						},
+						{
+							"name": {
+								"value": "Loch"
+							}
+						},
+						{
+							"name": {
+								"value": "Bernstein"
+							}
+						},
+						{
+							"name": {
+								"value": "Tschechien"
+							}
+						},
+						{
+							"name": {
+								"value": "Kaufleuten Norddeutscher Städte"
+							}
+						},
+						{
+							"name": {
+								"value": "Travemünde"
+							}
+						},
+						{
+							"name": {
+								"value": "Shannties"
+							}
+						},
+						{
+							"name": {
+								"value": "Schweinswale"
+							}
+						},
+						{
+							"name": {
+								"value": "Usedom"
+							}
+						},
+						{
+							"name": {
+								"value": "Bernstein"
+							}
+						},
+						{
+							"name": {
+								"value": "Salzig"
+							}
+						},
+						{
+							"name": {
+								"value": "Meerschweinchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Wackelpudding"
+							}
+						},
+						{
+							"name": {
+								"value": "Muscheln"
+							}
+						},
+						{
+							"name": {
+								"value": "FESTLAND VON WASSER UMGEBEN IST"
+							}
+						},
+						{
+							"name": {
+								"value": "Kreide"
+							}
+						},
+						{
+							"name": {
+								"value": "Sandburgen"
+							}
+						},
+						{
+							"name": {
+								"value": "Leuchtturm"
+							}
+						},
+						{
+							"name": {
+								"value": "Störtebeker"
+							}
+						},
+						{
+							"name": {
+								"value": "Weltmeer"
+							}
+						},
+						{
+							"name": {
+								"value": "RIND- UND SCHWEINEFLEISCH MIT ROLLMOPS UND EI"
+							}
+						},
+						{
+							"name": {
+								"value": "SCHMALSPURBAHN AUF DER INSEL RÜGEN"
+							}
+						},
+						{
+							"name": {
+								"value": "PLATTDEUTSCH FÜR: EIN SCHWÄTZCHEN HALTEN"
+							}
+						},
+						{
+							"name": {
+								"value": "SIE LOTSEN SCHIFFE SICHER IN DEN HAFEN"
+							}
+						},
+						{
+							"name": {
+								"value": "Ja, aber kaum merklich"
+							}
+						},
+						{
+							"name": {
+								"value": "Mund der Welt"
+							}
+						},
+						{
+							"name": {
+								"value": "Friedrichshain"
+							}
+						},
+						{
+							"name": {
+								"value": "Warschauer Straße"
+							}
+						},
+						{
+							"name": {
+								"value": "Alfred Brehm Haus"
+							}
+						},
+						{
+							"name": {
+								"value": "Oper"
+							}
+						},
+						{
+							"name": {
+								"value": "Trikolore"
+							}
+						},
+						{
+							"name": {
+								"value": "Prenzlauer Berg"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlin Moviestars"
+							}
+						},
+						{
+							"name": {
+								"value": "Moviestars"
+							}
+						},
+						{
+							"name": {
+								"value": "Alster"
+							}
+						},
+						{
+							"name": {
+								"value": "Verhütungscomputer"
+							}
+						},
+						{
+							"name": {
+								"value": "Steinbock"
+							}
+						},
+						{
+							"name": {
+								"value": "Sauerkraut"
+							}
+						},
+						{
+							"name": {
+								"value": "Winston Churchill"
+							}
+						},
+						{
+							"name": {
+								"value": "Churchill"
+							}
+						},
+						{
+							"name": {
+								"value": "Männer"
+							}
+						},
+						{
+							"name": {
+								"value": "Walter Momper"
+							}
+						},
+						{
+							"name": {
+								"value": "Momper"
+							}
+						},
+						{
+							"name": {
+								"value": "Biesdorfer Park"
+							}
+						},
+						{
+							"name": {
+								"value": "Köpenick"
+							}
+						},
+						{
+							"name": {
+								"value": "Reichstag"
+							}
+						},
+						{
+							"name": {
+								"value": "Frikadelle"
+							}
+						},
+						{
+							"name": {
+								"value": "Südwesten"
+							}
+						},
+						{
+							"name": {
+								"value": "U-Bahn"
+							}
+						},
+						{
+							"name": {
+								"value": "Frankfurter Allee"
+							}
+						},
+						{
+							"name": {
+								"value": "Freudenhaus"
+							}
+						},
+						{
+							"name": {
+								"value": "Immanuelkirche"
+							}
+						},
+						{
+							"name": {
+								"value": "Es steht noch am Checkpoint Charlie"
+							}
+						},
+						{
+							"name": {
+								"value": "Ländernamen"
+							}
+						},
+						{
+							"name": {
+								"value": "Wannsee"
+							}
+						},
+						{
+							"name": {
+								"value": "Nach der Wiedervereinigung mussten die Straßen an einigen Stellen ausgebessert werden"
+							}
+						},
+						{
+							"name": {
+								"value": "Brandenburger Tor"
+							}
+						},
+						{
+							"name": {
+								"value": "Mitte beim Mauermuseum"
+							}
+						},
+						{
+							"name": {
+								"value": "Mauermuseum"
+							}
+						},
+						{
+							"name": {
+								"value": "Mit und ohne Pommes "
+							}
+						},
+						{
+							"name": {
+								"value": "Bar"
+							}
+						},
+						{
+							"name": {
+								"value": "Pissoir"
+							}
+						},
+						{
+							"name": {
+								"value": "Blechtrommel"
+							}
+						},
+						{
+							"name": {
+								"value": "Kalle und Fritze"
+							}
+						},
+						{
+							"name": {
+								"value": "Heinrich Mann"
+							}
+						},
+						{
+							"name": {
+								"value": "Mann"
+							}
+						},
+						{
+							"name": {
+								"value": "Wolfgang Lippert"
+							}
+						},
+						{
+							"name": {
+								"value": "Lippert"
+							}
+						},
+						{
+							"name": {
+								"value": "Freddie Mercury"
+							}
+						},
+						{
+							"name": {
+								"value": "Mercury"
+							}
+						},
+						{
+							"name": {
+								"value": "Kondotorei Fachbegriff für eine vierstöckige Torte"
+							}
+						},
+						{
+							"name": {
+								"value": "Torte"
+							}
+						},
+						{
+							"name": {
+								"value": "Eberhard Diepgen"
+							}
+						},
+						{
+							"name": {
+								"value": "Diepgen"
+							}
+						},
+						{
+							"name": {
+								"value": "Donau"
+							}
+						},
+						{
+							"name": {
+								"value": "Kleiner Garten"
+							}
+						},
+						{
+							"name": {
+								"value": "Leipzig"
+							}
+						},
+						{
+							"name": {
+								"value": "Malerwerkstadt"
+							}
+						},
+						{
+							"name": {
+								"value": "Juli"
+							}
+						},
+						{
+							"name": {
+								"value": "Frauenkirche"
+							}
+						},
+						{
+							"name": {
+								"value": "Sachsen"
+							}
+						},
+						{
+							"name": {
+								"value": "Autobahnbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Blaues Wunder"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlin"
+							}
+						},
+						{
+							"name": {
+								"value": "Bolschoi Theater"
+							}
+						},
+						{
+							"name": {
+								"value": "Rennaissance"
+							}
+						},
+						{
+							"name": {
+								"value": "Gefängnis"
+							}
+						},
+						{
+							"name": {
+								"value": "Neue Pinakothek"
+							}
+						},
+						{
+							"name": {
+								"value": "Radeberg"
+							}
+						},
+						{
+							"name": {
+								"value": "Maler"
+							}
+						},
+						{
+							"name": {
+								"value": "Waldschlösschenbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Großer Platz"
+							}
+						},
+						{
+							"name": {
+								"value": "Schloss Versailles"
+							}
+						},
+						{
+							"name": {
+								"value": "Versailles"
+							}
+						},
+						{
+							"name": {
+								"value": "Sachertorte"
+							}
+						},
+						{
+							"name": {
+								"value": "Tor zum Himmel"
+							}
+						},
+						{
+							"name": {
+								"value": "Schwabing"
+							}
+						},
+						{
+							"name": {
+								"value": "Augsburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Blau "
+							}
+						},
+						{
+							"name": {
+								"value": "Dontodent"
+							}
+						},
+						{
+							"name": {
+								"value": "Wilde Sau"
+							}
+						},
+						{
+							"name": {
+								"value": "Dresden"
+							}
+						},
+						{
+							"name": {
+								"value": "Shuttlebusse"
+							}
+						},
+						{
+							"name": {
+								"value": "Bürgermeister"
+							}
+						},
+						{
+							"name": {
+								"value": "Esel"
+							}
+						},
+						{
+							"name": {
+								"value": "Auf der Reeper Bahn"
+							}
+						},
+						{
+							"name": {
+								"value": "August"
+							}
+						},
+						{
+							"name": {
+								"value": "Dummkopf"
+							}
+						},
+						{
+							"name": {
+								"value": "Audi"
+							}
+						},
+						{
+							"name": {
+								"value": "Holzhofgasse"
+							}
+						},
+						{
+							"name": {
+								"value": "Dresdner Radweg"
+							}
+						},
+						{
+							"name": {
+								"value": "Zwei"
+							}
+						},
+						{
+							"name": {
+								"value": "Windsor Castle"
+							}
+						},
+						{
+							"name": {
+								"value": "Aussichtsplattform"
+							}
+						},
+						{
+							"name": {
+								"value": "Bildende Kunst"
+							}
+						},
+						{
+							"name": {
+								"value": "der Dresdner Heide"
+							}
+						},
+						{
+							"name": {
+								"value": "Elvis Presley"
+							}
+						},
+						{
+							"name": {
+								"value": "Presley"
+							}
+						},
+						{
+							"name": {
+								"value": "Nordmeer"
+							}
+						},
+						{
+							"name": {
+								"value": "sehr hoch"
+							}
+						},
+						{
+							"name": {
+								"value": "Fehmarn"
+							}
+						},
+						{
+							"name": {
+								"value": "sieben"
+							}
+						},
+						{
+							"name": {
+								"value": "Deutsche Burgenstraße"
+							}
+						},
+						{
+							"name": {
+								"value": "Donau"
+							}
+						},
+						{
+							"name": {
+								"value": "Windjammer"
+							}
+						},
+						{
+							"name": {
+								"value": "krabben-pulmaschine"
+							}
+						},
+						{
+							"name": {
+								"value": "älteste Galopprennbahn auf dem europäischen Kontinent"
+							}
+						},
+						{
+							"name": {
+								"value": "Heiligenhafen"
+							}
+						},
+						{
+							"name": {
+								"value": "Oder"
+							}
+						},
+						{
+							"name": {
+								"value": "Ostsee friert nie zu"
+							}
+						},
+						{
+							"name": {
+								"value": "Wale"
+							}
+						},
+						{
+							"name": {
+								"value": "Hanselmann"
+							}
+						},
+						{
+							"name": {
+								"value": "weißen Hai"
+							}
+						},
+						{
+							"name": {
+								"value": "Wasser ist zu kalt"
+							}
+						},
+						{
+							"name": {
+								"value": "Knorrhahn"
+							}
+						},
+						{
+							"name": {
+								"value": "Spaßvögeln"
+							}
+						},
+						{
+							"name": {
+								"value": "Loko"
+							}
+						},
+						{
+							"name": {
+								"value": "Zauber-Ei"
+							}
+						},
+						{
+							"name": {
+								"value": "Perlen"
+							}
+						},
+						{
+							"name": {
+								"value": "Schweden"
+							}
+						},
+						{
+							"name": {
+								"value": "Fischern der Nord- und Ostsee"
+							}
+						},
+						{
+							"name": {
+								"value": "Dahme"
+							}
+						},
+						{
+							"name": {
+								"value": "Schoten"
+							}
+						},
+						{
+							"name": {
+								"value": "Zwergwale"
+							}
+						},
+						{
+							"name": {
+								"value": "Hiddensee"
+							}
+						},
+						{
+							"name": {
+								"value": "besondere Muschelart"
+							}
+						},
+						{
+							"name": {
+								"value": "Süß"
+							}
+						},
+						{
+							"name": {
+								"value": "Aale"
+							}
+						},
+						{
+							"name": {
+								"value": "Quallen"
+							}
+						},
+						{
+							"name": {
+								"value": "Gold"
+							}
+						},
+						{
+							"name": {
+								"value": "WASSER VON FESTLAND UMGEBEN IST"
+							}
+						},
+						{
+							"name": {
+								"value": "Gummi"
+							}
+						},
+						{
+							"name": {
+								"value": "Ikea-Regale"
+							}
+						},
+						{
+							"name": {
+								"value": "Wäscheturm"
+							}
+						},
+						{
+							"name": {
+								"value": "Cäpt´n Flint"
+							}
+						},
+						{
+							"name": {
+								"value": "Binnenmeer"
+							}
+						},
+						{
+							"name": {
+								"value": "PÜREE AUS RINDERHACKFLEISCH MIT SALZGURKE AUF BROT"
+							}
+						},
+						{
+							"name": {
+								"value": "STATUE VON „ROLAND DEM SCHNELLEN“ IN KIEL"
+							}
+						},
+						{
+							"name": {
+								"value": "FORM VON PLATTDEUTSCH IM SÜDEN HOLSTEINS"
+							}
+						},
+						{
+							"name": {
+								"value": "DAMIT DIE FISCHE IM DUNKELN SEHEN KÖNNEN"
+							}
+						},
+						{
+							"name": {
+								"value": "Ja, stärker als an der Nordsee"
+							}
+						},
+						{
+							"name": {
+								"value": "Topf mit Deckel"
+							}
+						},
+						{
+							"name": {
+								"value": "Tollhain"
+							}
+						},
+						{
+							"name": {
+								"value": "Karl-Marx-Allee"
+							}
+						},
+						{
+							"name": {
+								"value": "Aquarium Berlin"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlin"
+							}
+						},
+						{
+							"name": {
+								"value": "Dom"
+							}
+						},
+						{
+							"name": {
+								"value": "Göttin Minerva"
+							}
+						},
+						{
+							"name": {
+								"value": "Minerva"
+							}
+						},
+						{
+							"name": {
+								"value": "Köpenick"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlinette"
+							}
+						},
+						{
+							"name": {
+								"value": "Rhein"
+							}
+						},
+						{
+							"name": {
+								"value": "Anti-Baby Pille"
+							}
+						},
+						{
+							"name": {
+								"value": "Fisch"
+							}
+						},
+						{
+							"name": {
+								"value": "Schnitzel"
+							}
+						},
+						{
+							"name": {
+								"value": "Franklin D. Roosevelt"
+							}
+						},
+						{
+							"name": {
+								"value": "Roosevelt"
+							}
+						},
+						{
+							"name": {
+								"value": "gleich viele"
+							}
+						},
+						{
+							"name": {
+								"value": "Eberhard Diepgen"
+							}
+						},
+						{
+							"name": {
+								"value": "Diepgen"
+							}
+						},
+						{
+							"name": {
+								"value": "Treptower Park"
+							}
+						},
+						{
+							"name": {
+								"value": "Marzahn"
+							}
+						},
+						{
+							"name": {
+								"value": "Fernsehturm"
+							}
+						},
+						{
+							"name": {
+								"value": "Fleischpflanzerl"
+							}
+						},
+						{
+							"name": {
+								"value": "Nordwesten"
+							}
+						},
+						{
+							"name": {
+								"value": "Bus"
+							}
+						},
+						{
+							"name": {
+								"value": "Sonnenallee"
+							}
+						},
+						{
+							"name": {
+								"value": "Hostel"
+							}
+						},
+						{
+							"name": {
+								"value": "Marienkirche"
+							}
+						},
+						{
+							"name": {
+								"value": "Deutschen Historischen Museum"
+							}
+						},
+						{
+							"name": {
+								"value": "Namen wichtiger Berliner Persönlichkeiten"
+							}
+						},
+						{
+							"name": {
+								"value": "Tegeler See"
+							}
+						},
+						{
+							"name": {
+								"value": "Es handelt sich um eine Kunstaktion bekannter Berliner Künstler"
+							}
+						},
+						{
+							"name": {
+								"value": "Künstler"
+							}
+						},
+						{
+							"name": {
+								"value": "Reichstag"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlin-Friedrichshain in der East Side Gallery"
+							}
+						},
+						{
+							"name": {
+								"value": "Mit und ohne Currypulver auf der Soße"
+							}
+						},
+						{
+							"name": {
+								"value": "Klub Klosett"
+							}
+						},
+						{
+							"name": {
+								"value": "Klosett"
+							}
+						},
+						{
+							"name": {
+								"value": "Kanzlerkiste"
+							}
+						},
+						{
+							"name": {
+								"value": "Proll und Pröllerchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Bertolt Brecht"
+							}
+						},
+						{
+							"name": {
+								"value": "Brecht"
+							}
+						},
+						{
+							"name": {
+								"value": "Wolf Biermann"
+							}
+						},
+						{
+							"name": {
+								"value": "Biermann"
+							}
+						},
+						{
+							"name": {
+								"value": "Mick Jagger"
+							}
+						},
+						{
+							"name": {
+								"value": "Jagger"
+							}
+						},
+						{
+							"name": {
+								"value": "Drink den John Travolta immer in Saturday Night Fever bestellte"
+							}
+						},
+						{
+							"name": {
+								"value": "Walter Mompert"
+							}
+						},
+						{
+							"name": {
+								"value": "Mompert"
+							}
+						},
+						{
+							"name": {
+								"value": "Main"
+							}
+						},
+						{
+							"name": {
+								"value": "Botanischer Garten"
+							}
+						},
+						{
+							"name": {
+								"value": "Pillnitz"
+							}
+						},
+						{
+							"name": {
+								"value": "Engelshaus"
+							}
+						},
+						{
+							"name": {
+								"value": "März"
+							}
+						},
+						{
+							"name": {
+								"value": "Adler"
+							}
+						},
+						{
+							"name": {
+								"value": "Europa"
+							}
+						},
+						{
+							"name": {
+								"value": "Karola-brücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Albertbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Bayern"
+							}
+						},
+						{
+							"name": {
+								"value": "Royal Opera House"
+							}
+						},
+						{
+							"name": {
+								"value": "Neuzeit"
+							}
+						},
+						{
+							"name": {
+								"value": "Hundezucht"
+							}
+						},
+						{
+							"name": {
+								"value": "Textilmuseum"
+							}
+						},
+						{
+							"name": {
+								"value": "Prag"
+							}
+						},
+						{
+							"name": {
+								"value": "Ritter"
+							}
+						},
+						{
+							"name": {
+								"value": "Steinerne Brücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Markusplatz"
+							}
+						},
+						{
+							"name": {
+								"value": "Schloss Nymphenburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Nymphenburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Schwarzwälderkirsch"
+							}
+						},
+						{
+							"name": {
+								"value": "Elbbrücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Kreuzberg"
+							}
+						},
+						{
+							"name": {
+								"value": "Paris"
+							}
+						},
+						{
+							"name": {
+								"value": "Rot"
+							}
+						},
+						{
+							"name": {
+								"value": "Meridol"
+							}
+						},
+						{
+							"name": {
+								"value": "Wilde Hilde"
+							}
+						},
+						{
+							"name": {
+								"value": "Chemnitz"
+							}
+						},
+						{
+							"name": {
+								"value": "Brücke"
+							}
+						},
+						{
+							"name": {
+								"value": "Ludwig der große"
+							}
+						},
+						{
+							"name": {
+								"value": "Einhorn"
+							}
+						},
+						{
+							"name": {
+								"value": "DDH"
+							}
+						},
+						{
+							"name": {
+								"value": "Berlin Mitte"
+							}
+						},
+						{
+							"name": {
+								"value": "Oktober"
+							}
+						},
+						{
+							"name": {
+								"value": "Krapfen"
+							}
+						},
+						{
+							"name": {
+								"value": "BMW"
+							}
+						},
+						{
+							"name": {
+								"value": "Arnulfstraße"
+							}
+						},
+						{
+							"name": {
+								"value": "Sachsen Radweg"
+							}
+						},
+						{
+							"name": {
+								"value": "Es gibt keinen Flughafen"
+							}
+						},
+						{
+							"name": {
+								"value": "Flughafen"
+							}
+						},
+						{
+							"name": {
+								"value": "Sankt Petersburg"
+							}
+						},
+						{
+							"name": {
+								"value": "Messgerät"
+							}
+						},
+						{
+							"name": {
+								"value": "Kunst Therapie"
+							}
+						},
+						{
+							"name": {
+								"value": "Alberthafen"
+							}
+						},
+						{
+							"name": {
+								"value": "Joe Cocker"
+							}
+						},
+						{
+							"name": {
+								"value": "Botttnischer Meerbusen"
+							}
+						},
+						{
+							"name": {
+								"value": "genauso hoch"
+							}
+						},
+						{
+							"name": {
+								"value": "Fischland-Darß"
+							}
+						},
+						{
+							"name": {
+								"value": "elf"
+							}
+						},
+						{
+							"name": {
+								"value": "Deutsche Fachwerkstraße"
+							}
+						},
+						{
+							"name": {
+								"value": "Weiße Elster"
+							}
+						},
+						{
+							"name": {
+								"value": "Kleiderbügel"
+							}
+						},
+						{
+							"name": {
+								"value": "bademeister-hochsitz"
+							}
+						},
+						{
+							"name": {
+								"value": "älteste Schmalspurbahn Deutschlands"
+							}
+						},
+						{
+							"name": {
+								"value": "Selling auf Rügen"
+							}
+						},
+						{
+							"name": {
+								"value": "Newa"
+							}
+						},
+						{
+							"name": {
+								"value": "Ostsee friert völlig zu"
+							}
+						},
+						{
+							"name": {
+								"value": "Robben"
+							}
+						},
+						{
+							"name": {
+								"value": "Jürgensson"
+							}
+						},
+						{
+							"name": {
+								"value": "nein"
+							}
+						},
+						{
+							"name": {
+								"value": "Wasser ist zu warm"
+							}
+						},
+						{
+							"name": {
+								"value": "Dorsch"
+							}
+						},
+						{
+							"name": {
+								"value": "Quietscheenten"
+							}
+						},
+						{
+							"name": {
+								"value": "Hansdampf"
+							}
+						},
+						{
+							"name": {
+								"value": "Hahn"
+							}
+						},
+						{
+							"name": {
+								"value": "Diamanten"
+							}
+						},
+						{
+							"name": {
+								"value": "Estland"
+							}
+						},
+						{
+							"name": {
+								"value": "Segelschifffreunden"
+							}
+						},
+						{
+							"name": {
+								"value": "auf Fehmarn"
+							}
+						},
+						{
+							"name": {
+								"value": "Folksongs"
+							}
+						},
+						{
+							"name": {
+								"value": "Buckelwale"
+							}
+						},
+						{
+							"name": {
+								"value": "Rügen"
+							}
+						},
+						{
+							"name": {
+								"value": "Fische der Ostsee"
+							}
+						},
+						{
+							"name": {
+								"value": "Bitter"
+							}
+						},
+						{
+							"name": {
+								"value": "Haie"
+							}
+						},
+						{
+							"name": {
+								"value": "Algen"
+							}
+						},
+						{
+							"name": {
+								"value": "Fleißbildchen"
+							}
+						},
+						{
+							"name": {
+								"value": "Palme drauf steht"
+							}
+						},
+						{
+							"name": {
+								"value": "Sand"
+							}
+						},
+						{
+							"name": {
+								"value": "Lego"
+							}
+						},
+						{
+							"name": {
+								"value": "Eiffelturm"
+							}
+						},
+						{
+							"name": {
+								"value": "Cäpt´n hook"
+							}
+						},
+						{
+							"name": {
+								"value": "Brackwassermeer"
+							}
+						},
+						{
+							"name": {
+								"value": "EINTOPF AUS FISCH MIT ROTER BEETE UND APFEL"
+							}
+						},
+						{
+							"name": {
+								"value": "SPRINTER AUS LUDWIGSLUST"
+							}
+						},
+						{
+							"name": {
+								"value": "FORM VON PLATTDEUTSCH IM WESTEN VORPOMMERNS"
+							}
+						},
+						{
+							"name": {
+								"value": "DAMIT KEINE FLUGZEUGE DAGEGEN FLIEGEN"
+							}
+						},
+						{
+							"name": {
+								"value": "Nein"
+							}
+						}
+					]
 				}
 			]
 		},
@@ -325,7 +2412,8 @@
 						}
 					]
 				}
-			]
+			],
+			"delegationStrategy": "SKILL_RESPONSE"
 		},
 		"prompts": [
 			{

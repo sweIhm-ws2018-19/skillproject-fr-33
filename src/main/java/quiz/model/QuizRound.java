@@ -1,6 +1,7 @@
 package quiz.model;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Random;
 
 import java.io.Serializable;
@@ -69,7 +70,7 @@ public class QuizRound implements Serializable {
 		}
 		q.shuffleAnswers();
 	}
-	public void selectAnswer(int answerIndex, StringBuilder speechText) {
+	public void selectAnswer(int answerIndex, String answerText, StringBuilder speechText) {
 		int lastAsked = askedQuestions.length - 1;
 		if (lastAsked < 0) {
 			speechText.append("Ich habe noch gar nichts gefragt. ");
@@ -77,21 +78,36 @@ public class QuizRound implements Serializable {
 		}
 		Question lastQuestion = askedQuestions[lastAsked];
 		Player currentPlayer = players[lastAsked % players.length];
-		if (answerIndex < 0) {
-			if (answerIndex == -1) {
-				speechText.append(declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
-			} else {
-				// You unlocked the hidden feature!
-				speechText.append("Ich kenne zwar die ultimative Frage nicht, aber das ist sicher die richtige Antwort. ");
-				currentPlayer.score += 1;
+		Answer answer = null;
+		if (answerText != null) {
+			/*
+			double[] similarities = lastQuestion.answers.stream().map(a -> a.similarity(answerText)).sorted().mapToDouble(f -> (double) f).toArray();
+			if (similarities[2] > 0.6 && similarities[2] - similarities[1] > 0.4 && similarities[2] - similarities[0] > 0.4) {
+				// FIXME: How to get the answer with that best match???
 			}
-		} else {
-			Answer answer = lastQuestion.answers.get(answerIndex);
-			currentPlayer.answer(answer);
-			speechText.append("<audio src='soundbank://soundlibrary/ui/gameshow/"+(answer.isCorrect? "amzn_ui_sfx_gameshow_positive_response_01'/>" : "amzn_ui_sfx_gameshow_negative_response_02'/>"));
-			speechText.append(answer.isCorrect
-				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
-				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+			*/
+			answer = lastQuestion.answers.stream()
+				.max(Comparator.comparing(a -> a.similarity(answerText)))
+				.filter(a -> a.similarity(answerText) > 0.5)
+				.orElse(null);
 		}
+		if (answer == null) {
+			if (answerIndex < 0) {
+				if (answerIndex == -1) {
+					speechText.append(declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+				} else {
+					// You unlocked the hidden feature!
+					speechText.append("Ich kenne zwar die ultimative Frage nicht, aber das ist sicher die richtige Antwort. ");
+					currentPlayer.score += 1;
+				}
+				return;
+			}
+			answer = lastQuestion.answers.get(answerIndex);
+		} // else if (answerIndex >= 0) // TODO: check whether they refer to the same
+		currentPlayer.answer(answer);
+		speechText.append("<audio src='soundbank://soundlibrary/ui/gameshow/"+(answer.isCorrect? "amzn_ui_sfx_gameshow_positive_response_01'/>" : "amzn_ui_sfx_gameshow_negative_response_02'/>"));
+		speechText.append(answer.isCorrect
+			? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
+			: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
 	}
 }
