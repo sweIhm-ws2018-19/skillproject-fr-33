@@ -66,7 +66,20 @@ public class QuizGame implements Serializable {
 		Region region = new Region(regionId, null);
 		QuestionLoader loader = new QuestionLoader(region);
 		loader.load(); // regionAvailable() had been checked before
-		round = new QuizRound(region, createPlayers(speechText));
+		if (round == null) {
+			round = new QuizRound(region, createPlayers(speechText));
+		} else {
+			if (round.region.id != region.id) {
+				round.region = region;
+			}
+			if (round.players.length != playerCount) {
+				round.players = createPlayers(speechText);
+			} else {
+				for (Player p: round.players) {
+					p.endRound();
+				}
+			}
+		}
 		round.isDemo = isDemo;
 		round.toNextQuestion(speechText);
 		state = GameState.QUIZ_QUESTION;
@@ -75,10 +88,12 @@ public class QuizGame implements Serializable {
 	public void selectPlayerCount(int count, StringBuilder speechText) {
 		if(count <= 0) {
 			speechText.append("Netter Versuch. ");
+			playerCount = 0;
 			return;
 		}
 		if (count >= 6) {
 			speechText.append("Es können höchstens fünf Spieler teilnehmen. ");
+			playerCount = 0;
 			return;
 		}
 		// valid number: 
@@ -101,10 +116,10 @@ public class QuizGame implements Serializable {
 			players[0] = new Player("Justus Jonas");
 			players[1] = new Player("Peter Shaw");
 			players[2] = new Player("Bob Andrews");
-			speechText.append("Yeih. Ihr seid die drei Fragezeichen. ");
+			speechText.append("<say-as interpret-as=\"interjection\">yay</say-as>! Ihr seid die drei Fragezeichen. ");
 		} else if (playerCount == 4) {
-			players[0] = new Player("Mickey");
-			players[1] = new Player("Minney");
+			players[0] = new Player("<lang xml:lang=\"en-US\">Mickey</lang>");
+			players[1] = new Player("<lang xml:lang=\"en-US\">Minney</lang>");
 			players[2] = new Player("Donald");
 			players[3] = new Player("Daisy");
 			speechText.append("Cool! Vier gewinnt! ");
@@ -123,6 +138,7 @@ public class QuizGame implements Serializable {
 	public void selectRegion(String region, StringBuilder speechText) {
 		if (QuestionLoader.isRegionAvailable(region)) {
 			this.regionId = region;
+			speechText.append(" Okay auf geht's! <audio src=\"soundbank://soundlibrary/transportation/amzn_sfx_car_honk_3x_02\"/> ");
 		} else {
 			this.regionId = null;
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
@@ -142,7 +158,7 @@ public class QuizGame implements Serializable {
 				roundCount += 1;
 				for (Player player: round.players) {
 					int roundScore = player.endRound();
-					speechText.append(player.name + ", du hast " + roundScore + " Punkte erreicht. ");
+					speechText.append(player.name + ", du hast " + (roundScore == 1 ? "einen Punkt" : roundScore+" Punkte") + " erreicht. ");
 				}
 				state = GameState.PROMPT_CONTINUE_GAME;
 			}
@@ -176,12 +192,13 @@ public class QuizGame implements Serializable {
 						+ "<audio src='soundbank://soundlibrary/musical/amzn_sfx_trumpet_bugle_03'/>"
 						+ "Du bist ein Stadtführer. ");
 			} else if(averagePoints == 5) {
-				speechText.append("Sehr gut"+ player.name +", du hast alle Fragen richtig beantwortet! Du weißt ja wirklich alles."
+				speechText.append("Sehr gut "+ player.name +", du hast alle Fragen richtig beantwortet! Du weißt ja wirklich alles."
 						+ " Hier ist dein Level:"
 						+ "<audio src='soundbank://soundlibrary/human/amzn_sfx_large_crowd_cheer_01'/>"
 						+ " Du bist ein Einheimischer. ");
 			}
-		}
+		} 
+		speechText.append("Tschüss, bis zum nächsten Mal! ");
 	}
 	public void cont(StringBuilder speechText) {
 		String[] yeah = new String[] {"Großartig! ", "Spitze! ", "Toll! "};

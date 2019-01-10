@@ -126,6 +126,7 @@ public class GameHandler implements RequestHandler {
 				game.selectPlayerCount(playerCount, speechText);
 			} catch (NumberFormatException e) {
 				speechText.append("Das ist leider keine gültige Spielerzahl. ");
+				game.playerCount = 0;
 			}
 		}
 	}

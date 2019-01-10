@@ -51,7 +51,7 @@ public class QuizRound implements Serializable {
 			if (players.length == 1) {
 				speechText.append("Los geht's mit deinen ersten "+LENGTH+" Fragen. ");
 			} else if (players.length == 2) {
-				speechText.append("Ich stelle euch jeweils abwechselnd "+LENGTH+" Fragen. "
+				speechText.append("Ich stelle euch jeweils abwechselnd "+(isDemo ? "eine Frage. " : LENGTH +" Fragen. ")
 					+ "Ladies first! Auf geht's, "+playerName+"! ");
 			} else if (players.length == 3) {
 				speechText.append("Auf geht's mit der ersten Runde. "+playerName+" beginnt. ");
@@ -90,8 +90,11 @@ public class QuizRound implements Serializable {
 			currentPlayer.answer(answer);
 			speechText.append("<audio src='soundbank://soundlibrary/ui/gameshow/"+(answer.isCorrect? "amzn_ui_sfx_gameshow_positive_response_01'/>" : "amzn_ui_sfx_gameshow_negative_response_02'/>"));
 			speechText.append(answer.isCorrect
-				? praises.next() +"! Übrigens, " + lastQuestion.getInfo() + ". "
-				: declines.next() + ". " + corrections.next() + " " + lastQuestion.correctAnswer() + ". ");
+				? "<prosody rate=\"120%\" pitch=\"+40%\">"+praises.next() +"</prosody>! "
+				: "prosody rate=\"90%\" pitch=\"30%\""+declines.next() + "</prosody>. " + corrections.next() + " " + lastQuestion.correctAnswer() +". ");
+			if (answer.isCorrect || isDemo) {
+				speechText.append("Übrigens, " + lastQuestion.getInfo() + ". ");
+			}
 		}
 	}
 }
