@@ -1,0 +1,53 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.7d15f605-226c-47e6-8ab8-dee19f5e8c23",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"game": "{\"regionId\":\"Berlin\",\"playerCount\":1,\"roundCount\":0,\"state\":\"QUIZ_QUESTION\",\"round\":{\"askedQuestions\":[{\"id\":\"Berlin/0\",\"text\":\"Welches ist das Traditionsgericht der Berliner?\",\"answers\":[{\"text\":\"Currywurst\",\"isCorrect\":true},{\"text\":\"Sauerkraut\",\"isCorrect\":false},{\"text\":\"Schnitzel\",\"isCorrect\":false}],\"info\":\"Wurst mit Pommes und roter Soße gilt unter anderem als Berliner Wahrzeichen.\"}],\"region\":{\"id\":\"Berlin\",\"questions\":[{\"id\":\"Berlin/0\",\"text\":\"Welche Sehenswürdigkeit steht direkt am Alexanderplatz?\",\"answers\":[{\"text\":\"Fernsehturm\",\"isCorrect\":true},{\"text\":\"Brandenburger Tor\",\"isCorrect\":false},{\"text\":\"Reichstag\",\"isCorrect\":false}],\"info\":\"Der Fernsehturm ist das Wahrzeichen der Hauptstadt und wird auch Discokugel oder Telespargel genannt.\"},{\"id\":\"Berlin/0\",\"text\":\"Wie viele Einwohner hat Berlin etwa?\",\"answers\":[{\"text\":\"3,7 Mio.\",\"isCorrect\":true}],\"info\":\"Klaus Wowereit hatte das Amt des Bürgermeister von 2001 - 2014 inne.\"}]},\"players\":[{\"name\":\"\",\"roundScore\":0,\"score\":0}],\"praises\":{\"utterances\":[\"Super\",\"Wahnsinn\",\"Spitze\",\"Toll\",\"Fantastisch\",\"Großartig\",\"Stark\",\"Sehr gut\",\"Das ist richtig\",\"Genauso ist es\",\"Volltreffer\",\"Stimmt genau\",\"Korrekt\",\"Haargenau\",\"Vollkommen richtig\"],\"lastIdx\":0},\"declines\":{\"utterances\":[\"Falsch\",\"Leider falsch\",\"Leider nicht richtig\",\"Leider kein Treffer\",\"Leider keinen Punkt für dich\",\"Das war nichts\",\"Schade\"],\"lastIdx\":0},\"corrections\":{\"utterances\":[\"Die richtige Lösung ist \",\"Die richtige Lösung wäre gewesen \",\"Die Lösung lautet \",\"Richtig wäre gewesen\"],\"lastIdx\":0}}}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.4b9638ce-8199-438f-b7f1-ffbd59404cd7",
+		"timestamp": "2018-12-21T15:56:40Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "SelectAnswerIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"AnswerSelection": {
+					"name": "AnswerSelection",
+					"value": "a",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.Selection",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "a. ",
+											"id": "0"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		},
+		"dialogState": "STARTED"
+	}
+}

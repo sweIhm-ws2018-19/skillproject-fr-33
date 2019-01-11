@@ -1,0 +1,57 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.a3835ce6-0b65-425d-ae5e-021a3c83ac0d",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"game": "{\"regionId\":\"Berlin\",\"playerCount\":2,\"roundCount\":0,\"state\":\"QUIZ_QUESTION\",\"round\":{\"askedQuestions\":[{\"id\":\"Berlin/0\",\"text\":\"Wie nennen die Berliner das Haus der Kulturen der Welt?\",\"answers\":[{\"text\":\"Schwangere Auster\",\"isCorrect\":true},{\"text\":\"Topf mit Deckel\",\"isCorrect\":false},{\"text\":\"Mund der Welt\",\"isCorrect\":false}],\"info\":\"Die Muschelschalen-Form inspirierte Journalisten das Gebäude ,,Schwangere Auster\\\" zu nennen\"}],\"region\":{\"id\":\"Berlin\",\"questions\":[{\"id\":\"Berlin/0\",\"text\":\"Welcher Berliner Club ist einer der bekanntesten Clubs weltweit?\",\"answers\":[{\"text\":\"Berghain\",\"isCorrect\":true},{\"text\":\"Friedrichshain\",\"isCorrect\":false},{\"text\":\"Tollhain\",\"isCorrect\":false}],\"info\":\"Die Tür vom Berghain gilt als die gefürchteste Tür Berlins und die Parties als legendär\"}]},\"players\":[{\"name\":\"Heidi\",\"roundScore\":0,\"score\":0},{\"name\":\"Peter\",\"roundScore\":0,\"score\":0}],\"isDemo\":true,\"praises\":{\"utterances\":[\"Super\",\"Wahnsinn\",\"Spitze\",\"Toll\",\"Fantastisch\",\"Großartig\",\"Stark\",\"Sehr gut\",\"Das ist richtig\",\"Genauso ist es\",\"Volltreffer\",\"Stimmt genau\",\"Korrekt\",\"Haargenau\",\"Vollkommen richtig\"],\"lastIdx\":0},\"declines\":{\"utterances\":[\"Falsch\",\"Leider falsch\",\"Leider nicht richtig\",\"Leider kein Treffer\",\"Leider keinen Punkt für dich\",\"Das war nichts\",\"Schade\"],\"lastIdx\":0},\"corrections\":{\"utterances\":[\"Die richtige Lösung ist \",\"Die richtige Lösung wäre gewesen \",\"Die Lösung lautet \",\"Richtig wäre gewesen\"],\"lastIdx\":0}},\"isDemo\":true}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.20b273ee-3353-4b5e-a051-efcc7440041a",
+		"timestamp": "2019-01-11T11:00:11Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "SelectAnswerIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"AnswerSelection": {
+					"name": "AnswerSelection",
+					"value": "a",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.Selection",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "a. ",
+											"id": "0"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"AnswerText": {
+					"name": "AnswerText",
+					"confirmationStatus": "NONE"
+				}
+			}
+		},
+		"dialogState": "STARTED"
+	}
+}

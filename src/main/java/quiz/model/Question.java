@@ -40,13 +40,18 @@ public class Question implements Serializable {
 	public String correctAnswer() {
 		return this.answers.get(correctAnswerIndex()).text;
 	}
-	public void ask(StringBuilder speechText) {
-		// TODO: SSML
-		speechText.append(text + " ");
+	public String ask() {
+		StringBuilder speech = new StringBuilder();
+		speech.append(text + " ");
 		char i = 'A';
 		for (Answer a: answers) {
-			speechText.append(i++ + " - " + a.text + ". ");
+			speech.append(i++ + ") " + a.text);
+			if (a.text.matches("\\d+$"))
+				speech.append("<break time=\"1s\"/> ");
+			else
+				speech.append(". ");
 		}
+		return speech.toString();
 	}
 	
 	public String getInfo() { return info; } // info

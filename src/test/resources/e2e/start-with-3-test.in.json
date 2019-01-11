@@ -1,0 +1,55 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.f6a4b02d-dc5c-4f9e-bc9a-b41de52bc182",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.498c09ff-955b-43a6-8c44-449ac5024299",
+		"timestamp": "2018-12-12T16:07:11Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "StartRoundIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"Region": {
+					"name": "Region",
+					"value": "test",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.KnownRegion",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "Tests",
+											"id": "Tests"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"Anzahl": {
+					"name": "Anzahl",
+					"value": "3",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		}
+	}
+}

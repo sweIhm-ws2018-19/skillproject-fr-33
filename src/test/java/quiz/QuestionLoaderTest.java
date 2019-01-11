@@ -30,10 +30,10 @@ public class QuestionLoaderTest {
 	@Parameters
 	public static Collection<String[]> data(){
 		return Arrays.asList(new String[][] {
-			{"0","Wer war Miss Marple ?","Eine Detektivin","Eine Krankenschwester","Eine Lehrerin"},
+			{"0","Wer war Miss Marple?","Eine Detektivin","Eine Krankenschwester","Eine Lehrerin"},
 			{"1","Welches Tier ist ein Fleischfesser?","Katze","Pferd","Meerschweinchen"},
-			{"2","Was ist 3 * 3 ?","9","8","10"},
-			{"3","Wie viele Klassen gibt es in der Grundschule ?","4","5","9"}
+			{"2","Was ist 3 * 3?","9","8","10"},
+			{"3","Wie viele Klassen gibt es in der Grundschule?","4","5","9"}
 		});
 	}
 	

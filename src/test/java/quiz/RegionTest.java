@@ -16,10 +16,10 @@ public class RegionTest {
 		}, "info");
 		Region r = new Region("test", new Question[] { q, q });
 		assertEquals(r.questions.length, 2);
-		assertEquals(r.nextQuestion(), q);
+		assertEquals(r.nextQuestion(false), q);
 		assertEquals(r.questions.length, 1);
-		assertEquals(r.nextQuestion(), q);
+		assertEquals(r.nextQuestion(false), q);
 		assertEquals(r.questions.length, 0);
-		assertEquals(r.nextQuestion(), null);
+		assertEquals(r.nextQuestion(false), null);
 	}
 }

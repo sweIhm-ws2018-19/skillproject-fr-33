@@ -1,51 +1,53 @@
-;Frage ;Richtige Antwort;Alternative 1;Alternative 2;Info richtige Antwort
-1;An welchem Fluss liegt Dresden?;Elbe;Donau;Main;Die Elbe entspringt in Tschechien und fließt quer durch Deutschland. Der Elberadweg ist über 1000 Kilometer lang.
-2;Wie heißt Dresdens berühmteste Grünanlage?;Großer Garten;Kleiner Garten;Botanischer Garten;Der barocke Garten liegt nahe des Zentrums. Skulpturen, ein kleiner Palast und Blumen verzieren die Anlage.
-3;Welcher Name ist auf keinem Dampfer zu finden?;Hamburg;Leipzig;Pillnitz;Jeder der 11 Personendampfer hat seinen eigenen Namen. Aber Hamburg heißt keines dieser Schiffe.
-4;Wie wird die Kunsthochschule Dresdens umgangssprachlich noch genannt?;Zitronenpresse;Malerwerkstadt;Engelshaus;Die Kunsthochschule kam durch ihre Glaskuppel, die die Form einer Zitronenpresse hat, zu ihrem Spitznamen.
-5;Wann findet in Dresden der jährliche Opernball statt?;Januar;Juli;März;Der Semper-Opernball findet seit 2006 jährlich statt und ist das größte Klassik Entertainment Event im deutschsprachigen Raum.
-6;Wann wurde die Frauenkirche wieder aufgebaut?;1996 bis 2005;1976 bis 1985;2001 bis 2006;Die Frauenkirche wurde im Krieg vollständig zerstört. Es dauerte 60 Jahre, bis sie wieder eingeweiht werden konnte.
-7;Was ist auf Dresdens Wappen abgebildet? ;Ein Löwe;Die Frauenkirche;Ein Adler;Das schwarz goldene Wappen hat die Form eines Schildes und zeigt den sogenannten Meißner Löwen. Es geht auf die Wettiner aus dem Mittelalter zurück. 
-8;Der Dresdner Striezelmarkt ist der älteste Weihnachtsmarkt von…?;Deutschland;Sachsen;Europa;Den Striezelmarkt gibt es seit 1435. 2018 findet er zum 584. mal statt.
-9;Welche Dresdner Elbbrücke ist mit 635 Metern die längste?;Waldschlösschenbrücke;Autobahnbrücke;Carolabrücke;Die sehr umstrittene Waldschlösschenbrücke führte dazu, dass dem Elbtal der UNESCO Welterbetitel entzogen wurde. Die vierspurige Brücke wurde 2013 eröffnet.
-10;Über welche Dresdner Elbbrücke führt der Sächsische Jakobsweg?;Augustusbrücke;Blaues Wunder;Albertbrücke;Der sächsische Jakobsweg ist 300 Kilometer lang und führt unter anderem durch Chemnitz, Dresden und Zwickau.
-11;In welchem Bundesland liegt Dresden?;Sachsen;Berlin;Bayern;Sachsen grenzt an Polen und Tschechien. Dresden ist nur etwa 50 Kilometer von der tschechischen Grenze entfernt. 
-12;Wie heißt Dresdens Oper?;Semperoper;Bolschoi Theater;Royal Opera House;Das Orchester in der Semperoper heißt sächsische Staatskapelle und wurde bereits 1548 gegründet. 
-13;Welcher Epoche ist die Frauenkirche zuzuordnen?;Barock;Rennaissance;Neuzeit;Eine der Glocken im achtstimmigen Geläut heißt Maria. Sie ist die einzig erhaltene Glocke, die von 1734 bis 1925 hier ihren Dienst versah. 
-14;"Woher kommt der Name ""Zwinger""?";Bezeichnung für einen Festungsteil;Gefängnis;Hundezucht;Der Dresdner Zwinger ist ein barocker Gebäudekomplex mit angelegtem Garten, in dem auch Veranstaltungen abgehalten werden.
-15;Welches dieser Museen liegt in Dresden?;Leonhardi-Museum;Neue Pinakothek;Textilmuseum;"Eduard Leonhardi war ein Landschaftsmaler im 19. Jahrhundert. Sein bekanntestes Werk heißt ""Deutscher Wald""."
-16;"Wo wurde der Film ""3 Haselnüsse für Aschenbrödel"" gefilmt?";Moritzburg;Radeberg ;Prag;Das Schloss Moritzburg ist nur 17 Kilometer von Dresden entfernt. Mit öffentlichen Verkehrsmitteln dauert die Anfahrt rund 30 Minuten. 
-17;Was war Erich Kästner von Beruf?;Schriftsteller;Maler ;Ritter;In Dresden gibt es ein Erich Kästner Museum und ein Erich Kästner Denkmal.
-18;Wie heißt die älteste Steinbrücke?;Augustusbrücke;Waldschlösschenbrücke;Steinerne Brücke;Die Augustusbrücke ist eine der ältesten Brücken in Sachsen und war im Mittelalter die längste Brücke Deutschlands. 
-19;Wie viele Bögen hat die Augustusbrücke?;24;10;33;Die Augustusbrücke ist ein Kulturdenkmal im Sinne des sächsischen Denkmalschutzes. 
-20;Wie groß sind die Heiligenstatuen auf dem Dach der Hofkirche?;3,5 Meter;1 Meter;2 Meter;Es stehen 74 Heiligenstatuen auf dem Dach der Hofkirche.
-21;Wie heißt Dresdens Marktplatz?;Neumarkt;Großer Platz;Markusplatz;Der Neumarkt liegt in Dresdens Altstadt. Die bekannte Frauenkirche liegt direkt an diesem Platz.
-22;Wie heißt das bekannte Schloss in Dresden?;Residenzschloss;Schloss Versailles;Schloss Nymphenburg;Im Residenzschloss gibt es mehrere Museen und außerdem kann man den Hausmannsturm besteigen.
-23;Was ist die Dresdner Kuchenspezialität?;Eierschecke;Sachertorte;Schwarzwälderkirsch;Die Eierschecke ist ein Blechkuchen. Die Namensgebung ist auf einen Rock für Männer zurückzuführen.
-24;Wie wird die Loschwitzer Brücke noch genannt?;Das blaue Wunder;Tor zum Himmel;Elbbrücke;Die blaue Brücke galt als Wunder für die Bevölkerung, da zum ersten Mal eine Brücke aus Stahl ohne Pfeiler oder Stützen eine so hohe Tragkraft erreichte. 
-25;Was ist ein Stadtteil von Dresden?;Gruna;Schwabing;Kreuzberg;Der Stadtteil liegt in der Nähe des großen Garten im Osten Dresdens.
-26;Wie heißt eine der Partnerstädte Dresdens?;Breslau;Augsburg;Paris;Breslau liegt in Polen. Die Partnerschaft ist geprägt durch Schüleraustausche, kulturelle Veranstaltungen, Aktivitäten von Vereinen und mehr.
-27;Welche Farbe ist im Wappen des Freistaats Sachsen enthalten?;Grün;Blau ;Rot;Das Sachsenwappen geht auf das Herzogsgeschlecht der Askanier zurück, die im 11. Jahrhundert lebten.
-28;Wie viele Kilometer sind es von Dresden nach Berlin?;200;100;250;Über die A 13 braucht man nur knapp zwei Stunden bis nach Berlin.
-29;Welche Mundwassermarke kommt aus Dresden?;Odol;Dontodent;Meridol;1892 wurde in Dresden das Mundwasser von Richard Seifert erfunden. Die Geschichte der Erfindung und Verbreitung ist heute im Lingnerschloss ausgestellt.
-30;Welcher dieser Stadtteile ist nicht erfunden?;Wilder Mann;Wilde Sau;Wilde Hilde;Das Gebiet Trachenberge wird Wilder Mann genannt, da dort einmal ein Weingut mit diesem Namen bestand. 
-31;Was ist die größte sächsische Stadt?;Leipzig;Dresden;Chemnitz;Mit rund 590.000 Einwohnern hat Leipzig etwa 40.000 mehr Einwohner als Dresden.
-32;Aus wie viel Grün- und Waldfläche besteht Dresden?;63 Prozent;30 Prozent;44 Prozent;Das Naherholungsgebiet Dresdner Heide ist eines der größten Stadtwälder Deutschlands. 
-33;Wie viele Naturschutzgebiete gibt es im Stadtgebiet?;4;1;6;Das Stadtgebiet Dresden rühmt sich durch die Dresdner Heide, den großen Garten, großzügigen Parkanlagen, Alleen und den Elbufern einer landschaftlichen und naturellen Vielfalt.
-34;Wodurch werden die Stadtteile Loschwitz und Oberloschwitz verbunden?;Eine Schwebebahn ;Shuttlebusse;Eine Brücke;Die Schwebebahn wurde von 1898 bis 1900 gebaut und ist weltweit die älteste ihrer Art.
-35;Wie hoch ist der Dresdner Fernsehturm?;252 Meter;165 Meter;212 Meter;Der Fernsehturm wurde mit der Übernahme durch die Deutsche Telekom 1991 für die Öffentlichkeit geschlossen.
-36;Wen bildet der goldene Reiter ab?;August der starke;Den Bürgermeister;Ludwig der große;Das blattvergoldete Kupferdenkmal zeigt August den starken auf sein Königreich Polen zureiten.
-37;Auf was für einem Tier reitet der goldene Reiter?;Pferd;Esel;Einhorn;Das Denkmal steht seit 1736 am Neustädter Markt.
-38;Was ist das Autokennzeichen von Dresden?;DD;D;DDH;Kennst du schon diese Witze? Das Kennzeichen Dresdens steht für Dummer Dussel oder auch Doppelt Doof.
-39;Wo ist Dresdens Szene- und Kneipenviertel?;In der äußeren Neustadt;Auf der Reeper Bahn;Berlin Mitte;Besonders sehenswert ist die Kunsthofpassage mit ihrer interessanten Architektur, den kleinen Restaurants und Kunsthandwerkerläden.
-40;Wann findet immer das Filmfest statt?;April;August;Oktober;Das Kurzfilmfest findet jährlich im Filmtheater Schauburg statt.
-41;Was ist ein Pflaumentoffel?;Essbare Figur aus Pflaumen;Ein Dummkopf;Ein Krapfen;Das aus Trockenpflaumen zusammengesteckte Männlein mit Zylinder ist Symbol für den Dresdner Striezelmarkt.
-42;Wie viele Touristen kommen jährlich nach Dresden?;7 Millionen;11 Millionen;4 Millionen;Die durchschnittliche Aufenthaltsdauer der Touristen in Dresden betrrägt genau 2 Tage.
-43;"Wer produziert in der ""gläsernen Manufaktur""?";Volkswagen;Audi;BMW;Die Gläserne Manufaktur war ursprünglich auf die Produktion einer Luxuslimousine ausgerichtet. Heute steht sie für E-Mobilität und Digitalisierung.
-44;In welcher Straße befinden sich die teuersten Geschäfte?;Königsstraße;Holzhofgasse;Arnulfstraße;Die Königsstraße liegt im Dresdner Barockviertel. Hier gibt es viele Boutiquen, Restaurants und ein lebhaftes Nachtleben. 
-45;Welcher bekannte Fahrradweg führt durch Dresden?;Elberadweg;Dresdner Radweg;Sachsen Radweg;Der Elberadweg führt vom Riesengebirge in Nordtschechien bis nach Cuxhaven an der Elbemündung in die Nordsee. 
-46;Wie viele Terminals hat der Dresdner Flughafen?;Eines;Zwei;Es gibt keinen Flughafen;Seit 2008 ist der Dresdner Flughafen international.
-47;Wie heißt das älteste Schloss Deutschlands?;Albrechtsburg;Windsor Castle;Sankt Petersburg;Das spätgotische Schloss liegt in Meißen, ca. 40 Minuten von Dresden entfernt.
-48;Was ist das Panometer?;Ein Kunstobjekt;Eine Aussichtsplattform;Ein Messgerät;Im 360° Panorama kann man die Stadt Dresden mit Rundbildern des Künstlers Yadegar Asisi mit einer Höhe von 27 Metern kennenlernen. 
-49;Was kann man an der Hochschule für bildende Künste nicht studieren?;Historik;Bildende Kunst;Kunst Therapie;Das imposante Hochschulgebäude liegt auf der Brühlschen Terrasse. Hier kann man Bildende Kunst, Restaurierung, Bühnen- und Kostümbild, Theaterausstattung und Kunst Therapie studieren.
-50;Wo kann man in Dresden gut shoppen gehen?;Am Hauptbahnhof;In der Dresdner Heide;Im Alberthafen;Der Dresdner Hauptbanhof wird aufgrund der vielen Shopping Möglichkeiten auch als Einkaufsbahnhof bezeichnet.
+;Frage;Richtige Antwort;Alternative 1;Alternative 2;Info richtige Antwort
+1;An welchem Fluss liegt Dresden?;Elbe.;Donau.;Main.;Die Elbe entspringt in Tschechien und fließt quer durch Deutschland. Der Elberadweg ist über 1000 Kilometer lang.
+2;Wie heißt Dresdens berühmteste Grünanlage?;Großer Garten.;Kleiner Garten.;Botanischer Garten.;Der barocke Garten liegt nahe des Zentrums. Skulpturen, ein kleiner Palast und Blumen verzieren die Anlage.
+3;Welcher Name ist auf keinem Dampfer zu finden?;Hamburg.;Leipzig.;Pillnitz.;Jeder der 11 Personendampfer hat seinen eigenen Namen. Aber Hamburg heißt keines dieser Schiffe.
+4;Wie wird die Kunsthochschule Dresdens umgangssprachlich noch genannt?;Zitronenpresse.;Malerwerkstadt.;Engelshaus.;Die Kunsthochschule kam durch ihre Glaskuppel, die die Form einer Zitronenpresse hat, zu ihrem Spitznamen.
+5;Wann findet in Dresden der jährliche Opernball statt?;Januar.;Juli.;März.;Der Semper-Opernball findet seit 2006 jährlich statt und ist das größte Klassik Entertainment Event im deutschsprachigen Raum.
+6;Wann wurde die Frauenkirche wieder aufgebaut?;1996 bis 2005.;"1976 bis 1985 <break time=""1s""/>";"2001 bis 2006 <break time=""1s""/>";Die Frauenkirche wurde im Krieg vollständig zerstört. Es dauerte 60 Jahre, bis sie wieder eingeweiht werden konnte.
+7;Was ist auf Dresdens Wappen abgebildet? ;Ein Löwe.;Die Frauenkirche.;Ein Adler.;Das schwarz goldene Wappen hat die Form eines Schildes und zeigt den sogenannten Meißner Löwen. Es geht auf die Wettiner aus dem Mittelalter zurück. 
+8;Der Dresdner Striezelmarkt ist der älteste Weihnachtsmarkt von…?;Deutschland.;Sachsen.;Europa.;Den Striezelmarkt gibt es seit 1435. 2018 findet er zum 584. mal statt.
+9;Welche Dresdner Elbbrücke ist mit 635 Metern die längste?;Waldschlösschenbrücke.;Autobahnbrücke.;Karola-brücke.;Die sehr umstrittene Waldschlösschenbrücke führte dazu, dass dem Elbtal der UNESCO Welterbetitel entzogen wurde. Die vierspurige Brücke wurde 2013 eröffnet.
+10;Über welche Dresdner Elbbrücke führt der Sächsische Jakobsweg?;Augustusbrücke.;Blaues Wunder.;Albertbrücke.;Der sächsische Jakobsweg ist 300 Kilometer lang und führt unter anderem durch Chemnitz, Dresden und Zwickau.
+11;In welchem Bundesland liegt Dresden?;Sachsen.;Berlin.;Bayern.;Sachsen grenzt an Polen und Tschechien. Dresden ist nur etwa 50 Kilometer von der tschechischen Grenze entfernt. 
+12;Wie heißt Dresdens Oper?;Semperoper.;Bolschoi Theater.;Royal Opera House.;Das Orchester in der Semperoper heißt sächsische Staatskapelle und wurde bereits 1548 gegründet. 
+13;Welcher Epoche ist die Frauenkirche zuzuordnen?;Barock.;Rennaissance.;Neuzeit.;Eine der Glocken im achtstimmigen Geläut heißt Maria. Sie ist die einzig erhaltene Glocke, die von 1734 bis 1925 hier ihren Dienst versah. 
+14;"Woher kommt der Name ""Zwinger""?";Bezeichnung für einen Festungs-teil.;Gefängnis.;Hundezucht.;Der Dresdner Zwinger ist ein barocker Gebäudekomplex mit angelegtem Garten, in dem auch Veranstaltungen abgehalten werden.
+15;Welches dieser Museen liegt in Dresden?;Leonhardi-Museum.;Neue Pinakothek.;Textilmuseum.;"Eduard Leonhardi war ein Landschaftsmaler im 19. Jahrhundert. Sein bekanntestes Werk heißt ""Deutscher Wald""."
+16;"Wo wurde der Film ""3 Haselnüsse für Aschenbrödel"" gefilmt?";Moritzburg.;Radeberg.;Prag.;Das Schloss Moritzburg ist nur 17 Kilometer von Dresden entfernt. Mit öffentlichen Verkehrsmitteln dauert die Anfahrt rund 30 Minuten. 
+17;Was war Erich Kästner von Beruf?;Schriftsteller.;Maler.;Ritter.;In Dresden gibt es ein Erich Kästner Museum und ein Erich Kästner Denkmal.
+18;Wie heißt die älteste Steinbrücke?;Augustusbrücke.;Waldschlösschenbrücke.;Steinerne Brücke.;Die Augustusbrücke ist eine der ältesten Brücken in Sachsen und war im Mittelalter die längste Brücke Deutschlands. 
+19;Wie viele Bögen hat die Augustusbrücke?;"24 <break time=""1s""/>";"10 <break time=""1s""/>";"33 <break time=""1s""/>";Die Augustusbrücke ist ein Kulturdenkmal im Sinne des sächsischen Denkmalschutzes. 
+20;Wie groß sind die Heiligenstatuen auf dem Dach der Hofkirche?;3,5 Meter.;1 Meter.;2 Meter.;Es stehen 74 Heiligenstatuen auf dem Dach der Hofkirche.
+21;Wie heißt Dresdens Marktplatz?;Neumarkt.;Großer Platz.;Markusplatz.;Der Neumarkt liegt in Dresdens Altstadt. Die bekannte Frauenkirche liegt direkt an diesem Platz.
+22;Wie heißt das bekannte Schloss in Dresden?;Residenzschloss.;Schloss Versailles.;Schloss Nymphenburg.;Im Residenzschloss gibt es mehrere Museen und außerdem kann man den Hausmanns-Turm besteigen.
+23;Was ist die Dresdner Kuchenspezialität?;Eierschecke.;Sachertorte.;Schwarzwälderkirsch.;Die Eierschecke ist ein Blechkuchen. Die Namensgebung ist auf einen Rock für Männer zurückzuführen.
+24;Wie wird die Loschwitzer Brücke noch genannt?;Das blaue Wunder.;Tor zum Himmel.;Elbbrücke.;Die blaue Brücke galt als Wunder für die Bevölkerung, da zum ersten Mal eine Brücke aus Stahl ohne Pfeiler oder Stützen eine so hohe Tragkraft erreichte. 
+25;Was ist ein Stadtteil von Dresden?;Gruna.;Schwabing.;Kreuzberg.;Der Stadtteil liegt in der Nähe des großen Gartens im Osten Dresdens.
+26;Wie heißt eine der Partnerstädte Dresdens?;Breslau.;Augsburg.;Paris.;Breslau liegt in Polen. Die Partnerschaft ist geprägt durch Schüleraustausche, kulturelle Veranstaltungen, Aktivitäten von Vereinen und mehr.
+27;Welche Farbe ist im Wappen des Freistaats Sachsen enthalten?;Grün.;Blau .;Rot.;Das Sachsenwappen geht auf das Herzogsgeschlecht der Askanier zurück, die im 11. Jahrhundert lebten.
+28;Wie viele Kilometer sind es von Dresden nach Berlin?;"200 <break time=""1s""/>";"100 <break time=""1s""/>";"250 <break time=""1s""/>";Über die A 13 braucht man nur knapp zwei Stunden bis nach Berlin.
+29;Welche Mundwassermarke kommt aus Dresden?;Odol.;Dontodent.;Meridol.;1892 wurde in Dresden das Mundwasser von Richard Seifert erfunden. Die Geschichte der Erfindung und Verbreitung ist heute im Lingnerschloss ausgestellt.
+30;Welcher dieser Stadtteile ist nicht erfunden?;Wilder Mann.;Wilde Sau.;Wilde Hilde.;Das Gebiet Drachen-Berge wird Wilder Mann genannt, da dort einmal ein Weingut mit diesem Namen bestand. 
+31;Was ist die größte sächsische Stadt?;Leipzig.;Dresden.;Chemnitz.;Mit rund 590.000 Einwohnern hat Leipzig etwa 40.000 mehr Einwohner als Dresden.
+32;Aus wie viel Grün- und Waldfläche besteht Dresden?;63 Prozent.;30 Prozent.;44 Prozent.;Das Naherholungsgebiet Dresdner Heide ist eines der größten Stadtwälder Deutschlands. 
+33;Wie viele Naturschutzgebiete gibt es im Stadtgebiet?;"4 <break time=""1s""/>";"1 <break time=""1s""/>";"6 <break time=""1s""/>";"Das Stadtgebiet Dresden besitzt durch die Dresdner Heide, den großen Garten, großzügigen Parkanlagen, Alleen und den Elbufern, eine große landschaftliche und naturelle Vielfalt.
+Das Stadtgebiet Dresden besitzt durch die Dresdner Heide, den großen Garten, großzügigen Parkanlagen, Alleen und den Elbufern, eine große landschaftliche und naturelle Vielfalt.
+Das Stadtgebiet Dresden besitzt durch die Dresdner Heide, den großen Garten, großzügigen Parkanlagen, Alleen und den Elbufern, eine große landschaftliche und naturelle Vielfalt."
+34;Wodurch werden die Stadtteile Loschwitz und Oberloschwitz verbunden?;Eine Schwebebahn. ;Shuttlebusse.;Eine Brücke.;Die Schwebebahn wurde von 1898 bis 1900 gebaut und ist weltweit die älteste ihrer Art.
+35;Wie hoch ist der Dresdner Fernsehturm?;252 Meter.;165 Meter.;212 Meter.;Der Fernsehturm wurde mit der Übernahme durch die Deutsche Telekom 1991 für die Öffentlichkeit geschlossen.
+36;Wen bildet der goldene Reiter ab?;August der starke.;Den Bürgermeister.;Ludwig der große.;Das blattvergoldete Kupferdenkmal zeigt August den starken auf sein Königreich Polen zureiten.
+37;Auf was für einem Tier reitet der goldene Reiter?;Pferd.;Esel.;Einhorn.;Das Denkmal steht seit 1736 am Neustädter Markt.
+38;Was ist das Autokennzeichen von Dresden?;DD.;D.;DDH.;Kennst du schon diese Witze? Das Kennzeichen Dresdens steht für Dummer Dussel oder auch Doppelt Doof.
+39;Wo ist Dresdens Szene- und Kneipenviertel?;In der äußeren Neustadt.;Auf der Reeper Bahn.;Berlin Mitte.;Besonders sehenswert ist die Kunsthofpassage mit ihrer interessanten Architektur, den kleinen Restaurants und Kunsthandwerkerläden.
+40;Wann findet immer das Filmfest statt?;April.;August.;Oktober.;Das Kurzfilmfest findet jährlich im Filmtheater Schauburg statt.
+41;Was ist ein Pflaumen-toffel?;Essbare Figur aus Pflaumen.;Ein Dummkopf.;Ein Krapfen.;Das aus Trockenpflaumen zusammengesteckte Männlein mit Zylinder ist Symbol für den Dresdner Striezelmarkt.
+42;Wie viele Touristen kommen jährlich nach Dresden?;7 Millionen.;11 Millionen.;4 Millionen.;Die durchschnittliche Aufenthaltsdauer der Touristen in Dresden betrrägt genau 2 Tage.
+43;"Wer produziert in der ""gläsernen Manufaktur""?";Volkswagen.;Audi.;BMW.;Die Gläserne Manufaktur war ursprünglich auf die Produktion einer Luxuslimousine ausgerichtet. Heute steht sie für E-Mobilität und Digitalisierung.
+44;In welcher Straße befinden sich die teuersten Geschäfte?;Königsstraße.;Holzhofgasse.;Arnulfstraße.;Die Königsstraße liegt im Dresdner Barockviertel. Hier gibt es viele Boutiquen, Restaurants und ein lebhaftes Nachtleben. 
+45;Welcher bekannte Fahrradweg führt durch Dresden?;Elberadweg.;Dresdner Radweg.;Sachsen Radweg.;Der Elberadweg führt vom Riesengebirge in Nordtschechien bis nach Cuxhaven an der Elbemündung in die Nordsee. 
+46;Wie viele Terminals hat der Dresdner Flughafen?;Eines.;Zwei.;Es gibt keinen Flughafen.;Seit 2008 ist der Dresdner Flughafen international.
+47;Wie heißt das älteste Schloss Deutschlands?;Albrechtsburg.;Windsor Castle.;Sankt Petersburg.;Das spätgotische Schloss liegt in Meißen, ca. 40 Minuten von Dresden entfernt.
+48;Was ist das Panometer?;Ein Kunstobjekt.;Eine Aussichtsplattform.;Ein Messgerät.;Im 360° Panorama kann man die Stadt Dresden mit Rundbildern des Künstlers Yadegar Asisi mit einer Höhe von 27 Metern kennenlernen. 
+49;Was kann man an der Hochschule für bildende Künste nicht studieren?;Historik.;Bildende Kunst.;Kunst Therapie.;Das imposante Hochschulgebäude liegt auf der Brühlschen Terrasse. Hier kann man Bildende Kunst, Restaurierung, Bühnen- und Kostümbild, Theaterausstattung und Kunst Therapie studieren.
+50;Wo kann man in Dresden gut shoppen gehen?;Am Hauptbahnhof.;In der Dresdner Heide.;Im Alberthafen.;Der Dresdner Hauptbanhof wird aufgrund der vielen Shopping Möglichkeiten auch als Einkaufsbahnhof bezeichnet.

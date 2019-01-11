@@ -1,0 +1,35 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": true,
+		"sessionId": "amzn1.echo-api.session.138ce10b-4267-4d21-a05f-bd22eff6c886",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.25c36bd9-ada0-4cfa-aaa7-0748626f71b0",
+		"timestamp": "2018-12-12T15:17:53Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "StartRoundIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"Region": {
+					"name": "Region",
+					"confirmationStatus": "NONE"
+				},
+				"Anzahl": {
+					"name": "Anzahl",
+					"value": "3",
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		}
+	}
+}

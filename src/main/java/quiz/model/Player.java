@@ -2,22 +2,36 @@ package quiz.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Player implements Serializable {
 	public String name;
+	public int roundScore;
 	public int score;
 	
 	public Player() {}
-	public Player(String n, int s) {
+	public Player(String n, int r, int s) {
 		this.name = n;
+		this.roundScore = r;
 		this.score = s;
+	}
+	public Player(String n) {
+		this(n, 0, 0);
 	}
 	
 	public boolean answer(Answer a) {
 		if (a.isCorrect)
-			score += 1;
+			roundScore += 1;
 		return a.isCorrect;
 	}
-	public int getScore() {
+	public int endRound() {
+		score += roundScore;
+		int r = roundScore;
+		roundScore = 0;
+		return r;
+	}
+	@JsonIgnore
+	public int getTotalScore() {
 		return score;
 	}
 }

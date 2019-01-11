@@ -1,0 +1,63 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.6f2faa01-72be-4e85-8828-e42ec2f64fbe",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"game": "{\"regionId\":\"Berlin\",\"playerCount\":5,\"roundCount\":0,\"state\":\"QUIZ_QUESTION\",\"round\":{\"askedQuestions\":[{\"id\":\"Berlin/0\",\"text\":\"Von wem stammte das Zitat ,,vor Gott sind eigentlich alle Menschen Berliner\\\"?\",\"answers\":[{\"text\":\"Heinrich Mann\",\"isCorrect\":false},{\"text\":\"Theodor Fontane\",\"isCorrect\":true},{\"text\":\"Bertolt Brecht\",\"isCorrect\":false}],\"info\":\"Heinrich Theodor Fontane war ein deutscher Schriftsteller und gilt als bedeutendster deutscher Vertreter des Realismus\"}],\"region\":{\"id\":\"Berlin\",\"questions\":[{\"id\":\"Berlin/0\",\"text\":\"Wie nennen die Berliner das Haus der Kulturen der Welt?\",\"answers\":[{\"text\":\"Schwangere Auster\",\"isCorrect\":true},{\"text\":\"Mund der Welt\",\"isCorrect\":false},{\"text\":\"Topf mit Deckel\",\"isCorrect\":false}],\"info\":\"Die Muschelschalen-Form inspirierte Journalisten das Gebäude ,,Schwangere Auster\\\" zu nennen\"}]},\"players\":[{\"name\":\"Harry Potter\",\"roundScore\":1,\"score\":0},{\"name\":\"Hermine\",\"roundScore\":0,\"score\":0},{\"name\":\"Ron\",\"roundScore\":0,\"score\":0},{\"name\":\"Hedwig\",\"roundScore\":1,\"score\":0},{\"name\":\"Sprechender Hut\",\"roundScore\":0,\"score\":0}],\"isDemo\":false,\"praises\":{\"utterances\":[\"Super\",\"Wahnsinn\",\"Spitze\",\"Toll\",\"Fantastisch\",\"Großartig\",\"Stark\",\"Sehr gut\",\"Das ist richtig\",\"Genauso ist es\",\"Volltreffer\",\"Stimmt genau\",\"Korrekt\",\"Haargenau\",\"Vollkommen richtig\"],\"lastIdx\":10},\"declines\":{\"utterances\":[\"Falsch\",\"Leider falsch\",\"Leider nicht richtig\",\"Leider kein Treffer\",\"Leider keinen Punkt für dich\",\"Das war nichts\",\"Schade\"],\"lastIdx\":0},\"corrections\":{\"utterances\":[\"Die richtige Lösung ist \",\"Die richtige Lösung wäre gewesen \",\"Die Lösung lautet \",\"Richtig wäre gewesen\"],\"lastIdx\":2}},\"isDemo\":false}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.94f1e43c-3752-49e5-a745-fc2a0a33d48a",
+		"timestamp": "2019-01-10T20:58:47Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "SelectAnswerIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"AnswerSelection": {
+					"name": "AnswerSelection",
+					"confirmationStatus": "NONE"
+				},
+				"AnswerText": {
+					"name": "AnswerText",
+					"value": "fontane",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.Text",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "Fontane",
+											"id": "372cb80cdb52d813a3fe0f25cf2a2cae"
+										}
+									},
+									{
+										"value": {
+											"name": "Theodor Fontane",
+											"id": "599ac61f571a41746f6120a6d1174bb4"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				}
+			}
+		},
+		"dialogState": "STARTED"
+	}
+}

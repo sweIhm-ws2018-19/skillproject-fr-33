@@ -1,0 +1,57 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.12f75e2f-864e-4fec-b856-abeba5f3de8c",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"game": "{\"regionId\":null,\"playerCount\":3,\"round\":null}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.f7926b29-3537-441f-afa0-ca53e6447ed9",
+		"timestamp": "2018-12-19T10:48:49Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "StartRoundIntent",
+			"confirmationStatus": "NONE",
+			"slots": {
+				"Region": {
+					"name": "Tests",
+					"value": "Tests",
+					"resolutions": {
+						"resolutionsPerAuthority": [
+							{
+								"authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878.KnownRegion",
+								"status": {
+									"code": "ER_SUCCESS_MATCH"
+								},
+								"values": [
+									{
+										"value": {
+											"name": "Tests",
+											"id": "Tests"
+										}
+									}
+								]
+							}
+						]
+					},
+					"confirmationStatus": "NONE",
+					"source": "USER"
+				},
+				"Anzahl": {
+					"name": "Anzahl",
+					"confirmationStatus": "NONE"
+				}
+			}
+		},
+		"dialogState": "STARTED"
+	}
+}
