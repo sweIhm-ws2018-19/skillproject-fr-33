@@ -45,7 +45,7 @@ public class QuizRoundTests {
 		for(int i=0; i<runs;i++) {
 			quizround.askedQuestions[i] = q;
 		}
-		quizround.selectAnswer(answerIdx, speechText);
+		quizround.selectAnswer(answerIdx, "", speechText);
 		if(runs==0) {assertEquals("Ich habe noch gar nichts gefragt. ",speechText.toString());}
 		if(runs==1) {  };
 	}

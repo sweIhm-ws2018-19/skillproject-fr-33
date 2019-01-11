@@ -138,17 +138,17 @@ public class QuizGame implements Serializable {
 	public void selectRegion(String region, StringBuilder speechText) {
 		if (QuestionLoader.isRegionAvailable(region)) {
 			this.regionId = region;
-			speechText.append(" Okay auf geht's! <audio src=\"soundbank://soundlibrary/transportation/amzn_sfx_car_honk_3x_02\"/> ");
+			speechText.append("Okay auf geht's! <audio src=\"soundbank://soundlibrary/transportation/amzn_sfx_car_honk_3x_02\"/> ");
 		} else {
 			this.regionId = null;
 			speechText.append("In "+region+" kenne ich mich leider nicht aus. ");
 		}
 	}
-	public void selectAnswer(int answerIndex, StringBuilder speechText) {
+	public void selectAnswer(int answerIndex, String answerText, StringBuilder speechText) {
 		if (round == null) {
 			speechText.append("Wir spielen doch noch gar nicht. ");
 		} else {
-			round.selectAnswer(answerIndex, speechText);
+			round.selectAnswer(answerIndex, answerText, speechText);
 			if (round.askedQuestions.length < round.players.length * (isDemo ? 1 : QuizRound.LENGTH)) {
 				round.toNextQuestion(speechText);
 				state = GameState.QUIZ_QUESTION;
@@ -197,7 +197,7 @@ public class QuizGame implements Serializable {
 						+ "<audio src='soundbank://soundlibrary/human/amzn_sfx_large_crowd_cheer_01'/>"
 						+ " Du bist ein Einheimischer. ");
 			}
-		} 
+		}
 		speechText.append("Tschüss, bis zum nächsten Mal! ");
 	}
 	public void cont(StringBuilder speechText) {

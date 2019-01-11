@@ -22,7 +22,7 @@ public class LaunchRequestHandler implements RequestHandler {
 
 	@Override
 	public Optional<Response> handle(HandlerInput input) {
-		StringBuilder speechText = new StringBuilder().append("Hallo. Willkommen zu OnToury 0.1.6. ");
+		StringBuilder speechText = new StringBuilder().append("Hallo. Willkommen zu OnToury 0.2.0. ");
 		QuizGame game = new QuizGame();
 		game.intoSessionAttributes(input.getAttributesManager().getSessionAttributes());
 		return game.respond(input.getResponseBuilder(), speechText);
