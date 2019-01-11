@@ -81,8 +81,7 @@ public class QuizGame implements Serializable {
 			}
 		}
 		round.isDemo = isDemo;
-		round.toNextQuestion(speechText);
-		state = GameState.QUIZ_QUESTION;
+		state = round.toNextQuestion(speechText);
 	}
 
 	public void selectPlayerCount(int count, StringBuilder speechText) {
@@ -150,8 +149,7 @@ public class QuizGame implements Serializable {
 		} else {
 			round.selectAnswer(answerIndex, answerText, speechText);
 			if (round.askedQuestions.length < round.players.length * (isDemo ? 1 : QuizRound.LENGTH)) {
-				round.toNextQuestion(speechText);
-				state = GameState.QUIZ_QUESTION;
+				state = round.toNextQuestion(speechText);
 			} else {
 				speechText.append("Die Runde ist zu Ende. Das war die letzte Frage in dieser Runde. ");
 				round.askedQuestions = new Question[0]; // round = new QuizRound(round.region, round.players)
@@ -205,8 +203,7 @@ public class QuizGame implements Serializable {
 		int num = new Random().nextInt(yeah.length);
 		speechText.append(yeah[num]);
 		// TODO: Möchtest du weitere Fragen zu [REGION] spielen oder dir eine neue Region aussuchen?
-		round.toNextQuestion(speechText);
-		state = GameState.QUIZ_QUESTION;
+		state = round.toNextQuestion(speechText);
 	}
 	public Optional<Response> respond(ResponseBuilder builder, StringBuilder speechText) {
 		String question = "";

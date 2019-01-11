@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
+import quiz.model.QuizGame.GameState;
+
 import java.io.Serializable;
 
 public class QuizRound implements Serializable {
@@ -38,11 +40,11 @@ public class QuizRound implements Serializable {
 		this.players = ps;
 	}
 
-	public void toNextQuestion(StringBuilder speechText) {
+	public GameState toNextQuestion(StringBuilder speechText) {
 		Question q = this.region.nextQuestion(isDemo);
 		if (q == null) {
 			speechText.append("Tut mir leid, ich habe keine neuen Fragen mehr. ");
-			return;
+			return GameState.INQUIRE_REGION;
 		}
 		int asked = this.askedQuestions.length;
 		this.askedQuestions = Arrays.copyOf(this.askedQuestions, asked + 1);
@@ -69,6 +71,7 @@ public class QuizRound implements Serializable {
 			speechText.append(": ");
 		}
 		q.shuffleAnswers();
+		return GameState.QUIZ_QUESTION;
 	}
 	public void selectAnswer(int answerIndex, String answerText, StringBuilder speechText) {
 		int lastAsked = askedQuestions.length - 1;

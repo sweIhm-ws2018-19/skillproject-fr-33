@@ -1,0 +1,27 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": false,
+		"sessionId": "amzn1.echo-api.session.a3835ce6-0b65-425d-ae5e-021a3c83ac0d",
+		"application": {
+			"applicationId": "amzn1.ask.skill.a8dcef18-c19a-490c-8c84-d9ed35adb878"
+		},
+		"attributes": {
+			"game": "{\"regionId\":\"Berlin\",\"playerCount\":2,\"roundCount\":1,\"state\":\"PROMPT_CONTINUE_GAME\",\"round\":{\"askedQuestions\":[],\"region\":{\"id\":\"Berlin\",\"questions\":[]},\"players\":[{\"name\":\"Heidi\",\"roundScore\":0,\"score\":1},{\"name\":\"Peter\",\"roundScore\":0,\"score\":0}],\"isDemo\":true,\"praises\":{\"utterances\":[\"Super\",\"Wahnsinn\",\"Spitze\",\"Toll\",\"Fantastisch\",\"Großartig\",\"Stark\",\"Sehr gut\",\"Das ist richtig\",\"Genauso ist es\",\"Volltreffer\",\"Stimmt genau\",\"Korrekt\",\"Haargenau\",\"Vollkommen richtig\"],\"lastIdx\":13},\"declines\":{\"utterances\":[\"Falsch\",\"Leider falsch\",\"Leider nicht richtig\",\"Leider kein Treffer\",\"Leider keinen Punkt für dich\",\"Das war nichts\",\"Schade\"],\"lastIdx\":6},\"corrections\":{\"utterances\":[\"Die richtige Lösung ist \",\"Die richtige Lösung wäre gewesen \",\"Die Lösung lautet \",\"Richtig wäre gewesen\"],\"lastIdx\":2}},\"isDemo\":true}"
+		}
+	},
+	"context": {
+		"System": {}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.a16d6235-07b0-4c64-94cb-e7097c121396",
+		"timestamp": "2019-01-11T11:15:12Z",
+		"locale": "de-DE",
+		"intent": {
+			"name": "AMAZON.ResumeIntent",
+			"confirmationStatus": "NONE"
+		},
+		"dialogState": "STARTED"
+	}
+}

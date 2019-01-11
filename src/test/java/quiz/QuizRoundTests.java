@@ -9,6 +9,7 @@ import junitparams.Parameters;
 import quiz.model.Answer;
 import quiz.model.Player;
 import quiz.model.Question;
+import quiz.model.QuizGame.GameState;
 import quiz.model.QuizRound;
 import quiz.model.Region;
 import junitparams.JUnitParamsRunner;
@@ -29,7 +30,7 @@ public class QuizRoundTests {
 		quizround.region.nextQuestion(false);
 		
 		final StringBuilder speechText = new StringBuilder();
-		quizround.toNextQuestion(speechText);
+		assertEquals(quizround.toNextQuestion(speechText), GameState.INQUIRE_REGION);
 		assertEquals("Tut mir leid, ich habe keine neuen Fragen mehr. ",speechText.toString());
 	}
 	@Parameters({
